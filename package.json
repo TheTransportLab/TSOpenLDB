@@ -5,7 +5,8 @@
   "main": "build/index.js",
   "scripts": {
     "build": "ttsc",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "doc": "typedoc"
   },
   "author": "Scott Pritchard",
   "license": "ISC",
