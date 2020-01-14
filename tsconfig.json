@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "baseUrl": "./",
+    "rootDir": "./src/",
+    "outDir": "./build/",
+    "paths": {
+      "@Root/*": ["./*"],
+      "@Data/*": ["data/*"],
+      "@Modules/*": ["src/modules/*"],
+      "@Constants": ["src/constants/Constants"],
+      "@Interfaces/*": ["src/interfaces/*"],
+      "@Config": ["src/config"],
+      "@Dist": ["dist"]
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "ts-optchain/transform" }
+    ]
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}

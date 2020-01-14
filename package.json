@@ -1,0 +1,28 @@
+{
+  "name": "tsopenldb",
+  "version": "1.0.0",
+  "description": "A typescript implementation of the National Rail LDB and LDBSV web service API's",
+  "main": "index.js",
+  "scripts": {
+    "build": "ttsc",
+    "dev": "ts-node src/index.ts"
+  },
+  "author": "Scott Pritchard",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^8.4.1",
+    "ts-optchain": "^0.1.8",
+    "ttypescript": "^1.5.7",
+    "typescript": "^3.6.4",
+    "typescript-transform-paths": "^1.1.11"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.5.2",
+    "@types/xml2js": "^0.4.5",
+    "auto-bind": "^2.1.1",
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.0",
+    "xml2js": "^0.4.22"
+  }
+}
