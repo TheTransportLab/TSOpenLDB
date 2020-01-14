@@ -329,23 +329,23 @@ export default class TSOpenLDB {
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrDepBoardWithDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrivalBoardByCrs] = ({time = new Date().toISOString(), services = EServices.P, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByCRS) => {
-    const params = {time, services, numRows, timeWindow, getNonPassengerServices, ..._params}
+  [EStaffOperation.getArrivalBoardByCrs] = ({time = new Date(), services = EServices.TRAIN, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByCRS) => {
+    const params = {time: time.toISOString(), services, numRows, timeWindow, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalBoardByCrs, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrivalBoardByTiploc] = ({time = new Date().toISOString(), numRows = 120, services = EServices.P, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByTIPLOC) => {
-    const params = {time, services, numRows, getNonPassengerServices, ..._params}
+  [EStaffOperation.getArrivalBoardByTiploc] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByTIPLOC) => {
+    const params = {time: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalBoardByTiploc, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrivalDepartureBoardByCrs] = ({time = new Date().toISOString(), numRows = 120, services = EServices.P, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByCRS) => {
-    const params = {time, services, numRows, getNonPassengerServices, ..._params}
+  [EStaffOperation.getArrivalDepartureBoardByCrs] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByCRS) => {
+    const params = {timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalDepartureBoardByCrs, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrivalDepartureBoardByTiploc] = ({time = new Date().toISOString(), numRows = 120, services = EServices.P, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByTIPLOC) => {
-    const params = {time, services, numRows, getNonPassengerServices, ..._params}
+  [EStaffOperation.getArrivalDepartureBoardByTiploc] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByTIPLOC) => {
+    const params = {timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalDepartureBoardByTiploc, params)}${XMLClosing}`
     return XML;
   }
@@ -354,13 +354,13 @@ export default class TSOpenLDB {
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepBoardWithDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getDepartureBoardByCrs] = ({timeWindow = 120, getNonPassengerServices = false, services = EServices.P, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByCRS) => {
-    const params = {timeWindow, getNonPassengerServices, services, numRows, filterType, ..._params}
+  [EStaffOperation.getDepartureBoardByCrs] = ({timeWindow = 120, time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByCRS) => {
+    const params = {time: time.toISOString(), timeWindow, getNonPassengerServices, services, numRows, filterType, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepartureBoardByCrs, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getDepartureBoardByTiploc] = ({time = new Date().toISOString(), getNonPassengerServices = false, services = EServices.P, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByTIPLOC) => {
-    const params = {time, getNonPassengerServices, services, numRows, filterType, ..._params};
+  [EStaffOperation.getDepartureBoardByTiploc] = ({time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByTIPLOC) => {
+    const params = {timetime: time.toISOString(), getNonPassengerServices, services, numRows, filterType, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepartureBoardByTiploc, params)}${XMLClosing}`
     return XML;
   }
@@ -369,17 +369,17 @@ export default class TSOpenLDB {
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDisruptionList, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getFastestDepartures] = ({services = EServices.P, timeWindow = 120, time = new Date().toISOString(), ..._params}: IParams_GetFastestDepartures) => {
-    const params = {services, timeWindow, time, ..._params};
+  [EStaffOperation.getFastestDepartures] = ({services = EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params}: IParams_GetFastestDepartures) => {
+    const params = {services, timeWindow, time: time.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getFastestDepartures, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getFastestDeparturesWithDetails] = ({services = EServices.P, timeWindow = 120, time = new Date().toISOString(), ..._params}: IParams_GetFastestDeparturesWithDetails) => {
-    const params = {services, timeWindow, time, ..._params};
+  [EStaffOperation.getFastestDeparturesWithDetails] = ({services = EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params}: IParams_GetFastestDeparturesWithDetails) => {
+    const params = {services, timeWindow, time: time.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getFastestDeparturesWithDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getHistoricDepartureBoard] = ({depBoardDate = EDateModifier.SAME, numRows = 120, services = EServices.P, timeWindow = 120, ..._params}: IParams_GetHistoricDepartureBoard) => {
+  [EStaffOperation.getHistoricDepartureBoard] = ({depBoardDate = EDateModifier.SAME, numRows = 120, services = EServices.TRAIN, timeWindow = 120, ..._params}: IParams_GetHistoricDepartureBoard) => {
     const params = {depBoardDate, numRows, services, timeWindow, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricDepartureBoard, params)}${XMLClosing}`
     return XML;
@@ -394,13 +394,13 @@ export default class TSOpenLDB {
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricTimeLine, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getNextDepartures] = ({time = new Date().toISOString(), timeWindow = 120, services = EServices.P, ..._params}: IParams_GetNextDepartures) => {
-    const params = {time, timeWindow, services, ..._params};
+  [EStaffOperation.getNextDepartures] = ({time = new Date(), timeWindow = 120, services = EServices.TRAIN, ..._params}: IParams_GetNextDepartures) => {
+    const params = {time: time.toISOString(), timeWindow, services, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getNextDepartures, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getNextDeparturesWithDetails] = ({time = new Date().toISOString(), timeWindow = 120, services = EServices.P, ..._params}: IParams_GetNextDeparturesWithDetails) => {
-    const params = {time, timeWindow, services, ..._params};
+  [EStaffOperation.getNextDeparturesWithDetails] = ({time = new Date(), timeWindow = 120, services = EServices.TRAIN, ..._params}: IParams_GetNextDeparturesWithDetails) => {
+    const params = {time: time.toISOString(), timeWindow, services, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getNextDeparturesWithDetails, params)}${XMLClosing}`
     return XML;
   }
@@ -429,13 +429,13 @@ export default class TSOpenLDB {
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getTocList, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.queryHistoricServices] = ({..._params}: IParams_QueryHistoricServices) => {
-    const params = {..._params};
+  [EStaffOperation.queryHistoricServices] = ({timeFilter = new Date(), ..._params}: IParams_QueryHistoricServices) => {
+    const params = {timeFilter: timeFilter.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.queryHistoricServices, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.queryServices] = ({sdd = new Date().toISOString(), ..._params}: IParams_QueryServices) => {
-    const params = {sdd, ..._params};
+  [EStaffOperation.queryServices] = ({sdd = new Date(), ..._params}: IParams_QueryServices) => {
+    const params = {sdd: sdd.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.queryServices, params)}${XMLClosing}`
     return XML;
   }

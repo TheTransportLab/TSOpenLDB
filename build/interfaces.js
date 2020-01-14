@@ -96,9 +96,9 @@ var EFilterType;
 })(EFilterType = exports.EFilterType || (exports.EFilterType = {}));
 var EServices;
 (function (EServices) {
-    EServices["P"] = "P";
-    EServices["B"] = "B";
-    EServices["S"] = "S";
+    EServices["TRAIN"] = "P";
+    EServices["BUS"] = "B";
+    EServices["SHIP"] = "S";
 })(EServices = exports.EServices || (exports.EServices = {}));
 var EDateModifier;
 (function (EDateModifier) {

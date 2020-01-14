@@ -92,167 +92,167 @@ export enum EStaffOperation {
 }
 
 export interface IParams_GetArrBoardWithDetails {
-  numRows : number,
-  crs : string,
-  filterCrs : string,
-  filterType : EFilterType,
-  timeOffset : number,
-  timeWindow? : number
+  numRows: number,
+  crs: string,
+  filterCrs?: string,
+  filterType?: EFilterType,
+  timeOffset?: number,
+  timeWindow?: number
 }
 export interface IParams_GetArrDepBoardWithDetails {
-  numRows : number,
-  crs : string,
-  filterCrs : string,
-  filterType : EFilterType,
-  timeOffset : number,
-  timeWindow? : number
+  numRows: number,
+  crs: string,
+  filterCrs?: string,
+  filterType?: EFilterType,
+  timeOffset?: number,
+  timeWindow?: number
 }
 export interface IParams_GetArrivalBoardByCRS {
-  numRows : number,
-  crs : string,
-  time : string,
-  timeWindow? : number,
-  filterCrs : string,
-  filterType : EFilterType,
-  filterTOC : string[] | string,
-  services : EServices,
-  getNonPassengerServices : boolean
+  numRows: number,
+  crs: string,
+  time: Date,
+  timeWindow?: number,
+  filterCrs?: string,
+  filterType?: EFilterType,
+  filterTOC?: string[] | string,
+  services?: EServices,
+  getNonPassengerServices?: boolean
 }
 export interface IParams_GetArrivalBoardByTIPLOC {
-  numRows : number,
-  tiploc : string,
-  time : string,
-  filterTiploc : string,
-  filterType : EFilterType,
-  filterTOC : string[] | string,
-  services : EServices,
-  getNonPassengerServices : boolean
+  numRows: number,
+  tiploc: string,
+  time: Date,
+  filterTiploc?: string,
+  filterType?: EFilterType,
+  filterTOC?: string[] | string,
+  services?: EServices,
+  getNonPassengerServices?: boolean
 }
 export interface IParams_GetArrivalDepartureBoardByCRS {
-  numRows : number,
-  crs : string,
-  time : string,
-  filterCrs : string,
-  filterType : EFilterType,
-  filterTOC : string[] | string,
-  services : EServices,
-  getNonPassengerServices : boolean
+  numRows: number,
+  crs: string,
+  time: Date,
+  filterCrs?: string,
+  filterType?: EFilterType,
+  filterTOC?: string[] | string,
+  services?: EServices,
+  getNonPassengerServices?: boolean
 }
 export interface IParams_GetArrivalDepartureBoardByTIPLOC {
-  numRows : number,
-  tiploc : string,
-  time : string,
-  filterTiploc : string,
-  filterType : EFilterType,
-  filterTOC : string[] | string,
-  services : EServices,
-  getNonPassengerServices : boolean
+  numRows: number,
+  tiploc: string,
+  time: Date,
+  filterTiploc: string,
+  filterType: EFilterType,
+  filterTOC: string[] | string,
+  services?: EServices,
+  getNonPassengerServices: boolean
 }
 export interface IParams_GetDepBoardWithDetails {
-  numRows : number,
-  crs : string,
-  filterCrs : string,
-  filterType : EFilterType,
-  timeOffset : number,
-  timeWindow? : number
+  numRows: number,
+  crs: string,
+  timeOffset?: number,
+  filterCrs?: string,
+  filterType?: EFilterType,
+  timeWindow?: number
 }
 export interface IParams_GetDepartureBoardByCRS {
-  numRows : number,
-  crs : string,
-  time : string,
-  timeWindow? : number,
-  filterCrs : string,
-  filterType : EFilterType,
-  filterTOC : string[] | string,
-  services : EServices,
-  getNonPassengerServices : boolean
+  crs: string,
+  time: Date,
+  numRows: number,
+  timeWindow?: number,
+  filterCrs?: string,
+  filterType?: EFilterType,
+  filterTOC?: string[] | string,
+  services?: EServices,
+  getNonPassengerServices?: boolean
 }
 export interface IParams_GetDepartureBoardByTIPLOC {
-  numRows : number,
-  tiploc : string,
-  time : string,
-  filterTiploc : string,
-  filterType : EFilterType,
-  filterTOC : string[] | string,
-  services : EServices,
-  getNonPassengerServices : boolean
+  numRows: number,
+  tiploc: string,
+  time: Date,
+  filterTiploc?: string,
+  filterType?: EFilterType,
+  filterTOC?: string[] | string,
+  services?: EServices,
+  getNonPassengerServices?: boolean
 }
-export interface IParams_GetDisruptionList{ crsList : string[] }
+export interface IParams_GetDisruptionList{ crsList: string[] }
 export interface IParams_GetFastestDepartures {
-  crs : string,
-  filterList : string[],
-  time : string,
-  timeWindow? : number,
-  filterTOC : string[] | string,
-  services : EServices
+  crs: string,
+  filterList: string[],
+  time: Date,
+  timeWindow?: number,
+  filterTOC?: string[] | string,
+  services?: EServices
 }
 export interface IParams_GetFastestDeparturesWithDetails {
-  crs : string
-  filterList : string[]
-  time : string
-  timeWindow? : number
-  filterTOC? : string[] | string
-  services : EServices
+  crs: string
+  filterList: string[]
+  time: Date
+  timeWindow?: number
+  filterTOC?: string[] | string
+  services?: EServices
 }
 export interface IParams_GetHistoricDepartureBoard {
-  numRows : number,
-  crs : string,
-  historicDatetime : string,
-  depBoardDate : EDateModifier,
-  depBoardtime : string,
-  timeWindow? : number,
-  filterCrs : string,
-  filterCrsType : EFilterType,
-  filterTOC : string[] | string,
-  services : EServices,
-  getNonPassengerServices : boolean
+  numRows: number,
+  crs: string,
+  historicDatetime: Date,
+  depBoardDate?: EDateModifier,
+  depBoardtime?: string,
+  timeWindow?: number,
+  filterCrs?: string,
+  filterCrsType?: EFilterType,
+  filterTOC?: string[] | string,
+  services?: EServices,
+  getNonPassengerServices?: boolean
 }
 export interface IParams_GetHistoricServiceDetails {
-  serviceUID : string,
-  scheduleStartDate : EDateModifier,
-  historicDateTime : string
+  serviceUID: string,
+  historicDateTime: string
+  scheduleStartDate?: EDateModifier,
 }
 export interface IParams_GetHistoricTimeLine {
-  serviceUID : string,
-  scheduleStartDate : EDateModifier,
-  historicDatetime : string,
-  fullTiploc : string
+  serviceUID: string,
+  scheduleStartDate: EDateModifier,
+  historicDatetime: string,
+  fullTiploc: string
 }
 export interface IParams_GetNextDepartures {
-  crs : string,
-  filterList : string[],
-  time : string,
-  timeWindow? : number,
-  filterTOC : string[] | string,
-  services : EServices
+  crs: string,
+  filterList: string[],
+  time: Date,
+  timeWindow?: number,
+  filterTOC?: string[] | string,
+  services?: EServices
 }
 export interface IParams_GetNextDeparturesWithDetails {
-  crs : string,
-  filterList : string[],
-  time : string,
-  timeWindow? : number,
-  filterTOC : string[] | string,
-  services : EServices
+  crs: string,
+  filterList: string[],
+  time: Date,
+  timeWindow?: number,
+  filterTOC?: string[] | string,
+  services?: EServices
 }
-export interface IParams_GetServiceDetailsByRID{ rid : string }
+export interface IParams_GetServiceDetailsByRID{ rid: string }
 export interface IParams_QueryHistoricServices {
-  serviceID : string,
-  historicDatetime : string,
-  scheduleStartDate : EDateModifier,
-  timeFilter : string,
-  routeCrsFilter : string,
-  tocFilter : string
+  serviceID: string,
+  historicDatetime?: Date,
+  scheduleStartDate?: EDateModifier,
+  timeFilter?: Date,
+  routeCrsFilter?: string,
+  tocFilter?: string
 }
 export interface IParams_QueryServices {
-  serviceID : string,
-  sdd : string,
-  filtertime : string,
-  filterCrs : string,
-  tocFilter : string
+  serviceID: string,
+  sdd: Date,
+  filtertime?: string,
+  filterCrs?: string,
+  tocFilter?: string
 }
-export interface IParams_GetTocList{ currentVersion : string }
-export interface IParams_GetStationList{ currentVersion : string }
-export interface IParams_GetReasonCode{ reasonCode : number }
+export interface IParams_GetTocList{ currentVersion: string }
+export interface IParams_GetStationList{ currentVersion: string }
+export interface IParams_GetReasonCode{ reasonCode: number }
 export interface IParams_GetReasonCodeList{}
 
 export enum EFilterType {
@@ -261,9 +261,9 @@ export enum EFilterType {
 }
 
 export enum EServices {
-  P = "P",
-  B = "B",
-  S = "S"
+  TRAIN = "P",
+  BUS = "B",
+  SHIP = "S"
 }
 
 export enum EDateModifier {
@@ -322,7 +322,7 @@ export interface IOpenLDBWS {
 }
 
 export interface ILDBWSSoapOptions {
-  [key:string] : string
+  [key:string]: string
 }
 
 export interface ILDBWSSoap {
