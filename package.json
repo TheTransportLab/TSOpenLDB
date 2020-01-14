@@ -1,6 +1,6 @@
 {
   "name": "tsopenldb",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A typescript implementation of the National Rail LDB and LDBSV web service API's",
   "main": "build/index.js",
   "scripts": {
@@ -21,10 +21,7 @@
   "dependencies": {
     "@types/node-fetch": "^2.5.2",
     "@types/xml2js": "^0.4.5",
-    "auto-bind": "^2.1.1",
-    "lodash": "^4.17.15",
     "node-fetch": "^2.6.0",
-    "request": "^2.88.0",
     "xml2js": "^0.4.22"
   }
 }
