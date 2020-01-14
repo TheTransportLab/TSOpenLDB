@@ -57,10 +57,13 @@ export default class TSOpenLDB {
   private _apiKey: string;
 
   constructor({apiKey}:ITSOpenLDBConstructorParams){
+    if (!apiKey || typeof apiKey !== "string"){
+      throw new Error("You must provide an API key from the National Rail OpenLDB Staff Webservice. Register: http://openldbsv.nationalrail.co.uk/");
+    }
     this._apiKey = apiKey;
   }
 
-  CallRequiredParams = (params: IOperationParams):TStaffOperation => {
+  private CallRequiredParams = (params: IOperationParams):TStaffOperation => {
     const {
       time,
       timeOffset,
@@ -273,7 +276,7 @@ export default class TSOpenLDB {
     return APICalls;
   }
 
-  fetchFromDarwin = async (operation: ESOAPStaffAction, xml: string) => {
+  private fetchFromDarwin = async (operation: ESOAPStaffAction, xml: string) => {
     const headers = {
       SOAPAction: operation,
       "Content-Type": "text/xml"
@@ -296,7 +299,7 @@ export default class TSOpenLDB {
     return data;
   }
 
-  mapParamsToSOAPXml = (operation: EStaffOperation, params: IOperationParams) => {
+  private mapParamsToSOAPXml = (operation: EStaffOperation, params: IOperationParams) => {
     return `<${ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>`+
       Object.entries(params).map(([key, value]) => (() => {
         switch(key){
@@ -319,122 +322,122 @@ export default class TSOpenLDB {
     `</${ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>`
   }
 
-  [EStaffOperation.getArrBoardWithDetails] = ({ filterType = EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params}: IParams_GetArrBoardWithDetails) => {
+  public [EStaffOperation.getArrBoardWithDetails] = ({ filterType = EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params}: IParams_GetArrBoardWithDetails) => {
     const params = {filterType, timeOffset, timeWindow, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrBoardWithDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrDepBoardWithDetails] = ({filterType = EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params}: IParams_GetArrDepBoardWithDetails) => {
+  public [EStaffOperation.getArrDepBoardWithDetails] = ({filterType = EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params}: IParams_GetArrDepBoardWithDetails) => {
     const params = {filterType, timeOffset, timeWindow, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrDepBoardWithDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrivalBoardByCrs] = ({time = new Date(), services = EServices.TRAIN, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByCRS) => {
+  public [EStaffOperation.getArrivalBoardByCrs] = ({time = new Date(), services = EServices.TRAIN, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByCRS) => {
     const params = {time: time.toISOString(), services, numRows, timeWindow, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalBoardByCrs, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrivalBoardByTiploc] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByTIPLOC) => {
+  public [EStaffOperation.getArrivalBoardByTiploc] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByTIPLOC) => {
     const params = {time: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalBoardByTiploc, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrivalDepartureBoardByCrs] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByCRS) => {
+  public [EStaffOperation.getArrivalDepartureBoardByCrs] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByCRS) => {
     const params = {timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalDepartureBoardByCrs, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getArrivalDepartureBoardByTiploc] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByTIPLOC) => {
+  public [EStaffOperation.getArrivalDepartureBoardByTiploc] = ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByTIPLOC) => {
     const params = {timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalDepartureBoardByTiploc, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getDepBoardWithDetails] = ({numRows = 120, timeWindow = 120, timeOffset = 0, ..._params}: IParams_GetDepBoardWithDetails) => {
+  public [EStaffOperation.getDepBoardWithDetails] = ({numRows = 120, timeWindow = 120, timeOffset = 0, ..._params}: IParams_GetDepBoardWithDetails) => {
     const params = {numRows, timeWindow, timeOffset, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepBoardWithDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getDepartureBoardByCrs] = ({timeWindow = 120, time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByCRS) => {
+  public [EStaffOperation.getDepartureBoardByCrs] = ({timeWindow = 120, time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByCRS) => {
     const params = {time: time.toISOString(), timeWindow, getNonPassengerServices, services, numRows, filterType, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepartureBoardByCrs, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getDepartureBoardByTiploc] = ({time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByTIPLOC) => {
+  public [EStaffOperation.getDepartureBoardByTiploc] = ({time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByTIPLOC) => {
     const params = {timetime: time.toISOString(), getNonPassengerServices, services, numRows, filterType, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepartureBoardByTiploc, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getDisruptionList] = ({..._params}: IParams_GetDisruptionList) => {
+  public [EStaffOperation.getDisruptionList] = ({..._params}: IParams_GetDisruptionList) => {
     const params = {..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDisruptionList, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getFastestDepartures] = ({services = EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params}: IParams_GetFastestDepartures) => {
+  public [EStaffOperation.getFastestDepartures] = ({services = EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params}: IParams_GetFastestDepartures) => {
     const params = {services, timeWindow, time: time.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getFastestDepartures, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getFastestDeparturesWithDetails] = ({services = EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params}: IParams_GetFastestDeparturesWithDetails) => {
+  public [EStaffOperation.getFastestDeparturesWithDetails] = ({services = EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params}: IParams_GetFastestDeparturesWithDetails) => {
     const params = {services, timeWindow, time: time.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getFastestDeparturesWithDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getHistoricDepartureBoard] = ({depBoardDate = EDateModifier.SAME, numRows = 120, services = EServices.TRAIN, timeWindow = 120, ..._params}: IParams_GetHistoricDepartureBoard) => {
+  public [EStaffOperation.getHistoricDepartureBoard] = ({depBoardDate = EDateModifier.SAME, numRows = 120, services = EServices.TRAIN, timeWindow = 120, ..._params}: IParams_GetHistoricDepartureBoard) => {
     const params = {depBoardDate, numRows, services, timeWindow, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricDepartureBoard, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getHistoricServiceDetails] = ({..._params}: IParams_GetHistoricServiceDetails) => {
+  public [EStaffOperation.getHistoricServiceDetails] = ({..._params}: IParams_GetHistoricServiceDetails) => {
     const params = {..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricServiceDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getHistoricTimeLine] = ({..._params}: IParams_GetHistoricTimeLine) => {
+  public [EStaffOperation.getHistoricTimeLine] = ({..._params}: IParams_GetHistoricTimeLine) => {
     const params = {..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricTimeLine, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getNextDepartures] = ({time = new Date(), timeWindow = 120, services = EServices.TRAIN, ..._params}: IParams_GetNextDepartures) => {
+  public [EStaffOperation.getNextDepartures] = ({time = new Date(), timeWindow = 120, services = EServices.TRAIN, ..._params}: IParams_GetNextDepartures) => {
     const params = {time: time.toISOString(), timeWindow, services, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getNextDepartures, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getNextDeparturesWithDetails] = ({time = new Date(), timeWindow = 120, services = EServices.TRAIN, ..._params}: IParams_GetNextDeparturesWithDetails) => {
+  public [EStaffOperation.getNextDeparturesWithDetails] = ({time = new Date(), timeWindow = 120, services = EServices.TRAIN, ..._params}: IParams_GetNextDeparturesWithDetails) => {
     const params = {time: time.toISOString(), timeWindow, services, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getNextDeparturesWithDetails, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getReasonCode] = ({..._params}: IParams_GetReasonCode) => {
+  public [EStaffOperation.getReasonCode] = ({..._params}: IParams_GetReasonCode) => {
     const params = {..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getReasonCode, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getReasonCodeList] = ({..._params}: IParams_GetReasonCodeList) => {
+  public [EStaffOperation.getReasonCodeList] = ({..._params}: IParams_GetReasonCodeList) => {
     const params = {..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getReasonCodeList, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getServiceDetailsByRid] = ({..._params}: IParams_GetServiceDetailsByRID) => {
+  public [EStaffOperation.getServiceDetailsByRid] = ({..._params}: IParams_GetServiceDetailsByRID) => {
     const params = {..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getServiceDetailsByRid, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getStationList] = ({..._params}: IParams_GetStationList) => {
+  public [EStaffOperation.getStationList] = ({..._params}: IParams_GetStationList) => {
     const params = {..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getStationList, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.getTocList] = ({..._params}: IParams_GetTocList) => {
+  public [EStaffOperation.getTocList] = ({..._params}: IParams_GetTocList) => {
     const params = {..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getTocList, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.queryHistoricServices] = ({timeFilter = new Date(), ..._params}: IParams_QueryHistoricServices) => {
+  public [EStaffOperation.queryHistoricServices] = ({timeFilter = new Date(), ..._params}: IParams_QueryHistoricServices) => {
     const params = {timeFilter: timeFilter.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.queryHistoricServices, params)}${XMLClosing}`
     return XML;
   }
-  [EStaffOperation.queryServices] = ({sdd = new Date(), ..._params}: IParams_QueryServices) => {
+  public [EStaffOperation.queryServices] = ({sdd = new Date(), ..._params}: IParams_QueryServices) => {
     const params = {sdd: sdd.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.queryServices, params)}${XMLClosing}`
     return XML;
@@ -443,43 +446,43 @@ export default class TSOpenLDB {
 
 export {
   IOpenLDBWS,
-  EOperation,
-  EStaffOperation,
+  // EOperation,
+  // EStaffOperation,
   ESOAPStaffAction,
-  ESOAPAction,
+  // ESOAPAction,
   ILDBWSSoapOptions,
-  ILDBWSSoap,
+  // ILDBWSSoap,
   IOperationInfo,
   EOperationInfoEntryType,
   EOperationInfoEntries,
   IOperationInfoEntry,
   ELDBWSOperationInfoKeys,
-  IOperationParams,
+  // IOperationParams,
   TStaffOperation,
-  IParams_GetArrBoardWithDetails,
-  IParams_GetArrDepBoardWithDetails,
-  IParams_GetArrivalBoardByCRS,
-  IParams_GetArrivalBoardByTIPLOC,
-  IParams_GetArrivalDepartureBoardByCRS,
-  IParams_GetArrivalDepartureBoardByTIPLOC,
-  IParams_GetDepBoardWithDetails,
-  IParams_GetDepartureBoardByCRS,
-  IParams_GetDepartureBoardByTIPLOC,
-  IParams_GetDisruptionList,
-  IParams_GetFastestDepartures,
-  IParams_GetFastestDeparturesWithDetails,
-  IParams_GetHistoricDepartureBoard,
-  IParams_GetHistoricServiceDetails,
-  IParams_GetHistoricTimeLine,
-  IParams_GetNextDepartures,
-  IParams_GetNextDeparturesWithDetails,
-  IParams_GetReasonCode,
-  IParams_GetReasonCodeList,
-  IParams_GetServiceDetailsByRID,
-  IParams_GetStationList,
-  IParams_GetTocList,
-  IParams_QueryHistoricServices,
-  IParams_QueryServices,
+  // IParams_GetArrBoardWithDetails,
+  // IParams_GetArrDepBoardWithDetails,
+  // IParams_GetArrivalBoardByCRS,
+  // IParams_GetArrivalBoardByTIPLOC,
+  // IParams_GetArrivalDepartureBoardByCRS,
+  // IParams_GetArrivalDepartureBoardByTIPLOC,
+  // IParams_GetDepBoardWithDetails,
+  // IParams_GetDepartureBoardByCRS,
+  // IParams_GetDepartureBoardByTIPLOC,
+  // IParams_GetDisruptionList,
+  // IParams_GetFastestDepartures,
+  // IParams_GetFastestDeparturesWithDetails,
+  // IParams_GetHistoricDepartureBoard,
+  // IParams_GetHistoricServiceDetails,
+  // IParams_GetHistoricTimeLine,
+  // IParams_GetNextDepartures,
+  // IParams_GetNextDeparturesWithDetails,
+  // IParams_GetReasonCode,
+  // IParams_GetReasonCodeList,
+  // IParams_GetServiceDetailsByRID,
+  // IParams_GetStationList,
+  // IParams_GetTocList,
+  // IParams_QueryHistoricServices,
+  // IParams_QueryServices,
   EListFields,
   ITSOpenLDBConstructorParams,
   EFilterType,

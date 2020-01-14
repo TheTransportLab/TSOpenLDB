@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>tsopenldb - v1.0.1</title>
+	<title>tsopenldb - v1.0.2</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">tsopenldb - v1.0.1</a>
+					<a href="index.html" class="title">tsopenldb - v1.0.2</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> tsopenldb - v1.0.1</h1>
+			<h1> tsopenldb - v1.0.2</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,8 @@
 				<p> A typescript library for interacting with the UK National Rail OpenLDBSV (staff) web service</p>
 				<p><strong>API Registration:</strong> <a href="http://openldbsv.nationalrail.co.uk/">http://openldbsv.nationalrail.co.uk/</a>
 				<strong>API Documentation:</strong> <a href="https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/">https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/</a></p>
-				<p>Library documentation coming soon!</p>
+				<p><strong>Library documentation:</strong> <a href="https://chronsyn.github.io/TSOpenLDB/">https://chronsyn.github.io/TSOpenLDB/</a>
+				Also found in the <strong>/docs</strong> folder</p>
 				<a href="#basic-usage-example" id="basic-usage-example" style="color: inherit; text-decoration: none;">
 					<h5>Basic Usage Example</h5>
 				</a>
@@ -84,19 +85,154 @@ OpenLDB.<span class="hljs-constructor">GetFastestDeparturesWithDetails({<span cl
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_constants_.html">&quot;constants&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">&quot;index&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_interfaces_.html">&quot;interfaces&quot;</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/edatemodifier.html" class="tsd-kind-icon">EDate<wbr>Modifier</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/efiltertype.html" class="tsd-kind-icon">EFilter<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eldbwsoperationinfokeys.html" class="tsd-kind-icon">ELDBWSOperation<wbr>Info<wbr>Keys</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/elistfields.html" class="tsd-kind-icon">EList<wbr>Fields</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eoperation.html" class="tsd-kind-icon">EOperation</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eoperationinfoentries.html" class="tsd-kind-icon">EOperation<wbr>Info<wbr>Entries</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eoperationinfoentrytype.html" class="tsd-kind-icon">EOperation<wbr>Info<wbr>Entry<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/esoapaction.html" class="tsd-kind-icon">ESOAPAction</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/esoapnamespaces.html" class="tsd-kind-icon">ESOAPNamespaces</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/esoapstaffaction.html" class="tsd-kind-icon">ESOAPStaff<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eservices.html" class="tsd-kind-icon">EServices</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/estaffoperation.html" class="tsd-kind-icon">EStaff<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/tsopenldb.html" class="tsd-kind-icon">TSOpenLDB</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ildbwssoap.html" class="tsd-kind-icon">ILDBWSSoap</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ildbwssoapoptions.html" class="tsd-kind-icon">ILDBWSSoap<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbws.html" class="tsd-kind-icon">IOpenLDBWS</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ioperationinfo.html" class="tsd-kind-icon">IOperation<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ioperationinfoentry.html" class="tsd-kind-icon">IOperation<wbr>Info<wbr>Entry</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ioperationparams.html" class="tsd-kind-icon">IOperation<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getarrboardwithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arr<wbr>Board<wbr>With<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getarrdepboardwithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arr<wbr>Dep<wbr>Board<wbr>With<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getarrivalboardbycrs.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arrival<wbr>Board<wbr>ByCRS</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getarrivalboardbytiploc.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arrival<wbr>Board<wbr>ByTIPLOC</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getarrivaldepartureboardbycrs.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arrival<wbr>Departure<wbr>Board<wbr>ByCRS</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getarrivaldepartureboardbytiploc.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arrival<wbr>Departure<wbr>Board<wbr>ByTIPLOC</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getdepboardwithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Dep<wbr>Board<wbr>With<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getdepartureboardbycrs.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Departure<wbr>Board<wbr>ByCRS</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getdepartureboardbytiploc.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Departure<wbr>Board<wbr>ByTIPLOC</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getdisruptionlist.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Disruption<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getfastestdepartures.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Fastest<wbr>Departures</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getfastestdepartureswithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Fastest<wbr>Departures<wbr>With<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_gethistoricdepartureboard.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Historic<wbr>Departure<wbr>Board</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_gethistoricservicedetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Historic<wbr>Service<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_gethistorictimeline.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Historic<wbr>Time<wbr>Line</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getnextdepartures.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Next<wbr>Departures</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getnextdepartureswithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Next<wbr>Departures<wbr>With<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getreasoncode.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Reason<wbr>Code</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getreasoncodelist.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Reason<wbr>Code<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getservicedetailsbyrid.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Service<wbr>Details<wbr>ByRID</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_getstationlist.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Station<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_gettoclist.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Toc<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_queryhistoricservices.html" class="tsd-kind-icon">IParams_<wbr><wbr>Query<wbr>Historic<wbr>Services</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iparams_queryservices.html" class="tsd-kind-icon">IParams_<wbr><wbr>Query<wbr>Services</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itsopenldbconstructorparams.html" class="tsd-kind-icon">ITSOpenLDBConstructor<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tstaffoperation" class="tsd-kind-icon">TStaff<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#namespace_ldb" class="tsd-kind-icon">NAMESPACE_<wbr>LDB</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#xmlclosing" class="tsd-kind-icon">XMLClosing</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#xmlopening" class="tsd-kind-icon">XMLOpening</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
