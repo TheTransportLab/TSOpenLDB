@@ -372,6 +372,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrBoardWithDetails, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -382,6 +384,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrBoardWithDetails, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -392,6 +396,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalBoardByCrs, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -402,6 +408,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalBoardByTiploc, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -412,6 +420,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -422,6 +432,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -432,6 +444,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetDepBoardWithDetails, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -442,6 +456,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -452,6 +468,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetDepartureBoardByTiploc, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -467,6 +485,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetFastestDepartures, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -477,6 +497,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetFastestDeparturesWithDetails, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -487,6 +509,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -507,6 +531,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetNextDepartures, XML) as IOpenLDBSVWSStationBoard
     };
   }
@@ -517,6 +543,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
       trainServices:{ service: []},
       busServices:{ service: []},
       ferryServices:{ service: []},
+      platformsAreHidden: false,
+      servicesAreUnavailable: false,
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetNextDeparturesWithDetails, XML) as IOpenLDBSVWSStationBoard
     };
   }
