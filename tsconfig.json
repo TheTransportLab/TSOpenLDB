@@ -10,10 +10,6 @@
     "baseUrl": "./",
     "rootDir": "./src/",
     "outDir": "./build/",
-    "typedocOptions": {
-      "mode": "modules",
-      "out": "docs"
-    },
     "paths": {
       "@Root/*": ["./*"],
       "@Data/*": ["data/*"],

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>tsopenldb - v1.0.2</title>
+	<title>tsopenldb - v1.0.7</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">tsopenldb - v1.0.2</a>
+					<a href="index.html" class="title">tsopenldb - v1.0.7</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> tsopenldb - v1.0.2</h1>
+			<h1> tsopenldb - v1.0.7</h1>
 		</div>
 	</div>
 </header>
@@ -75,8 +75,29 @@
 				<a href="#basic-usage-example" id="basic-usage-example" style="color: inherit; text-decoration: none;">
 					<h5>Basic Usage Example</h5>
 				</a>
-				<pre><code>const OpenLDB = <span class="hljs-keyword">new</span> <span class="hljs-constructor">TSOpenLDB({<span class="hljs-params">apiKey</span>: <span class="hljs-string">"YOUR_API_KEY_HERE"</span>})</span>;
-OpenLDB.<span class="hljs-constructor">GetFastestDeparturesWithDetails({<span class="hljs-params">crs</span>: <span class="hljs-string">"LDS"</span>, <span class="hljs-params">filterList</span>: [<span class="hljs-string">"WOM"</span>, <span class="hljs-string">"ELR"</span>], <span class="hljs-params">services</span>: EServices.TRAIN, <span class="hljs-params">time</span>: <span class="hljs-params">new</span> Date()</span>});</code></pre>
+				<pre><code>const apiKey = <span class="hljs-string">"ADD_YOUR_API_KEY"</span>;
+import OpenLDB, { ITSOpenLDB } from <span class="hljs-string">"tsopenldb"</span>;
+const LDB: ITSOpenLDB = <span class="hljs-keyword">new</span> <span class="hljs-constructor">OpenLDB({<span class="hljs-params">apiKey</span>})</span>;
+
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">LDB</span>.</span></span>get<span class="hljs-constructor">DepartureBoardByCRS({<span class="hljs-params">crs</span>: <span class="hljs-string">"LDS"</span>, <span class="hljs-params">numRows</span>: 150, <span class="hljs-params">time</span>: <span class="hljs-params">new</span> Date()</span>}).<span class="hljs-keyword">then</span>((data) =&gt; {
+    console.log(data);
+});
+
+
+const OpenLDB = <span class="hljs-keyword">new</span> <span class="hljs-constructor">TSOpenLDB({<span class="hljs-params">apiKey</span>: <span class="hljs-string">"YOUR_API_KEY_HERE"</span>})</span>;
+OpenLDB.<span class="hljs-constructor">GetFastestDeparturesWithDetails({<span class="hljs-params">crs</span>: <span class="hljs-string">"LDS"</span>, <span class="hljs-params">filterList</span>: [<span class="hljs-string">"MHS"</span>, <span class="hljs-string">"BNY"</span>], <span class="hljs-params">services</span>: EServices.TRAIN, <span class="hljs-params">time</span>: <span class="hljs-params">new</span> Date()</span>});</code></pre>
+				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
+					<h5>Why?</h5>
+				</a>
+				<p>There already exist several libraries which implement support for the calls (though many of them only support the non-staff endpoint) but none of them provide information on the responses. Essentially, they offer a way of creating a SOAP response and parsing the XML to JSON. To date, my library is the only one that serves this purpose and also supports typescript.</p>
+				<p>Sure, I could have created a <code>.d.ts</code> file for an existing library, but why not try and do better?</p>
+				<a href="#developer-notes" id="developer-notes" style="color: inherit; text-decoration: none;">
+					<h5>Developer Notes</h5>
+				</a>
+				<p>As of 15 January 2020, this library is mostly complete. Interfaces for most of the API calls are complete.
+					Interfaces for API responses are mostly implemented, but be aware that there may be some discrepencies between the response and the interface here. This is due to a lack of accurate, up-to-date information that&#39;s easy to access.
+				For all intents and purposes, you can mostly trust the interfaces, but it would still be recommended to check and responses that are returned from the API.</p>
+				<p>PR&#39;s which add significant value are welcome.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -90,6 +111,9 @@ OpenLDB.<span class="hljs-constructor">GetFastestDeparturesWithDetails({<span cl
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum">
+						<a href="enums/edarwinstations.html" class="tsd-kind-icon">EDarwin<wbr>Stations</a>
+					</li>
+					<li class=" tsd-kind-enum">
 						<a href="enums/edatemodifier.html" class="tsd-kind-icon">EDate<wbr>Modifier</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -100,6 +124,18 @@ OpenLDB.<span class="hljs-constructor">GetFastestDeparturesWithDetails({<span cl
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/elistfields.html" class="tsd-kind-icon">EList<wbr>Fields</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eopenldbsvwsactualforecast.html" class="tsd-kind-icon">EOpenLDBSVWSActual<wbr>Forecast</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eopenldbsvwscoachclass.html" class="tsd-kind-icon">EOpenLDBSVWSCoach<wbr>Class</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eopenldbsvwstoiletstatus.html" class="tsd-kind-icon">EOpenLDBSVWSToilet<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eopenldbsvwstoiletvalue.html" class="tsd-kind-icon">EOpenLDBSVWSToilet<wbr>Value</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/eoperation.html" class="tsd-kind-icon">EOperation</a>
@@ -129,10 +165,40 @@ OpenLDB.<span class="hljs-constructor">GetFastestDeparturesWithDetails({<span cl
 						<a href="classes/tsopenldb.html" class="tsd-kind-icon">TSOpenLDB</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/ifetchfromdarwinresult.html" class="tsd-kind-icon">IFetch<wbr>From<wbr>Darwin<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/ildbwssoap.html" class="tsd-kind-icon">ILDBWSSoap</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ildbwssoapoptions.html" class="tsd-kind-icon">ILDBWSSoap<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwscoachdata.html" class="tsd-kind-icon">IOpenLDBSVWSCoach<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwscoachloading.html" class="tsd-kind-icon">IOpenLDBSVWSCoach<wbr>Loading</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwsformation.html" class="tsd-kind-icon">IOpenLDBSVWSFormation</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwsservicedetails.html" class="tsd-kind-icon">IOpenLDBSVWSService<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwsserviceitem.html" class="tsd-kind-icon">IOpenLDBSVWSService<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwsserviceitemorigin.html" class="tsd-kind-icon">IOpenLDBSVWSService<wbr>Item<wbr>Origin</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwsservicelocation.html" class="tsd-kind-icon">IOpenLDBSVWSService<wbr>Location</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwsstationboard.html" class="tsd-kind-icon">IOpenLDBSVWSStation<wbr>Board</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iopenldbsvwstoiletavailability.html" class="tsd-kind-icon">IOpenLDBSVWSToilet<wbr>Availability</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/iopenldbws.html" class="tsd-kind-icon">IOpenLDBWS</a>
@@ -219,7 +285,13 @@ OpenLDB.<span class="hljs-constructor">GetFastestDeparturesWithDetails({<span cl
 						<a href="interfaces/iparams_queryservices.html" class="tsd-kind-icon">IParams_<wbr><wbr>Query<wbr>Services</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/itsopenldb.html" class="tsd-kind-icon">ITSOpenLDB</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/itsopenldbconstructorparams.html" class="tsd-kind-icon">ITSOpenLDBConstructor<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#estaffbodykeys" class="tsd-kind-icon">EStaff<wbr>Body<wbr>Keys</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#tstaffoperation" class="tsd-kind-icon">TStaff<wbr>Operation</a>

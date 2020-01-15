@@ -1,3 +1,5 @@
+import EDarwinStation from "./DarwinStations";
+
 export enum ESOAPStaffAction {
   GetArrBoardWithDetails =  "http://thalesgroup.com/RTTI/2015-05-14/ldbsv/GetArrBoardWithDetails",
   GetArrDepBoardWithDetails =  "http://thalesgroup.com/RTTI/2015-05-14/ldbsv/GetArrDepBoardWithDetails",
@@ -379,4 +381,210 @@ export enum ELDBWSOperationInfoKeys {
 
 export interface ITSOpenLDBConstructorParams {
   apiKey: string
+}
+
+
+export type EStaffBodyKeys = "GetArrBoardWithDetailsResponse" |
+"GetArrDepBoardWithDetailsResponse" |
+"GetArrivalDepartureBoardByCRSResponse" |
+"GetArrivalDepartureBoardByTIPLOCResponse" |
+"GetArrivalBoardByCRSResponse" |
+"GetArrivalBoardByTIPLOCResponse" |
+"GetDepartureBoardByCRSResponse" |
+"GetDepartureBoardByTIPLOCResponse" |
+"GetDepBoardWithDetailsResponse" |
+"GetDisruptionListResponse" |
+"GetHistoricDepartureBoardResponse" |
+"GetHistoricServiceDetailsResponse" |
+"GetHistoricTimeLineResponse" |
+"GetServiceDetailsByRIDResponse" |
+"QueryHistoricServicesResponse" |
+"QueryServicesResponse" |
+"GetNextDeparturesResponse" |
+"GetNextDeparturesWithDetailsResponse" |
+"GetFastestDeparturesResponse" |
+"GetFastestDeparturesWithDetailsResponse" |
+"GetTocListResponse" |
+"GetStationListResponse" |
+"GetReasonCodeResponse" |
+"GetReasonCodeListResponse"
+
+export interface IFetchFromDarwinResult {
+  Envelope: {
+    Body: {
+      [key in EStaffBodyKeys] : {
+        [key: string] : {}
+      }
+    }
+  }
+}
+
+
+
+
+export enum EOpenLDBSVWSCoachClass {
+  First = "First",
+  Mixed = "Mixed",
+  Standard = "Standard"
+}
+
+export interface IOpenLDBSVWSCoachLoading {
+  // source
+  // sourceInstance
+  value: number
+}
+
+export enum EOpenLDBSVWSToiletStatus {
+  Unknown = "Unknown",
+  InService = "InService",
+  NotInService = "NotInService"
+}
+export enum EOpenLDBSVWSToiletValue {
+  Unknown = "Unknown",
+  None = "None",
+  Standard = "Standard",
+  Accessible = "Accessible"
+}
+export interface IOpenLDBSVWSToiletAvailability {
+  status: EOpenLDBSVWSToiletStatus
+  value: EOpenLDBSVWSToiletValue
+}
+
+export interface IOpenLDBSVWSCoachData {
+  coachClass: EOpenLDBSVWSCoachClass
+  loading: IOpenLDBSVWSCoachLoading
+  number: string
+  toilet: IOpenLDBSVWSToiletAvailability
+}
+
+export interface IOpenLDBSVWSFormation {
+  avgLoading: number
+  // coaches
+  // source
+  // sourceInstance
+}
+
+export enum EOpenLDBSVWSActualForecast {
+  Actual = "Actual",
+  Forecast = "Forecast",
+  Delayed = "Delayed"
+}
+
+export interface IOpenLDBSVWSServiceItemOrigin {
+  locationName: EDarwinStation,
+  crs: EDarwinStation,
+  tiploc: string
+}
+export interface IOpenLDBSVWSServiceItem {
+  rid: string
+  uid: string
+  trainid: string
+  rsid: string
+  origin: IOpenLDBSVWSServiceItemOrigin | IOpenLDBSVWSServiceItemOrigin[]
+  destination: IOpenLDBSVWSServiceItemOrigin | IOpenLDBSVWSServiceItemOrigin[]
+  // currentOrigins
+  // currentDestinations
+  
+  sdd?: Date
+  operator: string
+  operatorCode: string
+  isPassengerService?: boolean
+  isCharter?: boolean
+  isCancelled?: boolean
+  isCircularRoute?: boolean
+  filterLocationCancelled: boolean
+  filterLocationOperational: boolean
+  sta?: Date
+  ata?: Date
+  eta?: Date
+  arrivalType?: EOpenLDBSVWSActualForecast
+  arrivalSource?: string
+  arrivalSourceInstance?: string
+  std?: Date
+  atd?: Date
+  etd?: Date
+  departureType?: EOpenLDBSVWSActualForecast
+  departureSource?: any
+  departureSourceInstance?: string
+  platform: string
+  platformIsHidden?: boolean
+  serviceIsSuppressed?: boolean
+  adhocAlerts: string[]
+  cancelReason?: string
+  delayReason?: string
+  // category: string
+  // activities
+  length?: number
+  isReverseFormation?: boolean
+  detachFront?: boolean
+  formation?: IOpenLDBSVWSFormation
+}
+
+export interface IOpenLDBSVWSStationBoard {
+  generatedAt: Date
+  locationName: EDarwinStation
+  crs: EDarwinStation
+  filterLocationName?: string
+  filtercrs?: string
+  // filterType?
+  stationManager: string
+  stationManagerCode: string
+  nrccMessages?: string[]
+  platformsAreHidden?: boolean
+  servicesAreUnavailable?: boolean
+  isTruncated?: boolean
+  trainServices: {service: IOpenLDBSVWSServiceItem[]}
+  busServices: {service: IOpenLDBSVWSServiceItem[]}
+  ferryServices: {service: IOpenLDBSVWSServiceItem[]}
+  qos: number
+}
+
+export interface IOpenLDBSVWSServiceLocation {
+  locationName: string
+  tiploc: string
+  crs: EDarwinStation
+  // associations
+  // adhocAlerts
+  // activities
+  length?: number
+  detachFront?: boolean
+  isOperational?: boolean
+  isPass?: boolean
+  isCancelled?: boolean
+  // falseDest?: 
+  // fdTiploc?: string
+  platform?: string
+  platformIsHidden?: boolean
+  serviceIsSuppressed?: boolean
+  sta?: Date // If not present, this is destination or does not pick up passengers here
+  ata?: Date // Only if arrivalType has 'Actual'
+  eta?: Date // Only if sta is present, and arrivalType is 'Forecast'
+  // arrivalSource
+  // arrivalSourceInstance
+  std?: Date // If not present, this is destination or does not pick up passengers here
+  atd?: Date // Only if std is present, and departureType is "Actual"
+  etd?: Date // Only if std is present, and departureType is "Forecast"
+  departureType?: EOpenLDBSVWSActualForecast // only if std is present
+  // departureSource
+  // depatureSourceInstance
+  lateness?: string | number
+}
+
+export interface IOpenLDBSVWSServiceDetails {
+  generatedAt: Date
+  rid: string
+  uid: string
+  rsid: string
+  sdd: Date
+  trainid: string
+  serviceType: EServices
+  isPassengerService?: boolean
+  isCharter?: boolean
+  operator: string
+  operatorCode: string
+  cancelReason?: string
+  delayReason?: string
+  isReverseFormation?: boolean
+  // locations
+  // formation
 }

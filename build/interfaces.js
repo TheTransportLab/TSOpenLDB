@@ -145,4 +145,29 @@ var ELDBWSOperationInfoKeys;
     ELDBWSOperationInfoKeys["GetDeparturesBoard"] = "DeparturesBoard";
     ELDBWSOperationInfoKeys["GetServiceDetailsResult"] = "GetServiceDetailsResult";
 })(ELDBWSOperationInfoKeys = exports.ELDBWSOperationInfoKeys || (exports.ELDBWSOperationInfoKeys = {}));
+var EOpenLDBSVWSCoachClass;
+(function (EOpenLDBSVWSCoachClass) {
+    EOpenLDBSVWSCoachClass["First"] = "First";
+    EOpenLDBSVWSCoachClass["Mixed"] = "Mixed";
+    EOpenLDBSVWSCoachClass["Standard"] = "Standard";
+})(EOpenLDBSVWSCoachClass = exports.EOpenLDBSVWSCoachClass || (exports.EOpenLDBSVWSCoachClass = {}));
+var EOpenLDBSVWSToiletStatus;
+(function (EOpenLDBSVWSToiletStatus) {
+    EOpenLDBSVWSToiletStatus["Unknown"] = "Unknown";
+    EOpenLDBSVWSToiletStatus["InService"] = "InService";
+    EOpenLDBSVWSToiletStatus["NotInService"] = "NotInService";
+})(EOpenLDBSVWSToiletStatus = exports.EOpenLDBSVWSToiletStatus || (exports.EOpenLDBSVWSToiletStatus = {}));
+var EOpenLDBSVWSToiletValue;
+(function (EOpenLDBSVWSToiletValue) {
+    EOpenLDBSVWSToiletValue["Unknown"] = "Unknown";
+    EOpenLDBSVWSToiletValue["None"] = "None";
+    EOpenLDBSVWSToiletValue["Standard"] = "Standard";
+    EOpenLDBSVWSToiletValue["Accessible"] = "Accessible";
+})(EOpenLDBSVWSToiletValue = exports.EOpenLDBSVWSToiletValue || (exports.EOpenLDBSVWSToiletValue = {}));
+var EOpenLDBSVWSActualForecast;
+(function (EOpenLDBSVWSActualForecast) {
+    EOpenLDBSVWSActualForecast["Actual"] = "Actual";
+    EOpenLDBSVWSActualForecast["Forecast"] = "Forecast";
+    EOpenLDBSVWSActualForecast["Delayed"] = "Delayed";
+})(EOpenLDBSVWSActualForecast = exports.EOpenLDBSVWSActualForecast || (exports.EOpenLDBSVWSActualForecast = {}));
 //# sourceMappingURL=interfaces.js.map
