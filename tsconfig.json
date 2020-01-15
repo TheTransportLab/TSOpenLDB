@@ -9,6 +9,7 @@
     "target": "esnext",
     "baseUrl": "./",
     "rootDir": "./src/",
+    "declaration": true,
     "outDir": "./build/",
     "paths": {
       "@Root/*": ["./*"],
