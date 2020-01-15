@@ -75,17 +75,19 @@
 				<a href="#basic-usage-example" id="basic-usage-example" style="color: inherit; text-decoration: none;">
 					<h5>Basic Usage Example</h5>
 				</a>
-				<pre><code>const apiKey = <span class="hljs-string">"ADD_YOUR_API_KEY"</span>;
-import OpenLDB, { ITSOpenLDB } from <span class="hljs-string">"tsopenldb"</span>;
-const LDB: ITSOpenLDB = <span class="hljs-keyword">new</span> <span class="hljs-constructor">OpenLDB({<span class="hljs-params">apiKey</span>})</span>;
+				<pre><code><span class="hljs-keyword">const</span> apiKey = <span class="hljs-string">"ADD_YOUR_API_KEY"</span>;
+<span class="hljs-keyword">import</span> OpenLDB, { ITSOpenLDB } <span class="hljs-keyword">from</span> <span class="hljs-string">"tsopenldb"</span>;
+<span class="hljs-keyword">const</span> LDB: ITSOpenLDB = <span class="hljs-keyword">new</span> OpenLDB({apiKey});
 
-<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">LDB</span>.</span></span>get<span class="hljs-constructor">DepartureBoardByCRS({<span class="hljs-params">crs</span>: <span class="hljs-string">"LDS"</span>, <span class="hljs-params">numRows</span>: 150, <span class="hljs-params">time</span>: <span class="hljs-params">new</span> Date()</span>}).<span class="hljs-keyword">then</span>((data) =&gt; {
-    console.log(data);
-});
-
-
-const OpenLDB = <span class="hljs-keyword">new</span> <span class="hljs-constructor">TSOpenLDB({<span class="hljs-params">apiKey</span>: <span class="hljs-string">"YOUR_API_KEY_HERE"</span>})</span>;
-OpenLDB.<span class="hljs-constructor">GetFastestDeparturesWithDetails({<span class="hljs-params">crs</span>: <span class="hljs-string">"LDS"</span>, <span class="hljs-params">filterList</span>: [<span class="hljs-string">"MHS"</span>, <span class="hljs-string">"BNY"</span>], <span class="hljs-params">services</span>: EServices.TRAIN, <span class="hljs-params">time</span>: <span class="hljs-params">new</span> Date()</span>});</code></pre>
+<span class="hljs-comment">// You can use async-await or .then()</span>
+<span class="hljs-comment">// You should add error handling in any case, as it will throw if it can't contact the API or the API returns an error (e.g. status code !== 200)</span>
+<span class="hljs-keyword">const</span> requestConfig = {
+    <span class="hljs-attr">crs</span>: <span class="hljs-string">"LDS"</span>,
+    <span class="hljs-attr">numRows</span>: <span class="hljs-number">150</span>,
+    <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()
+};
+LDB.getDepartureBoardByCRS(requestConfig)
+    .then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(data));</code></pre>
 				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
 					<h5>Why?</h5>
 				</a>

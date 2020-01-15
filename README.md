@@ -13,13 +13,16 @@ Also found in the **/docs** folder
     import OpenLDB, { ITSOpenLDB } from "tsopenldb";
     const LDB: ITSOpenLDB = new OpenLDB({apiKey});
 
-    LDB.getDepartureBoardByCRS({crs: "LDS", numRows: 150, time: new Date()}).then((data) => {
-        console.log(data);
-    });
-
-
-    const OpenLDB = new TSOpenLDB({apiKey: "YOUR_API_KEY_HERE"});
-    OpenLDB.GetFastestDeparturesWithDetails({crs: "LDS", filterList: ["MHS", "BNY"], services: EServices.TRAIN, time: new Date()});
+    // You can use async-await or .then()
+    // You should add error handling in any case, as it will throw if it can't contact the API or the API returns an error (e.g. status code !== 200)
+    const requestConfig = {
+        crs: "LDS",
+        numRows: 150,
+        time: new Date()
+    };
+    LDB.getDepartureBoardByCRS(requestConfig)
+        .then((data) => console.log(data));
+    
 
 
 ##### Why?
