@@ -465,14 +465,14 @@ export interface IOpenLDBSVWSStationBoard {
     platformsAreHidden?: boolean;
     servicesAreUnavailable?: boolean;
     isTruncated?: boolean;
-    trainServices: {
-        service: IOpenLDBSVWSServiceItem[];
+    trainServices?: {
+        service?: IOpenLDBSVWSServiceItem[];
     };
-    busServices: {
-        service: IOpenLDBSVWSServiceItem[];
+    busServices?: {
+        service?: IOpenLDBSVWSServiceItem[];
     };
-    ferryServices: {
-        service: IOpenLDBSVWSServiceItem[];
+    ferryServices?: {
+        service?: IOpenLDBSVWSServiceItem[];
     };
     qos: number;
 }

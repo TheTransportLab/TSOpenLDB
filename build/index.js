@@ -235,47 +235,92 @@ class TSOpenLDB {
         this.getArrBoardWithDetails = async ({ filterType = interfaces_1.EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params }) => {
             const params = { filterType, timeOffset, timeWindow, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrBoardWithDetails, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrBoardWithDetails, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrBoardWithDetails, XML)
+            };
         };
         this.getArrDepBoardWithDetails = async ({ filterType = interfaces_1.EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params }) => {
             const params = { filterType, timeOffset, timeWindow, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrDepBoardWithDetails, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrBoardWithDetails, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrBoardWithDetails, XML)
+            };
         };
         this.getArrivalBoardByCRS = async ({ time = new Date(), services = interfaces_1.EServices.TRAIN, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params }) => {
             const params = { time: time.toISOString(), services, numRows, timeWindow, getNonPassengerServices, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalBoardByCrs, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalBoardByCrs, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalBoardByCrs, XML)
+            };
         };
         this.getArrivalBoardByTIPLOC = async ({ time = new Date(), numRows = 120, services = interfaces_1.EServices.TRAIN, getNonPassengerServices = false, ..._params }) => {
             const params = { time: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalBoardByTiploc, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalBoardByTiploc, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalBoardByTiploc, XML)
+            };
         };
         this.getArrivalDepartureBoardByCRS = async ({ time = new Date(), numRows = 120, services = interfaces_1.EServices.TRAIN, getNonPassengerServices = false, ..._params }) => {
             const params = { timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalDepartureBoardByCrs, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML)
+            };
         };
         this.getArrivalDepartureBoardByTIPLOC = async ({ time = new Date(), numRows = 120, services = interfaces_1.EServices.TRAIN, getNonPassengerServices = false, ..._params }) => {
             const params = { timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalDepartureBoardByTiploc, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML)
+            };
         };
         this.getDepBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, ..._params }) => {
             const params = { numRows, timeWindow, timeOffset, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepBoardWithDetails, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepBoardWithDetails, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepBoardWithDetails, XML)
+            };
         };
         this.getDepartureBoardByCRS = async ({ timeWindow = 120, time = new Date(), getNonPassengerServices = false, services = interfaces_1.EServices.TRAIN, numRows = 120, filterType = interfaces_1.EFilterType.to, ..._params }) => {
             const params = { time: time.toISOString(), timeWindow, getNonPassengerServices, services, numRows, filterType, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepartureBoardByCrs, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepartureBoardByCrs, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepartureBoardByCrs, XML)
+            };
         };
         this.getDepartureBoardByTIPLOC = async ({ time = new Date(), getNonPassengerServices = false, services = interfaces_1.EServices.TRAIN, numRows = 120, filterType = interfaces_1.EFilterType.to, ..._params }) => {
             const params = { timetime: time.toISOString(), getNonPassengerServices, services, numRows, filterType, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepartureBoardByTiploc, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepartureBoardByTiploc, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepartureBoardByTiploc, XML)
+            };
         };
         this.getDisruptionList = async ({ ..._params }) => {
             const params = { ..._params };
@@ -285,17 +330,32 @@ class TSOpenLDB {
         this.getFastestDepartures = async ({ services = interfaces_1.EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params }) => {
             const params = { services, timeWindow, time: time.toISOString(), ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getFastestDepartures, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetFastestDepartures, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetFastestDepartures, XML)
+            };
         };
         this.getFastestDeparturesWithDetails = async ({ services = interfaces_1.EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params }) => {
             const params = { services, timeWindow, time: time.toISOString(), ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getFastestDeparturesWithDetails, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetFastestDeparturesWithDetails, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetFastestDeparturesWithDetails, XML)
+            };
         };
         this.getHistoricDepartureBoard = async ({ depBoardDate = interfaces_1.EDateModifier.SAME, numRows = 120, services = interfaces_1.EServices.TRAIN, timeWindow = 120, ..._params }) => {
             const params = { depBoardDate, numRows, services, timeWindow, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getHistoricDepartureBoard, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML)
+            };
         };
         this.getHistoricServiceDetails = async ({ ..._params }) => {
             const params = { ..._params };
@@ -310,12 +370,22 @@ class TSOpenLDB {
         this.getNextDepartures = async ({ time = new Date(), timeWindow = 120, services = interfaces_1.EServices.TRAIN, ..._params }) => {
             const params = { time: time.toISOString(), timeWindow, services, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getNextDepartures, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetNextDepartures, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetNextDepartures, XML)
+            };
         };
         this.getNextDeparturesWithDetails = async ({ time = new Date(), timeWindow = 120, services = interfaces_1.EServices.TRAIN, ..._params }) => {
             const params = { time: time.toISOString(), timeWindow, services, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getNextDeparturesWithDetails, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetNextDeparturesWithDetails, XML);
+            return {
+                trainServices: { service: [] },
+                busServices: { service: [] },
+                ferryServices: { service: [] },
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetNextDeparturesWithDetails, XML)
+            };
         };
         this.getServiceDetailsByRid = async ({ ..._params }) => {
             const params = { ..._params };

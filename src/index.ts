@@ -368,47 +368,92 @@ export default class TSOpenLDB implements ITSOpenLDB {
   public getArrBoardWithDetails = async ({ filterType = EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params}: IParams_GetArrBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {filterType, timeOffset, timeWindow, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrBoardWithDetails, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetArrBoardWithDetails, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrBoardWithDetails, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getArrDepBoardWithDetails = async ({filterType = EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params}: IParams_GetArrDepBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {filterType, timeOffset, timeWindow, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrDepBoardWithDetails, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetArrBoardWithDetails, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrBoardWithDetails, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getArrivalBoardByCRS = async ({time = new Date(), services = EServices.TRAIN, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByCRS): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {time: time.toISOString(), services, numRows, timeWindow, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalBoardByCrs, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalBoardByCrs, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalBoardByCrs, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getArrivalBoardByTIPLOC = async ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByTIPLOC): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {time: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalBoardByTiploc, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalBoardByTiploc, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalBoardByTiploc, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getArrivalDepartureBoardByCRS = async ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByCRS): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalDepartureBoardByCrs, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getArrivalDepartureBoardByTIPLOC = async ({time = new Date(), numRows = 120, services = EServices.TRAIN, getNonPassengerServices = false, ..._params}: IParams_GetArrivalDepartureBoardByTIPLOC): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrivalDepartureBoardByTiploc, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getDepBoardWithDetails = async ({numRows = 120, timeWindow = 120, timeOffset = 0, ..._params}: IParams_GetDepBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {numRows, timeWindow, timeOffset, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepBoardWithDetails, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetDepBoardWithDetails, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetDepBoardWithDetails, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getDepartureBoardByCRS = async ({timeWindow = 120, time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByCRS): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {time: time.toISOString(), timeWindow, getNonPassengerServices, services, numRows, filterType, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepartureBoardByCrs, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getDepartureBoardByTIPLOC = async ({time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByTIPLOC): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {timetime: time.toISOString(), getNonPassengerServices, services, numRows, filterType, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepartureBoardByTiploc, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetDepartureBoardByTiploc, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetDepartureBoardByTiploc, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getDisruptionList = async ({..._params}: IParams_GetDisruptionList): Promise<string> => {
     const params = {..._params};
@@ -418,17 +463,32 @@ export default class TSOpenLDB implements ITSOpenLDB {
   public getFastestDepartures = async ({services = EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params}: IParams_GetFastestDepartures): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {services, timeWindow, time: time.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getFastestDepartures, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetFastestDepartures, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetFastestDepartures, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getFastestDeparturesWithDetails = async ({services = EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params}: IParams_GetFastestDeparturesWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {services, timeWindow, time: time.toISOString(), ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getFastestDeparturesWithDetails, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetFastestDeparturesWithDetails, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetFastestDeparturesWithDetails, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getHistoricDepartureBoard = async ({depBoardDate = EDateModifier.SAME, numRows = 120, services = EServices.TRAIN, timeWindow = 120, ..._params}: IParams_GetHistoricDepartureBoard): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {depBoardDate, numRows, services, timeWindow, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricDepartureBoard, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getHistoricServiceDetails = async ({..._params}: IParams_GetHistoricServiceDetails): Promise<IOpenLDBSVWSServiceDetails> => {
     const params = {..._params};
@@ -443,12 +503,22 @@ export default class TSOpenLDB implements ITSOpenLDB {
   public getNextDepartures = async ({time = new Date(), timeWindow = 120, services = EServices.TRAIN, ..._params}: IParams_GetNextDepartures): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {time: time.toISOString(), timeWindow, services, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getNextDepartures, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetNextDepartures, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetNextDepartures, XML) as IOpenLDBSVWSStationBoard
+    };
   }
   public getNextDeparturesWithDetails = async ({time = new Date(), timeWindow = 120, services = EServices.TRAIN, ..._params}: IParams_GetNextDeparturesWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {time: time.toISOString(), timeWindow, services, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getNextDeparturesWithDetails, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.GetNextDeparturesWithDetails, XML) as IOpenLDBSVWSStationBoard;
+    return {
+      trainServices:{ service: []},
+      busServices:{ service: []},
+      ferryServices:{ service: []},
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetNextDeparturesWithDetails, XML) as IOpenLDBSVWSStationBoard
+    };
   }
 
   getServiceDetailsByRid = async ({..._params}: IParams_GetServiceDetailsByRID): Promise<IOpenLDBSVWSServiceDetails> => {
