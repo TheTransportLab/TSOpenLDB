@@ -10,7 +10,7 @@
     "baseUrl": "./",
     "rootDir": "./src/",
     "outDir": "./build/",
-    "declarationDir": "./build/types",
+    "declarationDir": "./build/",
     "declaration": true,
     "paths": {
       "@Root/*": ["./*"],
