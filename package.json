@@ -1,8 +1,8 @@
 {
   "name": "tsopenldb",
-  "version": "1.0.9",
+  "version": "1.1.01",
   "description": "A typescript implementation of the National Rail LDB and LDBSV web service API's",
-  "types": "./index.d.ts",
+  "types": "./build/types",
   "main": "index.js",
   "scripts": {
     "build": "ttsc",
