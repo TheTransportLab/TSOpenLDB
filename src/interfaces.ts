@@ -152,6 +152,7 @@ export interface IParams_GetArrivalDepartureBoardByTIPLOC {
 }
 export interface IParams_GetDepBoardWithDetails {
   crs: string,
+  time?: string
   numRows?: number,
   timeOffset?: number,
   filterCrs?: string,
@@ -458,8 +459,9 @@ export interface IOpenLDBSVWSCoachData {
 }
 
 export interface IOpenLDBSVWSFormation {
+  tiploc: string
   avgLoading: number
-  // coaches
+  coaches?: IOpenLDBSVWSCoachData[]
   // source
   // sourceInstance
 }
@@ -517,7 +519,7 @@ export interface IOpenLDBSVWSServiceItem {
   length?: number
   isReverseFormation?: boolean
   detachFront?: boolean
-  formation?: IOpenLDBSVWSFormation
+  formation?: IOpenLDBSVWSFormation[]
 }
 
 export interface IOpenLDBSVWSStationBoard {
@@ -585,6 +587,6 @@ export interface IOpenLDBSVWSServiceDetails {
   cancelReason?: string
   delayReason?: string
   isReverseFormation?: boolean
-  // locations
-  // formation
+  locations?: {location: IOpenLDBSVWSServiceLocation[]}
+  formation?: IOpenLDBSVWSFormation[]
 }

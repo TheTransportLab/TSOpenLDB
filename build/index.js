@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = __importDefault(require("fs"));
 const interfaces_1 = require("./interfaces");
 exports.EServices = interfaces_1.EServices;
 exports.EDateModifier = interfaces_1.EDateModifier;
@@ -205,16 +206,17 @@ class TSOpenLDB {
                 throw new Error(`Request error (Status code ${fetchRequest.status}). Please ensure your key is correct, and that it is valid.`);
             }
             const responseData = await fetchRequest.text();
+            const operations = operation.split("/");
+            fs_1.default.writeFileSync(`E:\\darwin\\${operations[operations.length - 1]}.xml`, responseData);
             const parsedXML = await xml2js_1.default.parseStringPromise(responseData, {
                 tagNameProcessors: [xml2js_1.default.processors.stripPrefix],
                 explicitArray: false,
                 ignoreAttrs: true
             });
-            // try {
             const firstTree = { ...Object.values(parsedXML.Envelope.Body)[0] };
             const result = { ...Object.values(firstTree)[0] };
             //@ts-ignore
-            return result; //(result as IOpenLDBSVWSStationBoard | IOpenLDBSVWSServiceDetails | string);
+            return result;
         };
         this.mapParamsToSOAPXml = (operation, params) => {
             return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>` +
@@ -304,8 +306,8 @@ class TSOpenLDB {
                 ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML)
             };
         };
-        this.getDepBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, ..._params }) => {
-            const params = { numRows, timeWindow, timeOffset, ..._params };
+        this.getDepBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
+            const params = { numRows, timeWindow, timeOffset, time, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepBoardWithDetails, params)}${constants_1.XMLClosing}`;
             return {
                 trainServices: { service: [] },

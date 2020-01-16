@@ -136,6 +136,7 @@ export interface IParams_GetArrivalDepartureBoardByTIPLOC {
 }
 export interface IParams_GetDepBoardWithDetails {
     crs: string;
+    time?: string;
     numRows?: number;
     timeOffset?: number;
     filterCrs?: string;
@@ -402,7 +403,9 @@ export interface IOpenLDBSVWSCoachData {
     toilet: IOpenLDBSVWSToiletAvailability;
 }
 export interface IOpenLDBSVWSFormation {
+    tiploc: string;
     avgLoading: number;
+    coaches?: IOpenLDBSVWSCoachData[];
 }
 export declare enum EOpenLDBSVWSActualForecast {
     Actual = "Actual",
@@ -451,7 +454,7 @@ export interface IOpenLDBSVWSServiceItem {
     length?: number;
     isReverseFormation?: boolean;
     detachFront?: boolean;
-    formation?: IOpenLDBSVWSFormation;
+    formation?: IOpenLDBSVWSFormation[];
 }
 export interface IOpenLDBSVWSStationBoard {
     generatedAt: Date;
@@ -512,4 +515,8 @@ export interface IOpenLDBSVWSServiceDetails {
     cancelReason?: string;
     delayReason?: string;
     isReverseFormation?: boolean;
+    locations?: {
+        location: IOpenLDBSVWSServiceLocation[];
+    };
+    formation?: IOpenLDBSVWSFormation[];
 }

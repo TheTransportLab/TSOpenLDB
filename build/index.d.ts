@@ -1,4 +1,4 @@
-import { IParams_GetArrBoardWithDetails, IParams_GetArrDepBoardWithDetails, IParams_GetArrivalBoardByCRS, IParams_GetArrivalBoardByTIPLOC, IParams_GetArrivalDepartureBoardByCRS, IParams_GetArrivalDepartureBoardByTIPLOC, IParams_GetDepBoardWithDetails, IParams_GetDepartureBoardByCRS, IParams_GetDepartureBoardByTIPLOC, IParams_GetDisruptionList, IParams_GetFastestDepartures, IParams_GetFastestDeparturesWithDetails, IParams_GetHistoricDepartureBoard, IParams_GetHistoricServiceDetails, IParams_GetHistoricTimeLine, IParams_GetNextDepartures, IParams_GetNextDeparturesWithDetails, IParams_GetServiceDetailsByRID, IParams_QueryHistoricServices, IParams_QueryServices, ITSOpenLDBConstructorParams, EServices, EDateModifier, IOpenLDBSVWSStationBoard, IOpenLDBSVWSServiceDetails, IOpenLDBSVWSServiceItem } from "./interfaces";
+import { IParams_GetArrBoardWithDetails, IParams_GetArrDepBoardWithDetails, IParams_GetArrivalBoardByCRS, IParams_GetArrivalBoardByTIPLOC, IParams_GetArrivalDepartureBoardByCRS, IParams_GetArrivalDepartureBoardByTIPLOC, IParams_GetDepBoardWithDetails, IParams_GetDepartureBoardByCRS, IParams_GetDepartureBoardByTIPLOC, IParams_GetDisruptionList, IParams_GetFastestDepartures, IParams_GetFastestDeparturesWithDetails, IParams_GetHistoricDepartureBoard, IParams_GetHistoricServiceDetails, IParams_GetHistoricTimeLine, IParams_GetNextDepartures, IParams_GetNextDeparturesWithDetails, IParams_GetServiceDetailsByRID, IParams_QueryHistoricServices, IParams_QueryServices, ITSOpenLDBConstructorParams, EServices, EDateModifier, IOpenLDBSVWSStationBoard, IOpenLDBSVWSServiceDetails, IOpenLDBSVWSServiceItem, IOpenLDBSVWSServiceLocation } from "./interfaces";
 export interface ITSOpenLDB {
     getArrBoardWithDetails: (params: IParams_GetArrBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>;
     getArrDepBoardWithDetails: (params: IParams_GetArrDepBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>;
@@ -33,7 +33,7 @@ export default class TSOpenLDB implements ITSOpenLDB {
     getArrivalBoardByTIPLOC: ({ time, numRows, services, getNonPassengerServices, ..._params }: IParams_GetArrivalBoardByTIPLOC) => Promise<IOpenLDBSVWSStationBoard>;
     getArrivalDepartureBoardByCRS: ({ time, numRows, services, getNonPassengerServices, ..._params }: IParams_GetArrivalDepartureBoardByCRS) => Promise<IOpenLDBSVWSStationBoard>;
     getArrivalDepartureBoardByTIPLOC: ({ time, numRows, services, getNonPassengerServices, ..._params }: IParams_GetArrivalDepartureBoardByTIPLOC) => Promise<IOpenLDBSVWSStationBoard>;
-    getDepBoardWithDetails: ({ numRows, timeWindow, timeOffset, ..._params }: IParams_GetDepBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>;
+    getDepBoardWithDetails: ({ numRows, timeWindow, timeOffset, time, ..._params }: IParams_GetDepBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>;
     getDepartureBoardByCRS: ({ timeWindow, time, getNonPassengerServices, services, numRows, filterType, ..._params }: IParams_GetDepartureBoardByCRS) => Promise<IOpenLDBSVWSStationBoard>;
     getDepartureBoardByTIPLOC: ({ time, getNonPassengerServices, services, numRows, filterType, ..._params }: IParams_GetDepartureBoardByTIPLOC) => Promise<IOpenLDBSVWSStationBoard>;
     getDisruptionList: ({ ..._params }: IParams_GetDisruptionList) => Promise<string>;
@@ -48,4 +48,4 @@ export default class TSOpenLDB implements ITSOpenLDB {
     queryHistoricServices: ({ timeFilter, ..._params }: IParams_QueryHistoricServices) => Promise<string>;
     queryServices: ({ sdd, ..._params }: IParams_QueryServices) => Promise<string>;
 }
-export { EServices, EDateModifier, IOpenLDBSVWSStationBoard, IOpenLDBSVWSServiceDetails, IOpenLDBSVWSServiceItem };
+export { IOpenLDBSVWSServiceLocation, EServices, EDateModifier, IOpenLDBSVWSStationBoard, IOpenLDBSVWSServiceDetails, IOpenLDBSVWSServiceItem };

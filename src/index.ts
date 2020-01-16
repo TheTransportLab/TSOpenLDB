@@ -1,3 +1,4 @@
+import fs from "fs";
 import {
   // IOpenLDBWS,
   EOperation,
@@ -47,6 +48,7 @@ import {
   IOpenLDBSVWSStationBoard,
   IOpenLDBSVWSServiceDetails,
   IOpenLDBSVWSServiceItem,
+  IOpenLDBSVWSServiceLocation
 } from "./interfaces";
 
 
@@ -326,6 +328,8 @@ export default class TSOpenLDB implements ITSOpenLDB {
     }
     
     const responseData = await (fetchRequest as Response).text();
+    const operations = operation.split("/");
+    fs.writeFileSync(`E:\\darwin\\${operations[operations.length-1]}.xml`, responseData);
 
     const parsedXML = await xml2js.parseStringPromise(responseData, {
       tagNameProcessors: [xml2js.processors.stripPrefix],
@@ -333,11 +337,10 @@ export default class TSOpenLDB implements ITSOpenLDB {
       ignoreAttrs: true
     });
 
-    // try {
     const firstTree = {...Object.values((parsedXML as IFetchFromDarwinResult).Envelope.Body)[0]};
     const result = {...Object.values(firstTree)[0]};
     //@ts-ignore
-    return result;//(result as IOpenLDBSVWSStationBoard | IOpenLDBSVWSServiceDetails | string);
+    return result;
   }
 
   private mapParamsToSOAPXml = (operation: EStaffOperation, params: IOperationParams) => {
@@ -437,9 +440,9 @@ export default class TSOpenLDB implements ITSOpenLDB {
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
     };
   }
-  public getDepBoardWithDetails = async ({numRows = 120, timeWindow = 120, timeOffset = 0, ..._params}: IParams_GetDepBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
-    const params = {numRows, timeWindow, timeOffset, ..._params}
-    const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepBoardWithDetails, params)}${XMLClosing}`
+  public getDepBoardWithDetails = async ({numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params}: IParams_GetDepBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
+    const params = {numRows, timeWindow, timeOffset, time, ..._params}
+    const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepBoardWithDetails, params)}${XMLClosing}`;
     return {
       trainServices:{ service: []},
       busServices:{ service: []},
@@ -610,6 +613,7 @@ export {
   // EListFields,
   // ITSOpenLDBConstructorParams,
   // EFilterType,
+  IOpenLDBSVWSServiceLocation,
   EServices,
   EDateModifier,
   IOpenLDBSVWSStationBoard,
