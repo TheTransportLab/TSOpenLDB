@@ -473,17 +473,19 @@ export enum EOpenLDBSVWSActualForecast {
 }
 
 export interface IOpenLDBSVWSServiceItemOrigin {
-  locationName: EDarwinStation,
-  crs: EDarwinStation,
-  tiploc: string
+  location?: {
+    locationName: EDarwinStation,
+    crs: EDarwinStation,
+    tiploc: string
+  }
 }
 export interface IOpenLDBSVWSServiceItem {
   rid: string
   uid: string
   trainid: string
   rsid: string
-  origin: IOpenLDBSVWSServiceItemOrigin | IOpenLDBSVWSServiceItemOrigin[]
-  destination: IOpenLDBSVWSServiceItemOrigin | IOpenLDBSVWSServiceItemOrigin[]
+  origin: IOpenLDBSVWSServiceItemOrigin// | IOpenLDBSVWSServiceItemOrigin[]
+  destination: IOpenLDBSVWSServiceItemOrigin// | IOpenLDBSVWSServiceItemOrigin[]
   // currentOrigins
   // currentDestinations
   
@@ -514,8 +516,9 @@ export interface IOpenLDBSVWSServiceItem {
   adhocAlerts: string[]
   cancelReason?: string
   delayReason?: string
-  // category: string
-  // activities
+  category: string
+  activities: string
+  subsequentLocations?: {location: IOpenLDBSVWSServiceLocation[]}
   length?: number
   isReverseFormation?: boolean
   detachFront?: boolean
@@ -535,9 +538,9 @@ export interface IOpenLDBSVWSStationBoard {
   platformsAreHidden?: boolean
   servicesAreUnavailable?: boolean
   isTruncated?: boolean
-  trainServices?: {service?: IOpenLDBSVWSServiceItem[]}
-  busServices?: {service?: IOpenLDBSVWSServiceItem[]}
-  ferryServices?: {service?: IOpenLDBSVWSServiceItem[]}
+  trainServices: {service: IOpenLDBSVWSServiceItem[]}
+  busServices: {service: IOpenLDBSVWSServiceItem[]}
+  ferryServices: {service: IOpenLDBSVWSServiceItem[]}
   qos: number
 }
 

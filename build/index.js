@@ -5,6 +5,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const interfaces_1 = require("./interfaces");
+exports.EOperation = 
+// IOpenLDBWS,
+interfaces_1.EOperation;
+exports.EStaffOperation = interfaces_1.EStaffOperation;
+exports.ESOAPStaffAction = interfaces_1.ESOAPStaffAction;
+exports.ESOAPAction = interfaces_1.ESOAPAction;
+exports.EOperationInfoEntryType = interfaces_1.EOperationInfoEntryType;
+exports.EOperationInfoEntries = interfaces_1.EOperationInfoEntries;
+exports.ELDBWSOperationInfoKeys = interfaces_1.ELDBWSOperationInfoKeys;
+exports.EListFields = interfaces_1.EListFields;
+exports.EFilterType = interfaces_1.EFilterType;
 exports.EServices = interfaces_1.EServices;
 exports.EDateModifier = interfaces_1.EDateModifier;
 const constants_1 = require("./constants");
