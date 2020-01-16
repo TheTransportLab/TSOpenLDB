@@ -2,6 +2,7 @@
  A typescript library for interacting with the UK National Rail OpenLDBSV (staff) web service
 
 **API Registration:** http://openldbsv.nationalrail.co.uk/
+
 **API Documentation:** https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/
 
 **Library documentation:** https://chronsyn.github.io/TSOpenLDB/
@@ -33,8 +34,4 @@ Sure, I could have created a `.d.ts` file for an existing library, but why not t
 
 ##### Developer Notes
 
-As of 15 January 2020, this library is mostly complete. Interfaces for most of the API calls are complete.
-Interfaces for API responses are mostly implemented, but be aware that there may be some discrepencies between the response and the interface here. This is due to a lack of accurate, up-to-date information that's easy to access.
-For all intents and purposes, you can mostly trust the interfaces, but it would still be recommended to check and responses that are returned from the API.
-
-PR's which add significant value are welcome.
+This library is a work in progress, but mostly completed. The interfaces are still in the process of being typed and so some properties which the API returns may throw an error with typescript. As I'm building an API around this library, I'll publish new versions as I discover missing properties in my own testing or find properties which have incorrect types or child interfaces.

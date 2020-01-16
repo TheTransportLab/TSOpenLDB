@@ -590,6 +590,7 @@ export interface IOpenLDBSVWSServiceDetails {
   cancelReason?: string
   delayReason?: string
   isReverseFormation?: boolean
+  category?: string
   locations?: {location: IOpenLDBSVWSServiceLocation[]}
   formation?: IOpenLDBSVWSFormation[]
 }
