@@ -27,7 +27,7 @@ export default class TSOpenLDB implements ITSOpenLDB {
     private CallRequiredParams;
     private fetchFromDarwin;
     private mapParamsToSOAPXml;
-    getArrBoardWithDetails: ({ filterType, timeOffset, timeWindow, ..._params }: IParams_GetArrBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>;
+    getArrBoardWithDetails: ({ numRows, timeWindow, timeOffset, time, ..._params }: IParams_GetArrBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>;
     getArrDepBoardWithDetails: ({ filterType, timeOffset, timeWindow, ..._params }: IParams_GetArrDepBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>;
     getArrivalBoardByCRS: ({ time, services, numRows, timeWindow, getNonPassengerServices, ..._params }: IParams_GetArrivalBoardByCRS) => Promise<IOpenLDBSVWSStationBoard>;
     getArrivalBoardByTIPLOC: ({ time, numRows, services, getNonPassengerServices, ..._params }: IParams_GetArrivalBoardByTIPLOC) => Promise<IOpenLDBSVWSStationBoard>;

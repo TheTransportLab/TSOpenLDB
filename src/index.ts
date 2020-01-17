@@ -366,11 +366,9 @@ export default class TSOpenLDB implements ITSOpenLDB {
     `</${ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>`
   }
 
-  
-
-  public getArrBoardWithDetails = async ({ filterType = EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params}: IParams_GetArrBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
-    const params = {filterType, timeOffset, timeWindow, ..._params}
-    const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrBoardWithDetails, params)}${XMLClosing}`
+  public getArrBoardWithDetails = async ({numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params}: IParams_GetArrBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
+    const params = {numRows, timeWindow, time, timeOffset, ..._params}
+    const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrBoardWithDetails, params)}${XMLClosing}`;
     return {
       trainServices:{ service: []},
       busServices:{ service: []},
@@ -389,7 +387,7 @@ export default class TSOpenLDB implements ITSOpenLDB {
       ferryServices:{ service: []},
       platformsAreHidden: false,
       servicesAreUnavailable: false,
-      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrBoardWithDetails, XML) as IOpenLDBSVWSStationBoard
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrDepBoardWithDetails, XML) as IOpenLDBSVWSStationBoard
     };
   }
   public getArrivalBoardByCRS = async ({time = new Date(), services = EServices.TRAIN, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params}: IParams_GetArrivalBoardByCRS): Promise<IOpenLDBSVWSStationBoard> => {

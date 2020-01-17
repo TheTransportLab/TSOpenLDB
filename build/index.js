@@ -245,8 +245,8 @@ class TSOpenLDB {
                 })()).join("\n") +
                 `</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>`;
         };
-        this.getArrBoardWithDetails = async ({ filterType = interfaces_1.EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params }) => {
-            const params = { filterType, timeOffset, timeWindow, ..._params };
+        this.getArrBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
+            const params = { numRows, timeWindow, time, timeOffset, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrBoardWithDetails, params)}${constants_1.XMLClosing}`;
             return {
                 trainServices: { service: [] },
@@ -266,7 +266,7 @@ class TSOpenLDB {
                 ferryServices: { service: [] },
                 platformsAreHidden: false,
                 servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrBoardWithDetails, XML)
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrDepBoardWithDetails, XML)
             };
         };
         this.getArrivalBoardByCRS = async ({ time = new Date(), services = interfaces_1.EServices.TRAIN, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params }) => {

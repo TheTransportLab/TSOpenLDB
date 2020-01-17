@@ -100,6 +100,14 @@ export interface IParams_GetArrBoardWithDetails {
   filterType?: EFilterType,
   timeOffset?: number,
   timeWindow?: number
+  time?: string
+
+  // crs: string,
+  // numRows?: number,
+  // timeOffset?: number,
+  // filterCrs?: string,
+  // filterType?: EFilterType,
+  // timeWindow?: number
 }
 export interface IParams_GetArrDepBoardWithDetails {
   crs: string,

@@ -34,4 +34,6 @@ Sure, I could have created a `.d.ts` file for an existing library, but why not t
 
 ##### Developer Notes
 
-This library is a work in progress, but mostly completed. The interfaces are still in the process of being typed and so some properties which the API returns may throw an error with typescript. As I'm building an API around this library, I'll publish new versions as I discover missing properties in my own testing or find properties which have incorrect types or child interfaces.
+This library is a work in progress, but mostly completed. The interfaces are still in the process of being typed and so some properties which the API returns may throw an error with typescript.  As I'm building an API around this library, I'll publish new versions as I discover missing properties in my own testing or find properties which have incorrect types or child interfaces.
+
+I've done my best to make sure all the calls work as intended, but feel free to open an issue if you have any problems.
