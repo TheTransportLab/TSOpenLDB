@@ -547,7 +547,7 @@ export interface IOpenLDBSVWSStationBoard {
 export interface IOpenLDBSVWSServiceLocation {
   locationName: string
   tiploc: string
-  crs: EDarwinStation
+  crs: string
   // associations
   // adhocAlerts
   // activities
