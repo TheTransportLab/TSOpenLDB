@@ -459,6 +459,9 @@ export interface IOpenLDBSVWSServiceItem {
     subsequentLocations?: {
         location: IOpenLDBSVWSServiceLocation[];
     };
+    previousLocations?: {
+        location: IOpenLDBSVWSServiceLocation[];
+    };
     length?: number;
     isReverseFormation?: boolean;
     detachFront?: boolean;

@@ -527,6 +527,7 @@ export interface IOpenLDBSVWSServiceItem {
   category: string
   activities: string
   subsequentLocations?: {location: IOpenLDBSVWSServiceLocation[]}
+  previousLocations?: {location: IOpenLDBSVWSServiceLocation[]};
   length?: number
   isReverseFormation?: boolean
   detachFront?: boolean
