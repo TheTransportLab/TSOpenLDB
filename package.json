@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/ChronSyn/TSOpenLDB"
   },
-  "version": "1.1.25",
+  "version": "1.1.26",
   "description": "A typescript implementation of the National Rail LDBSV web service API's",
   "types": "./build/index.d.ts",
   "main": "./build/index.js",
@@ -27,6 +27,7 @@
   "dependencies": {
     "@types/node-fetch": "^2.5.2",
     "@types/xml2js": "^0.4.5",
+    "date-fns": "^2.9.0",
     "node-fetch": "^2.6.0",
     "xml2js": "^0.4.22"
   }
