@@ -313,7 +313,7 @@ export default class TSOpenLDB implements ITSOpenLDB {
   }
 
   private logToConsole = (message: string | object = "No message") => {
-    console.log(`${new Date().toISOString()} ${message}`);
+    console.log(`${new Date().toISOString()} ${typeof message === "object" ? JSON.stringify(message) : message}`);
   }
 
   

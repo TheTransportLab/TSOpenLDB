@@ -204,7 +204,7 @@ class TSOpenLDB {
             return APICalls;
         };
         this.logToConsole = (message = "No message") => {
-            console.log(`${new Date().toISOString()} ${message}`);
+            console.log(`${new Date().toISOString()} ${typeof message === "object" ? JSON.stringify(message) : message}`);
         };
         this.fetchFromDarwin = async (operation, xml) => {
             const headers = {
