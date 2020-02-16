@@ -230,9 +230,6 @@ class TSOpenLDB {
             });
             const firstTree = { ...Object.values(parsedXML.Envelope.Body)[0] };
             const result = { ...Object.values(firstTree)[0] };
-            if (this._debugEnabled) {
-                this.logToConsole({ result });
-            }
             //@ts-ignore
             return result;
         };

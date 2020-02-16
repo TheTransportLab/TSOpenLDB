@@ -346,10 +346,7 @@ export default class TSOpenLDB implements ITSOpenLDB {
 
     const firstTree = {...Object.values((parsedXML as IFetchFromDarwinResult).Envelope.Body)[0]};
     const result = {...Object.values(firstTree)[0]};
-
-    if (this._debugEnabled){
-      this.logToConsole({result})
-    }
+    
     //@ts-ignore
     return result;
   }
