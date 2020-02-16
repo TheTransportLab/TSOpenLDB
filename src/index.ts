@@ -328,8 +328,6 @@ export default class TSOpenLDB implements ITSOpenLDB {
     }
     
     const responseData = await (fetchRequest as Response).text();
-    const operations = operation.split("/");
-    fs.writeFileSync(`E:\\darwin\\${operations[operations.length-1]}.xml`, responseData);
 
     const parsedXML = await xml2js.parseStringPromise(responseData, {
       tagNameProcessors: [xml2js.processors.stripPrefix],

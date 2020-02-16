@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __importDefault(require("fs"));
 const interfaces_1 = require("./interfaces");
 exports.EOperation = 
 // IOpenLDBWS,
@@ -217,8 +216,6 @@ class TSOpenLDB {
                 throw new Error(`Request error (Status code ${fetchRequest.status}). Please ensure your key is correct, and that it is valid.`);
             }
             const responseData = await fetchRequest.text();
-            const operations = operation.split("/");
-            fs_1.default.writeFileSync(`E:\\darwin\\${operations[operations.length - 1]}.xml`, responseData);
             const parsedXML = await xml2js_1.default.parseStringPromise(responseData, {
                 tagNameProcessors: [xml2js_1.default.processors.stripPrefix],
                 explicitArray: false,
