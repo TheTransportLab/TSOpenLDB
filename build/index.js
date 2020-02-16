@@ -253,7 +253,10 @@ class TSOpenLDB {
                 `</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>`;
         };
         this.getArrBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
-            const params = { numRows, timeWindow, time, timeOffset, ..._params };
+            const _time = Boolean(timeOffset)
+                ? timeOffset < 0 ? new Date(new Date().getTime() - 1000 * (60 * timeOffset)).toISOString() : new Date(new Date().getTime() + 1000 * (60 * timeOffset)).toISOString()
+                : time;
+            const params = { numRows, timeWindow, time: _time, timeOffset, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrBoardWithDetails, params)}${constants_1.XMLClosing}`;
             return {
                 trainServices: { service: [] },
@@ -325,7 +328,10 @@ class TSOpenLDB {
             };
         };
         this.getDepBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
-            const params = { numRows, timeWindow, timeOffset, time, ..._params };
+            const _time = Boolean(timeOffset)
+                ? timeOffset < 0 ? new Date(new Date().getTime() - 1000 * (60 * timeOffset)).toISOString() : new Date(new Date().getTime() + 1000 * (60 * timeOffset)).toISOString()
+                : time;
+            const params = { numRows, timeWindow, time: _time, timeOffset, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepBoardWithDetails, params)}${constants_1.XMLClosing}`;
             return {
                 trainServices: { service: [] },

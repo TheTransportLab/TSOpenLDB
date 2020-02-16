@@ -1,4 +1,3 @@
-import fs from "fs";
 import {
   // IOpenLDBWS,
   EOperation,
@@ -379,7 +378,10 @@ export default class TSOpenLDB implements ITSOpenLDB {
   }
 
   public getArrBoardWithDetails = async ({numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params}: IParams_GetArrBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
-    const params = {numRows, timeWindow, time, timeOffset, ..._params}
+    const _time = Boolean(timeOffset)
+      ? timeOffset < 0 ? new Date(new Date().getTime() - 1000 * (60 * timeOffset)).toISOString() : new Date(new Date().getTime() + 1000 * (60 * timeOffset)).toISOString()
+      : time;
+    const params = {numRows, timeWindow, time: _time, timeOffset, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getArrBoardWithDetails, params)}${XMLClosing}`;
     return {
       trainServices:{ service: []},
@@ -451,7 +453,10 @@ export default class TSOpenLDB implements ITSOpenLDB {
     };
   }
   public getDepBoardWithDetails = async ({numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params}: IParams_GetDepBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
-    const params = {numRows, timeWindow, timeOffset, time, ..._params}
+    const _time = Boolean(timeOffset)
+      ? timeOffset < 0 ? new Date(new Date().getTime() - 1000 * (60 * timeOffset)).toISOString() : new Date(new Date().getTime() + 1000 * (60 * timeOffset)).toISOString()
+      : time;
+    const params = {numRows, timeWindow, time: _time, timeOffset, ..._params}
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepBoardWithDetails, params)}${XMLClosing}`;
     return {
       trainServices:{ service: []},
