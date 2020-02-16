@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TSOpenLDB | tsopenldb - v1.1.23</title>
+	<title>TSOpenLDB | tsopenldb - v1.1.24</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">tsopenldb - v1.1.23</a>
+					<a href="../index.html" class="title">tsopenldb - v1.1.24</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -94,6 +94,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="tsopenldb.html#_apikey" class="tsd-kind-icon">_api<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="tsopenldb.html#_debugenabled" class="tsd-kind-icon">_debug<wbr>Enabled</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -119,6 +120,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="tsopenldb.html#getnextdepartures" class="tsd-kind-icon">get<wbr>Next<wbr>Departures</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="tsopenldb.html#getnextdepartureswithdetails" class="tsd-kind-icon">get<wbr>Next<wbr>Departures<wbr>With<wbr>Details</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="tsopenldb.html#getservicedetailsbyrid" class="tsd-kind-icon">get<wbr>Service<wbr>Details<wbr>ByRid</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="tsopenldb.html#logtoconsole" class="tsd-kind-icon">log<wbr>ToConsole</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="tsopenldb.html#mapparamstosoapxml" class="tsd-kind-icon">map<wbr>Params<wbr>ToSOAPXml</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="tsopenldb.html#queryhistoricservices" class="tsd-kind-icon">query<wbr>Historic<wbr>Services</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="tsopenldb.html#queryservices" class="tsd-kind-icon">query<wbr>Services</a></li>
@@ -133,22 +135,25 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new TSOpenLDB<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>apiKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tsopenldb.html" class="tsd-signature-type">TSOpenLDB</a></li>
+						<li class="tsd-signature tsd-kind-icon">new TSOpenLDB<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>apiKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>debugEnabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tsopenldb.html" class="tsd-signature-type">TSOpenLDB</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L91">index.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L92">index.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>apiKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>apiKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>debugEnabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>api<wbr>Key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>debug<wbr>Enabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
 										</li>
 									</ul>
 								</li>
@@ -166,7 +171,17 @@
 					<div class="tsd-signature tsd-kind-icon">_api<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L91">index.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L91">index.ts:91</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_debugenabled" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _debug<wbr>Enabled</h3>
+					<div class="tsd-signature tsd-kind-icon">_debug<wbr>Enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L92">index.ts:92</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -183,7 +198,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L100">index.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L102">index.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -206,7 +221,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L314">index.ts:314</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L320">index.ts:320</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -232,7 +247,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L367">index.ts:367</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L381">index.ts:381</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -272,7 +287,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L379">index.ts:379</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L393">index.ts:393</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -309,7 +324,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L391">index.ts:391</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L405">index.ts:405</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -352,7 +367,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L403">index.ts:403</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L417">index.ts:417</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -392,7 +407,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L415">index.ts:415</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L429">index.ts:429</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -432,7 +447,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L427">index.ts:427</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L441">index.ts:441</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -472,7 +487,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L439">index.ts:439</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L453">index.ts:453</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -512,7 +527,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L451">index.ts:451</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L465">index.ts:465</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -558,7 +573,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L463">index.ts:463</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L477">index.ts:477</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -601,7 +616,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L475">index.ts:475</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L489">index.ts:489</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -629,7 +644,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L480">index.ts:480</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L494">index.ts:494</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -666,7 +681,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L492">index.ts:492</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L506">index.ts:506</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -703,7 +718,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L504">index.ts:504</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L518">index.ts:518</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -743,7 +758,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L516">index.ts:516</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L530">index.ts:530</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -771,7 +786,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L521">index.ts:521</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L535">index.ts:535</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -799,7 +814,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L526">index.ts:526</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L540">index.ts:540</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -836,7 +851,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L538">index.ts:538</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L552">index.ts:552</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -873,7 +888,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L551">index.ts:551</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L565">index.ts:565</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -892,6 +907,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="logtoconsole" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> log<wbr>ToConsole</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">log<wbr>ToConsole<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L315">index.ts:315</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> =&nbsp;&quot;No message&quot;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="mapparamstosoapxml" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> map<wbr>Params<wbr>ToSOAPXml</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -901,7 +939,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L344">index.ts:344</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L358">index.ts:358</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -927,7 +965,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L557">index.ts:557</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L571">index.ts:571</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -958,7 +996,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/78c908e/src/index.ts#L562">index.ts:562</a></li>
+									<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/f16c06e/src/index.ts#L576">index.ts:576</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1001,6 +1039,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="tsopenldb.html#_apikey" class="tsd-kind-icon">_api<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="tsopenldb.html#_debugenabled" class="tsd-kind-icon">_debug<wbr>Enabled</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="tsopenldb.html#callrequiredparams" class="tsd-kind-icon">Call<wbr>Required<wbr>Params</a>
@@ -1061,6 +1102,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="tsopenldb.html#getservicedetailsbyrid" class="tsd-kind-icon">get<wbr>Service<wbr>Details<wbr>ByRid</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="tsopenldb.html#logtoconsole" class="tsd-kind-icon">log<wbr>ToConsole</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="tsopenldb.html#mapparamstosoapxml" class="tsd-kind-icon">map<wbr>Params<wbr>ToSOAPXml</a>

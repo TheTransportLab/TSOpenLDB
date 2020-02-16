@@ -390,6 +390,7 @@ export enum ELDBWSOperationInfoKeys {
 
 export interface ITSOpenLDBConstructorParams {
   apiKey: string
+  debugEnabled?: boolean
 }
 
 

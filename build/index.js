@@ -22,7 +22,8 @@ const node_fetch_1 = __importDefault(require("node-fetch"));
 const xml2js_1 = __importDefault(require("xml2js"));
 // fetchFromDarwin
 class TSOpenLDB {
-    constructor({ apiKey }) {
+    constructor({ apiKey, debugEnabled = false }) {
+        this._debugEnabled = false;
         this.CallRequiredParams = (params) => {
             const { time, timeOffset, timeWindow, getNonPassengerServices, crs, crsList, tiploc, numRows, filterCrs, filterCRSType, historicDateTime, depBoardDate, depBoardTime, serviceUID, scheduleStartDate, sdd, fullTiploc, rid, serviceID, timeFilter, routeCrsFilter, tocFilter, filterTiploc, filterType, filterTOC, services, filterList, filterTime, currentVersion, reasonCode } = params;
             const APICalls = {
@@ -202,6 +203,9 @@ class TSOpenLDB {
             };
             return APICalls;
         };
+        this.logToConsole = (message = "No message") => {
+            console.log(`${new Date().toISOString()} ${message}`);
+        };
         this.fetchFromDarwin = async (operation, xml) => {
             const headers = {
                 SOAPAction: operation,
@@ -212,6 +216,9 @@ class TSOpenLDB {
                 body: xml,
                 headers
             });
+            if (this._debugEnabled) {
+                this.logToConsole({ headers, xml, operation });
+            }
             if (fetchRequest.status !== 200) {
                 throw new Error(`Request error (Status code ${fetchRequest.status}). Please ensure your key is correct, and that it is valid.`);
             }
@@ -223,6 +230,9 @@ class TSOpenLDB {
             });
             const firstTree = { ...Object.values(parsedXML.Envelope.Body)[0] };
             const result = { ...Object.values(firstTree)[0] };
+            if (this._debugEnabled) {
+                this.logToConsole({ result });
+            }
             //@ts-ignore
             return result;
         };
@@ -444,6 +454,7 @@ class TSOpenLDB {
             throw new Error("You must provide an API key from the National Rail OpenLDB Staff Webservice. Register: http://openldbsv.nationalrail.co.uk/");
         }
         this._apiKey = apiKey;
+        this._debugEnabled = debugEnabled;
     }
 }
 exports.default = TSOpenLDB;

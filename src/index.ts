@@ -89,12 +89,14 @@ export interface ITSOpenLDB {
 // fetchFromDarwin
 export default class TSOpenLDB implements ITSOpenLDB {
   private _apiKey: string;
+  private _debugEnabled: boolean = false;
 
-  constructor({apiKey}:ITSOpenLDBConstructorParams){
+  constructor({apiKey, debugEnabled = false}:ITSOpenLDBConstructorParams){
     if (!apiKey || typeof apiKey !== "string"){
       throw new Error("You must provide an API key from the National Rail OpenLDB Staff Webservice. Register: http://openldbsv.nationalrail.co.uk/");
     }
     this._apiKey = apiKey;
+    this._debugEnabled = debugEnabled;
   }
 
   private CallRequiredParams = (params: IOperationParams):TStaffOperation => {
@@ -310,6 +312,10 @@ export default class TSOpenLDB implements ITSOpenLDB {
     return APICalls;
   }
 
+  private logToConsole = (message: string | object = "No message") => {
+    console.log(`${new Date().toISOString()} ${message}`);
+  }
+
   
   private fetchFromDarwin = async (operation: ESOAPStaffAction, xml: string): Promise<IOpenLDBSVWSStationBoard | IOpenLDBSVWSServiceDetails | string> => {
     const headers = {
@@ -322,6 +328,10 @@ export default class TSOpenLDB implements ITSOpenLDB {
       body: xml,
       headers
     });
+
+    if (this._debugEnabled){
+      this.logToConsole({headers, xml, operation})
+    }
 
     if ((fetchRequest as Response).status !== 200){
       throw new Error(`Request error (Status code ${(fetchRequest as Response).status}). Please ensure your key is correct, and that it is valid.`)
@@ -337,6 +347,10 @@ export default class TSOpenLDB implements ITSOpenLDB {
 
     const firstTree = {...Object.values((parsedXML as IFetchFromDarwinResult).Envelope.Body)[0]};
     const result = {...Object.values(firstTree)[0]};
+
+    if (this._debugEnabled){
+      this.logToConsole({result})
+    }
     //@ts-ignore
     return result;
   }

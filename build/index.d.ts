@@ -23,8 +23,10 @@ export interface ITSOpenLDB {
 }
 export default class TSOpenLDB implements ITSOpenLDB {
     private _apiKey;
-    constructor({ apiKey }: ITSOpenLDBConstructorParams);
+    private _debugEnabled;
+    constructor({ apiKey, debugEnabled }: ITSOpenLDBConstructorParams);
     private CallRequiredParams;
+    private logToConsole;
     private fetchFromDarwin;
     private mapParamsToSOAPXml;
     getArrBoardWithDetails: ({ numRows, timeWindow, timeOffset, time, ..._params }: IParams_GetArrBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>;

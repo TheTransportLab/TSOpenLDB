@@ -363,6 +363,7 @@ export declare enum ELDBWSOperationInfoKeys {
 }
 export interface ITSOpenLDBConstructorParams {
     apiKey: string;
+    debugEnabled?: boolean;
 }
 export declare type EStaffBodyKeys = "GetArrBoardWithDetailsResponse" | "GetArrDepBoardWithDetailsResponse" | "GetArrivalDepartureBoardByCRSResponse" | "GetArrivalDepartureBoardByTIPLOCResponse" | "GetArrivalBoardByCRSResponse" | "GetArrivalBoardByTIPLOCResponse" | "GetDepartureBoardByCRSResponse" | "GetDepartureBoardByTIPLOCResponse" | "GetDepBoardWithDetailsResponse" | "GetDisruptionListResponse" | "GetHistoricDepartureBoardResponse" | "GetHistoricServiceDetailsResponse" | "GetHistoricTimeLineResponse" | "GetServiceDetailsByRIDResponse" | "QueryHistoricServicesResponse" | "QueryServicesResponse" | "GetNextDeparturesResponse" | "GetNextDeparturesWithDetailsResponse" | "GetFastestDeparturesResponse" | "GetFastestDeparturesWithDetailsResponse" | "GetTocListResponse" | "GetStationListResponse" | "GetReasonCodeResponse" | "GetReasonCodeListResponse";
 export interface IFetchFromDarwinResult {
