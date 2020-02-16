@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/ChronSyn/TSOpenLDB"
   },
-  "version": "1.1.22",
+  "version": "1.1.23",
   "description": "A typescript implementation of the National Rail LDBSV web service API's",
   "types": "./build/index.d.ts",
   "main": "./build/index.js",
