@@ -8,7 +8,7 @@ const londonTZByCoords = () => {
 };
 export const getLondonTime = () => {
   momentTZ.tz.setDefault(londonTZByCoords());
-  return momentTZ().utc(true).tz(londonTZByCoords()).toDate()
+  return momentTZ().utc(true).tz(londonTZByCoords(), false).toDate()
 };
 
 export const getTimeWithOffset = (timeOffset: number = 0) => AddMinutes(getLondonTime(), timeOffset);

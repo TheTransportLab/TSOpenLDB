@@ -12,7 +12,7 @@ const londonTZByCoords = () => {
 };
 exports.getLondonTime = () => {
     moment_timezone_1.default.tz.setDefault(londonTZByCoords());
-    return moment_timezone_1.default().utc(true).tz(londonTZByCoords()).toDate();
+    return moment_timezone_1.default().utc(true).tz(londonTZByCoords(), false).toDate();
 };
 exports.getTimeWithOffset = (timeOffset = 0) => addMinutes_1.default(exports.getLondonTime(), timeOffset);
 //# sourceMappingURL=TimezoneOffset.js.map
