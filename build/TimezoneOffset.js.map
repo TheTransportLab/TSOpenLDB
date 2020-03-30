@@ -1,0 +1,1 @@
+{"version":3,"file":"TimezoneOffset.js","sourceRoot":"","sources":["../src/TimezoneOffset.ts"],"names":[],"mappings":";;;;;AAAA,sEAAuC;AACvC,qEAA6C;AAEhC,QAAA,aAAa,GAAG,GAAG,EAAE,CAAC,yBAAQ,EAAE,CAAC,EAAE,CAAC,eAAe,EAAE,IAAI,CAAC,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC,MAAM,EAAE,CAAA;AAC7E,QAAA,iBAAiB,GAAG,CAAC,aAAqB,CAAC,EAAE,EAAE,CAAC,oBAAU,CAAC,qBAAa,EAAE,EAAE,UAAU,CAAC,CAAC"}

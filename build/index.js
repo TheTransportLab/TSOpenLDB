@@ -17,6 +17,7 @@ exports.EListFields = interfaces_1.EListFields;
 exports.EFilterType = interfaces_1.EFilterType;
 exports.EServices = interfaces_1.EServices;
 exports.EDateModifier = interfaces_1.EDateModifier;
+const TimezoneOffset_1 = require("./TimezoneOffset");
 const constants_1 = require("./constants");
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const xml2js_1 = __importDefault(require("xml2js"));
@@ -250,9 +251,11 @@ class TSOpenLDB {
                 `</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>`;
         };
         this.getArrBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
-            const _time = Boolean(timeOffset)
-                ? timeOffset < 0 ? new Date(new Date().getTime() - 1000 * (60 * timeOffset)).toISOString() : new Date(new Date().getTime() + 1000 * (60 * timeOffset)).toISOString()
-                : time;
+            const _time = TimezoneOffset_1.getTimeWithOffset(timeOffset).toISOString();
+            /*Boolean(timeOffset)
+              ? getTimeWithOffset(timeOffset).toISOString()//timeOffset < 0 ? new Date(new Date().getTime() - 1000 * (60 * timeOffset)).toISOString() : new Date(new Date().getTime() + 1000 * (60 * timeOffset)).toISOString()
+              : time;
+              */
             const params = { numRows, timeWindow, time: _time, timeOffset, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrBoardWithDetails, params)}${constants_1.XMLClosing}`;
             return {
@@ -325,9 +328,11 @@ class TSOpenLDB {
             };
         };
         this.getDepBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
-            const _time = Boolean(timeOffset)
-                ? timeOffset < 0 ? new Date(new Date().getTime() - 1000 * (60 * timeOffset)).toISOString() : new Date(new Date().getTime() + 1000 * (60 * timeOffset)).toISOString()
-                : time;
+            const _time = TimezoneOffset_1.getTimeWithOffset(timeOffset).toISOString();
+            /*Boolean(timeOffset)
+              ? getTimeWithOffset(timeOffset).toISOString()// timeOffset < 0 ? new Date(new Date().getTime() - 1000 * (60 * timeOffset)).toISOString() : new Date(new Date().getTime() + 1000 * (60 * timeOffset)).toISOString()
+              : time;
+              */
             const params = { numRows, timeWindow, time: _time, timeOffset, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepBoardWithDetails, params)}${constants_1.XMLClosing}`;
             return {
