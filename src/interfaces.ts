@@ -256,7 +256,7 @@ export interface IParams_QueryHistoricServices {
 }
 export interface IParams_QueryServices {
   serviceID: string,
-  sdd: Date,
+  sdd?: Date | string,
   filtertime?: string,
   filterCrs?: string,
   tocFilter?: string
@@ -265,6 +265,24 @@ export interface IParams_GetTocList{ currentVersion: string }
 export interface IParams_GetStationList{ currentVersion: string }
 export interface IParams_GetReasonCode{ reasonCode: number }
 export interface IParams_GetReasonCodeList{}
+
+interface IDarwinServicesByHeadcodeServices {
+  rid: string;
+  uid: string;
+  trainid: string;
+  originName: string;
+  originCrs: string;
+  destinationName: string;
+  destinationCrs: string;
+  scheduledDeparture: string;
+  scheduledArrival: string;
+}
+export interface IDarwinServicesByHeadcodeFnReturn {
+  scheduleStartDate: string;
+  serviceList: {
+      service: IDarwinServicesByHeadcodeServices[];
+  };
+}
 
 export enum EFilterType {
   from = "from",

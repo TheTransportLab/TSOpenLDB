@@ -47,7 +47,8 @@ import {
   IOpenLDBSVWSStationBoard,
   IOpenLDBSVWSServiceDetails,
   IOpenLDBSVWSServiceItem,
-  IOpenLDBSVWSServiceLocation
+  IOpenLDBSVWSServiceLocation,
+  IDarwinServicesByHeadcodeFnReturn
 } from "./interfaces";
 
 import {
@@ -64,6 +65,7 @@ import {
 
 import fetch, {Response} from "node-fetch";
 import xml2js from "xml2js";
+import momentTZ from "moment-timezone";
 
 export interface ITSOpenLDB {
   getArrBoardWithDetails: (params: IParams_GetArrBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>
@@ -81,7 +83,7 @@ export interface ITSOpenLDB {
   getHistoricTimeLine: (params: IParams_GetHistoricTimeLine) => Promise<string>
   getServiceDetailsByRid: (params: IParams_GetServiceDetailsByRID) => Promise<IOpenLDBSVWSServiceDetails>
   queryHistoricServices: (params: IParams_QueryHistoricServices) => Promise<string>
-  queryServices: (params: IParams_QueryServices) => Promise<string>
+  queryServices: (params: IParams_QueryServices) => Promise<IDarwinServicesByHeadcodeFnReturn>
   getNextDepartures: (params: IParams_GetNextDepartures) => Promise<IOpenLDBSVWSStationBoard>
   getNextDeparturesWithDetails: (params: IParams_GetNextDeparturesWithDetails) => Promise<IOpenLDBSVWSStationBoard>
   getFastestDepartures: (params: IParams_GetFastestDepartures) => Promise<IOpenLDBSVWSStationBoard>
@@ -320,7 +322,7 @@ export default class TSOpenLDB implements ITSOpenLDB {
   }
 
   
-  private fetchFromDarwin = async (operation: ESOAPStaffAction, xml: string): Promise<IOpenLDBSVWSStationBoard | IOpenLDBSVWSServiceDetails | string> => {
+  private fetchFromDarwin = async (operation: ESOAPStaffAction, xml: string): Promise<IOpenLDBSVWSStationBoard | IOpenLDBSVWSServiceDetails | IDarwinServicesByHeadcodeFnReturn | string> => {
     const headers = {
       SOAPAction: operation,
       "Content-Type": "text/xml"
@@ -576,10 +578,14 @@ export default class TSOpenLDB implements ITSOpenLDB {
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.queryHistoricServices, params)}${XMLClosing}`
     return await this.fetchFromDarwin(ESOAPStaffAction.QueryHistoricServices, XML) as string;
   }
-  public queryServices = async ({sdd = new Date(), ..._params}: IParams_QueryServices): Promise<string> => {
-    const params = {sdd: sdd.toISOString(), ..._params};
+  public queryServices = async ({sdd = new Date(), ..._params}: IParams_QueryServices): Promise<IDarwinServicesByHeadcodeFnReturn> => {
+    // if (!momentTZ(sdd).isValid){
+    //   return false;
+    // }
+    const ParsedSDD = momentTZ(sdd).format("YYYY-MM-DD");
+    const params = {sdd: ParsedSDD, ..._params};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.queryServices, params)}${XMLClosing}`
-    return await this.fetchFromDarwin(ESOAPStaffAction.QueryServices, XML) as string;
+    return await this.fetchFromDarwin(ESOAPStaffAction.QueryServices, XML) as IDarwinServicesByHeadcodeFnReturn;
   }
 }
 
@@ -631,5 +637,6 @@ export {
   EDateModifier,
   IOpenLDBSVWSStationBoard,
   IOpenLDBSVWSServiceDetails,
-  IOpenLDBSVWSServiceItem
+  IOpenLDBSVWSServiceItem,
+  IDarwinServicesByHeadcodeFnReturn
 }

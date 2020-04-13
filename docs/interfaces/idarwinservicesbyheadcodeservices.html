@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IOperationInfoEntry | tsopenldb - v1.1.54</title>
+	<title>IDarwinServicesByHeadcodeServices | tsopenldb - v1.1.54</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="ioperationinfoentry.html">IOperationInfoEntry</a>
+					<a href="idarwinservicesbyheadcodeservices.html">IDarwinServicesByHeadcodeServices</a>
 				</li>
 			</ul>
-			<h1>Interface IOperationInfoEntry</h1>
+			<h1>Interface IDarwinServicesByHeadcodeServices</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IOperationInfoEntry</span>
+						<span class="target">IDarwinServicesByHeadcodeServices</span>
 					</li>
 				</ul>
 			</section>
@@ -81,8 +81,15 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ioperationinfoentry.html#key" class="tsd-kind-icon">key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ioperationinfoentry.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#destinationcrs" class="tsd-kind-icon">destination<wbr>Crs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#destinationname" class="tsd-kind-icon">destination<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#origincrs" class="tsd-kind-icon">origin<wbr>Crs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#originname" class="tsd-kind-icon">origin<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#rid" class="tsd-kind-icon">rid</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#scheduledarrival" class="tsd-kind-icon">scheduled<wbr>Arrival</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#scheduleddeparture" class="tsd-kind-icon">scheduled<wbr>Departure</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#trainid" class="tsd-kind-icon">trainid</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idarwinservicesbyheadcodeservices.html#uid" class="tsd-kind-icon">uid</a></li>
 							</ul>
 						</section>
 					</div>
@@ -91,22 +98,92 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="key" class="tsd-anchor"></a>
-					<h3>key</h3>
-					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <a href="../enums/eoperation.html" class="tsd-signature-type">EOperation</a><span class="tsd-signature-symbol"> | </span><a href="../enums/estaffoperation.html" class="tsd-signature-type">EStaffOperation</a></div>
+					<a name="destinationcrs" class="tsd-anchor"></a>
+					<h3>destination<wbr>Crs</h3>
+					<div class="tsd-signature tsd-kind-icon">destination<wbr>Crs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L399">interfaces.ts:399</a></li>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L276">interfaces.ts:276</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/eoperationinfoentrytype.html" class="tsd-signature-type">EOperationInfoEntryType</a></div>
+					<a name="destinationname" class="tsd-anchor"></a>
+					<h3>destination<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">destination<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L400">interfaces.ts:400</a></li>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L275">interfaces.ts:275</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="origincrs" class="tsd-anchor"></a>
+					<h3>origin<wbr>Crs</h3>
+					<div class="tsd-signature tsd-kind-icon">origin<wbr>Crs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L274">interfaces.ts:274</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="originname" class="tsd-anchor"></a>
+					<h3>origin<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">origin<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L273">interfaces.ts:273</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="rid" class="tsd-anchor"></a>
+					<h3>rid</h3>
+					<div class="tsd-signature tsd-kind-icon">rid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L270">interfaces.ts:270</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="scheduledarrival" class="tsd-anchor"></a>
+					<h3>scheduled<wbr>Arrival</h3>
+					<div class="tsd-signature tsd-kind-icon">scheduled<wbr>Arrival<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L278">interfaces.ts:278</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="scheduleddeparture" class="tsd-anchor"></a>
+					<h3>scheduled<wbr>Departure</h3>
+					<div class="tsd-signature tsd-kind-icon">scheduled<wbr>Departure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L277">interfaces.ts:277</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="trainid" class="tsd-anchor"></a>
+					<h3>trainid</h3>
+					<div class="tsd-signature tsd-kind-icon">trainid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L272">interfaces.ts:272</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="uid" class="tsd-anchor"></a>
+					<h3>uid</h3>
+					<div class="tsd-signature tsd-kind-icon">uid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChronSyn/TSOpenLDB/blob/7ea1fd0/src/interfaces.ts#L271">interfaces.ts:271</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -125,13 +202,34 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="ioperationinfoentry.html" class="tsd-kind-icon">IOperation<wbr>Info<wbr>Entry</a>
+						<a href="idarwinservicesbyheadcodeservices.html" class="tsd-kind-icon">IDarwin<wbr>Services<wbr>ByHeadcode<wbr>Services</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ioperationinfoentry.html#key" class="tsd-kind-icon">key</a>
+								<a href="idarwinservicesbyheadcodeservices.html#destinationcrs" class="tsd-kind-icon">destination<wbr>Crs</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ioperationinfoentry.html#type" class="tsd-kind-icon">type</a>
+								<a href="idarwinservicesbyheadcodeservices.html#destinationname" class="tsd-kind-icon">destination<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idarwinservicesbyheadcodeservices.html#origincrs" class="tsd-kind-icon">origin<wbr>Crs</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idarwinservicesbyheadcodeservices.html#originname" class="tsd-kind-icon">origin<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idarwinservicesbyheadcodeservices.html#rid" class="tsd-kind-icon">rid</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idarwinservicesbyheadcodeservices.html#scheduledarrival" class="tsd-kind-icon">scheduled<wbr>Arrival</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idarwinservicesbyheadcodeservices.html#scheduleddeparture" class="tsd-kind-icon">scheduled<wbr>Departure</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idarwinservicesbyheadcodeservices.html#trainid" class="tsd-kind-icon">trainid</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idarwinservicesbyheadcodeservices.html#uid" class="tsd-kind-icon">uid</a>
 							</li>
 						</ul>
 					</li>

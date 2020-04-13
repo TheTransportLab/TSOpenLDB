@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/ChronSyn/TSOpenLDB"
   },
-  "version": "1.1.52",
+  "version": "1.1.54",
   "description": "A typescript implementation of the National Rail LDBSV web service API's",
   "types": "./build/index.d.ts",
   "main": "./build/index.js",
@@ -16,6 +16,7 @@
   "author": "Scott Pritchard",
   "license": "ISC",
   "devDependencies": {
+    "@types/moment-timezone": "^0.5.13",
     "@types/node": "^13.1.7",
     "ts-node": "^8.4.1",
     "ts-optchain": "^0.1.8",

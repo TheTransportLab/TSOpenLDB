@@ -21,6 +21,7 @@ const TimezoneOffset_1 = require("./TimezoneOffset");
 const constants_1 = require("./constants");
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const xml2js_1 = __importDefault(require("xml2js"));
+const moment_timezone_1 = __importDefault(require("moment-timezone"));
 // fetchFromDarwin
 class TSOpenLDB {
     constructor({ apiKey, debugEnabled = false }) {
@@ -446,7 +447,11 @@ class TSOpenLDB {
             return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.QueryHistoricServices, XML);
         };
         this.queryServices = async ({ sdd = new Date(), ..._params }) => {
-            const params = { sdd: sdd.toISOString(), ..._params };
+            // if (!momentTZ(sdd).isValid){
+            //   return false;
+            // }
+            const ParsedSDD = moment_timezone_1.default(sdd).format("YYYY-MM-DD");
+            const params = { sdd: ParsedSDD, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.queryServices, params)}${constants_1.XMLClosing}`;
             return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.QueryServices, XML);
         };
