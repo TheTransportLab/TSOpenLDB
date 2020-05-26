@@ -9,6 +9,22 @@
 
 Also found in the **/docs** folder
 
+##### Related libraries
+
+- TSOpenLDB: A typescript library for interacting with the UK National Rail OpenLDBSV (staff) web service
+
+https://github.com/ChronSyn/TSOpenLDB
+
+
+- TSDarwinPushport: A node.js library for receiving data from the National Rail and Network Rail live data feeds.
+
+https://github.com/ChronSyn/TSDarwinPushport
+
+
+- Railscope API: An API gateway for retrieving UK rail information
+
+https://github.com/ChronSyn/railscope-api-community-edition
+
 ##### Basic Usage Example
 
     const apiKey = "ADD_YOUR_API_KEY";
