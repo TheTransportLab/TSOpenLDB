@@ -110,6 +110,7 @@ var EListFields;
 (function (EListFields) {
     EListFields["crsList"] = "crs";
     EListFields["filterList"] = "crs";
+    EListFields["filterCrs"] = "filtercrs";
     EListFields["filterTOC"] = "toc";
 })(EListFields = exports.EListFields || (exports.EListFields = {}));
 var EOperationInfoEntryType;

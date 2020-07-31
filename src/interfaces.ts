@@ -96,7 +96,7 @@ export enum EStaffOperation {
 export interface IParams_GetArrBoardWithDetails {
   crs: string,
   numRows?: number,
-  filterCrs?: string,
+  filterCrs?: string | string[],
   filterType?: EFilterType,
   timeOffset?: number,
   timeWindow?: number
@@ -112,7 +112,7 @@ export interface IParams_GetArrBoardWithDetails {
 export interface IParams_GetArrDepBoardWithDetails {
   crs: string,
   numRows?: number,
-  filterCrs?: string,
+  filterCrs?: string | string[],
   filterType?: EFilterType,
   timeOffset?: number,
   timeWindow?: number
@@ -122,7 +122,7 @@ export interface IParams_GetArrivalBoardByCRS {
   numRows?: number,
   time?: Date,
   timeWindow?: number,
-  filterCrs?: string,
+  filterCrs?: string | string[],
   filterType?: EFilterType,
   filterTOC?: string[] | string,
   services?: EServices,
@@ -142,7 +142,7 @@ export interface IParams_GetArrivalDepartureBoardByCRS {
   crs: string,
   numRows?: number,
   time?: Date,
-  filterCrs?: string,
+  filterCrs?: string | string[],
   filterType?: EFilterType,
   filterTOC?: string[] | string,
   services?: EServices,
@@ -163,7 +163,7 @@ export interface IParams_GetDepBoardWithDetails {
   time?: string
   numRows?: number,
   timeOffset?: number,
-  filterCrs?: string,
+  filterCrs?: string | string[],
   filterType?: EFilterType,
   timeWindow?: number
 }
@@ -172,7 +172,7 @@ export interface IParams_GetDepartureBoardByCRS {
   time?: Date,
   numRows?: number,
   timeWindow?: number,
-  filterCrs?: string,
+  filterCrs?: string | string[],
   filterType?: EFilterType,
   filterTOC?: string[] | string,
   services?: EServices,
@@ -212,7 +212,7 @@ export interface IParams_GetHistoricDepartureBoard {
   depBoardDate?: EDateModifier,
   depBoardtime?: string,
   timeWindow?: number,
-  filterCrs?: string,
+  filterCrs?: string | string[],
   filterCrsType?: EFilterType,
   filterTOC?: string[] | string,
   services?: EServices,
@@ -258,7 +258,7 @@ export interface IParams_QueryServices {
   serviceID: string,
   sdd?: Date | string,
   filtertime?: string,
-  filterCrs?: string,
+  filterCrs?: string | string[],
   tocFilter?: string
 }
 export interface IParams_GetTocList{ currentVersion: string }
@@ -304,6 +304,7 @@ export enum EDateModifier {
 export enum EListFields {
   crsList = "crs",
   filterList = "crs",
+  filterCrs = "filtercrs",
   filterTOC = "toc"
 }
 
@@ -313,7 +314,7 @@ export interface IOperationParams {
   currentVersion?: string
   depBoardDate?: EDateModifier
   depBoardTime?: string
-  filterCrs?: string
+  filterCrs?: string | string[]
   filterCRSType?: EFilterType
   filterList?: string[]
   filterTime?: string
@@ -558,7 +559,7 @@ export interface IOpenLDBSVWSStationBoard {
   locationName: EDarwinStation
   crs: EDarwinStation
   filterLocationName?: string
-  filtercrs?: string
+  filtercrs?: string | string[]
   // filterType?
   stationManager: string
   stationManagerCode: string

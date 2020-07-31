@@ -360,16 +360,23 @@ export default class TSOpenLDB implements ITSOpenLDB {
   private mapParamsToSOAPXml = (operation: EStaffOperation, params: IOperationParams) => {
     return `<${ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>`+
       Object.entries(params).map(([key, value]) => (() => {
+        console.log(`Got key "${key}" with value of "${value}"`);
         switch(key){
           case "crsList":
             return `<${ESOAPNamespaces.NAMESPACE_LDB}:${key}>${
               value.length > 0 ? value.map(crs => `<${ESOAPNamespaces.NAMESPACE_LDB}:${EListFields.crsList}>${crs}</${ESOAPNamespaces.NAMESPACE_LDB}:${EListFields.crsList}>`).join("\n") : "\n"
             }</${ESOAPNamespaces.NAMESPACE_LDB}:${key}>`
+          case "filterCRS":
+          case "filterCrs":
+          case "filtercrs":
+            return `<${ESOAPNamespaces.NAMESPACE_LDB}:${EListFields.filterCrs}>${value}</${ESOAPNamespaces.NAMESPACE_LDB}:${EListFields.filterCrs}>`;
           case "filterList":
               return `<${ESOAPNamespaces.NAMESPACE_LDB}:${key}>${
                 value.length > 0 ? value.map(toc => `<${ESOAPNamespaces.NAMESPACE_LDB}:${EListFields.filterList}>${toc}</${ESOAPNamespaces.NAMESPACE_LDB}:${EListFields.filterList}>`).join("\n") : "\n"
               }</${ESOAPNamespaces.NAMESPACE_LDB}:${key}>`;
           case "filterTOC":
+          case "filterToc":
+          case "filtertoc":
               return `<${ESOAPNamespaces.NAMESPACE_LDB}:${key}>${
                 value.length > 0 ? value.map(toc => `<${ESOAPNamespaces.NAMESPACE_LDB}:${EListFields.filterTOC}>${toc}</${ESOAPNamespaces.NAMESPACE_LDB}:${EListFields.filterTOC}>`).join("\n") : "\n"
               }</${ESOAPNamespaces.NAMESPACE_LDB}:${key}>`;
@@ -456,8 +463,11 @@ export default class TSOpenLDB implements ITSOpenLDB {
   public getDepBoardWithDetails = async ({numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params}: IParams_GetDepBoardWithDetails): Promise<IOpenLDBSVWSStationBoard> => {
     const _time = getTimeWithOffset(timeOffset).toISOString()
 
+    
     const params = {numRows, timeWindow, time: _time, timeOffset, ..._params}
+    // console.log("Got dep board with details. Params: ", {params});
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepBoardWithDetails, params)}${XMLClosing}`;
+    // console.log("XML is ", XML);
     return {
       trainServices:{ service: []},
       busServices:{ service: []},
@@ -469,7 +479,9 @@ export default class TSOpenLDB implements ITSOpenLDB {
   }
   public getDepartureBoardByCRS = async ({timeWindow = 120, time = new Date(), getNonPassengerServices = false, services = EServices.TRAIN, numRows = 120, filterType = EFilterType.to, ..._params}: IParams_GetDepartureBoardByCRS): Promise<IOpenLDBSVWSStationBoard> => {
     const params = {time: time.toISOString(), timeWindow, getNonPassengerServices, services, numRows, filterType, ..._params}
+    // console.log("Got dep board by crs. Params: ", {params});
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getDepartureBoardByCrs, params)}${XMLClosing}`
+    // console.log("XML is ", XML);
     return {
       trainServices:{ service: []},
       busServices:{ service: []},
