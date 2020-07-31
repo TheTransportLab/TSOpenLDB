@@ -238,7 +238,6 @@ class TSOpenLDB {
         this.mapParamsToSOAPXml = (operation, params) => {
             return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>` +
                 Object.entries(params).map(([key, value]) => (() => {
-                    console.log(`Got key "${key}" with value of "${value}"`);
                     switch (key) {
                         case "crsList":
                             return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>${value.length > 0 ? value.map(crs => `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.crsList}>${crs}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.crsList}>`).join("\n") : "\n"}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>`;
@@ -334,9 +333,7 @@ class TSOpenLDB {
         this.getDepBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
             const _time = TimezoneOffset_1.getTimeWithOffset(timeOffset).toISOString();
             const params = { numRows, timeWindow, time: _time, timeOffset, ..._params };
-            // console.log("Got dep board with details. Params: ", {params});
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepBoardWithDetails, params)}${constants_1.XMLClosing}`;
-            // console.log("XML is ", XML);
             return {
                 trainServices: { service: [] },
                 busServices: { service: [] },
@@ -348,9 +345,7 @@ class TSOpenLDB {
         };
         this.getDepartureBoardByCRS = async ({ timeWindow = 120, time = new Date(), getNonPassengerServices = false, services = interfaces_1.EServices.TRAIN, numRows = 120, filterType = interfaces_1.EFilterType.to, ..._params }) => {
             const params = { time: time.toISOString(), timeWindow, getNonPassengerServices, services, numRows, filterType, ..._params };
-            // console.log("Got dep board by crs. Params: ", {params});
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepartureBoardByCrs, params)}${constants_1.XMLClosing}`;
-            // console.log("XML is ", XML);
             return {
                 trainServices: { service: [] },
                 busServices: { service: [] },
