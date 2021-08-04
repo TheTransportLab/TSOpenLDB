@@ -2,9 +2,9 @@
   "name": "@thetransportlab/tsopenldb",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChronSyn/TSOpenLDB"
+    "url": "https://github.com/TheTransportLab/TSOpenLDB"
   },
-  "version": "1.1.63",
+  "version": "1.1.64",
   "description": "A typescript implementation of the National Rail LDBSV web service API's",
   "types": "./build/index.d.ts",
   "main": "./build/index.js",
@@ -13,7 +13,7 @@
     "prebuild": "npm run clean",
     "build": "ttsc",
     "dev": "ts-node src/index.ts",
-    "doc": "typedoc"
+    "doc": "rimraf docs/ && typedoc"
   },
   "author": "Scott Pritchard",
   "license": "ISC",

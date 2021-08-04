@@ -10,16 +10,6 @@ A typescript library for interacting with the UK National Rail OpenLDBSV (staff)
 
 Also found in the **/docs** folder
 
-##### Related libraries
-
-- TSOpenLDB: A typescript library for interacting with the UK National Rail OpenLDBSV (staff) web service
-
-https://github.com/ChronSyn/TSOpenLDB
-
-- TSDarwinPushport: A node.js library for receiving data from the National Rail and Network Rail live data feeds.
-
-https://github.com/ChronSyn/TSDarwinPushport
-
 ### Install
 
 ```
