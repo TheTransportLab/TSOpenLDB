@@ -66,6 +66,8 @@ import {
 import fetch, {Response} from "node-fetch";
 import xml2js from "xml2js";
 import momentTZ from "moment-timezone";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 
 export interface ITSOpenLDB {
   getArrBoardWithDetails: (params: IParams_GetArrBoardWithDetails) => Promise<IOpenLDBSVWSStationBoard>
@@ -527,8 +529,14 @@ export default class TSOpenLDB implements ITSOpenLDB {
       ...await this.fetchFromDarwin(ESOAPStaffAction.GetFastestDeparturesWithDetails, XML) as IOpenLDBSVWSStationBoard
     };
   }
-  public getHistoricDepartureBoard = async ({depBoardDate = EDateModifier.SAME, numRows = 120, services = EServices.TRAIN, timeWindow = 120, ..._params}: IParams_GetHistoricDepartureBoard): Promise<IOpenLDBSVWSStationBoard> => {
-    const params = {depBoardDate, numRows, services, timeWindow, ..._params};
+
+  /**
+   *
+   * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ 
+   *
+   */
+  public getHistoricDepartureBoard = async ({numRows = 120, timeWindow = 120, ..._params}: IParams_GetHistoricDepartureBoard): Promise<IOpenLDBSVWSStationBoard> => {
+    const params = {..._params, historicDateTime: format(parseISO(_params.historicDateTime.toISOString()), "yyyy-LL-dd'T'HH:mm:ss"), numRows, timeWindow};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricDepartureBoard, params)}${XMLClosing}`
     return {
       trainServices:{ service: []},
@@ -536,16 +544,28 @@ export default class TSOpenLDB implements ITSOpenLDB {
       ferryServices:{ service: []},
       platformsAreHidden: false,
       servicesAreUnavailable: false,
-      ...await this.fetchFromDarwin(ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML) as IOpenLDBSVWSStationBoard
+      ...await this.fetchFromDarwin(ESOAPStaffAction.GetHistoricDepartureBoard, XML) as IOpenLDBSVWSStationBoard
     };
   }
+
+  /**
+   *
+   * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ 
+   *
+   */
   public getHistoricServiceDetails = async ({..._params}: IParams_GetHistoricServiceDetails): Promise<IOpenLDBSVWSServiceDetails> => {
-    const params = {..._params};
+    const params = {..._params, historicDateTime: format(parseISO(_params.historicDateTime), "yyyy-LL-dd'T'HH:mm:ss") };
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricServiceDetails, params)}${XMLClosing}`
     return await this.fetchFromDarwin(ESOAPStaffAction.GetHistoricServiceDetails, XML) as IOpenLDBSVWSServiceDetails;
   }
+
+  /**
+   *
+   * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ 
+   *
+   */
   public getHistoricTimeLine = async ({..._params}: IParams_GetHistoricTimeLine): Promise<string> => {
-    const params = {..._params};
+    const params = {..._params, historicDateTime: format(parseISO(_params.historicDatetime), "yyyy-LL-dd'T'HH:mm:ss")};
     const XML = `${XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(EStaffOperation.getHistoricTimeLine, params)}${XMLClosing}`
     return await this.fetchFromDarwin(ESOAPStaffAction.GetHistoricTimeLine, XML) as string;
   }

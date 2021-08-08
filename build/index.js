@@ -22,6 +22,8 @@ const constants_1 = require("./constants");
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const xml2js_1 = __importDefault(require("xml2js"));
 const moment_timezone_1 = __importDefault(require("moment-timezone"));
+const format_1 = __importDefault(require("date-fns/format"));
+const parseISO_1 = __importDefault(require("date-fns/parseISO"));
 // fetchFromDarwin
 class TSOpenLDB {
     constructor({ apiKey, debugEnabled = false }) {
@@ -396,8 +398,13 @@ class TSOpenLDB {
                 ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetFastestDeparturesWithDetails, XML)
             };
         };
-        this.getHistoricDepartureBoard = async ({ depBoardDate = interfaces_1.EDateModifier.SAME, numRows = 120, services = interfaces_1.EServices.TRAIN, timeWindow = 120, ..._params }) => {
-            const params = { depBoardDate, numRows, services, timeWindow, ..._params };
+        /**
+         *
+         * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
+         *
+         */
+        this.getHistoricDepartureBoard = async ({ numRows = 120, timeWindow = 120, ..._params }) => {
+            const params = { ..._params, historicDateTime: format_1.default(parseISO_1.default(_params.historicDateTime.toISOString()), "yyyy-LL-dd'T'HH:mm:ss"), numRows, timeWindow };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getHistoricDepartureBoard, params)}${constants_1.XMLClosing}`;
             return {
                 trainServices: { service: [] },
@@ -405,16 +412,26 @@ class TSOpenLDB {
                 ferryServices: { service: [] },
                 platformsAreHidden: false,
                 servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML)
+                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetHistoricDepartureBoard, XML)
             };
         };
+        /**
+         *
+         * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
+         *
+         */
         this.getHistoricServiceDetails = async ({ ..._params }) => {
-            const params = { ..._params };
+            const params = { ..._params, historicDateTime: format_1.default(parseISO_1.default(_params.historicDateTime), "yyyy-LL-dd'T'HH:mm:ss") };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getHistoricServiceDetails, params)}${constants_1.XMLClosing}`;
             return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetHistoricServiceDetails, XML);
         };
+        /**
+         *
+         * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
+         *
+         */
         this.getHistoricTimeLine = async ({ ..._params }) => {
-            const params = { ..._params };
+            const params = { ..._params, historicDateTime: format_1.default(parseISO_1.default(_params.historicDatetime), "yyyy-LL-dd'T'HH:mm:ss") };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getHistoricTimeLine, params)}${constants_1.XMLClosing}`;
             return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetHistoricTimeLine, XML);
         };

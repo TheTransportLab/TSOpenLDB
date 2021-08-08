@@ -41,8 +41,23 @@ export default class TSOpenLDB implements ITSOpenLDB {
     getDisruptionList: ({ ..._params }: IParams_GetDisruptionList) => Promise<string>;
     getFastestDepartures: ({ services, timeWindow, time, ..._params }: IParams_GetFastestDepartures) => Promise<IOpenLDBSVWSStationBoard>;
     getFastestDeparturesWithDetails: ({ services, timeWindow, time, ..._params }: IParams_GetFastestDeparturesWithDetails) => Promise<IOpenLDBSVWSStationBoard>;
-    getHistoricDepartureBoard: ({ depBoardDate, numRows, services, timeWindow, ..._params }: IParams_GetHistoricDepartureBoard) => Promise<IOpenLDBSVWSStationBoard>;
+    /**
+     *
+     * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
+     *
+     */
+    getHistoricDepartureBoard: ({ numRows, timeWindow, ..._params }: IParams_GetHistoricDepartureBoard) => Promise<IOpenLDBSVWSStationBoard>;
+    /**
+     *
+     * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
+     *
+     */
     getHistoricServiceDetails: ({ ..._params }: IParams_GetHistoricServiceDetails) => Promise<IOpenLDBSVWSServiceDetails>;
+    /**
+     *
+     * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
+     *
+     */
     getHistoricTimeLine: ({ ..._params }: IParams_GetHistoricTimeLine) => Promise<string>;
     getNextDepartures: ({ time, timeWindow, services, ..._params }: IParams_GetNextDepartures) => Promise<IOpenLDBSVWSStationBoard>;
     getNextDeparturesWithDetails: ({ time, timeWindow, services, ..._params }: IParams_GetNextDeparturesWithDetails) => Promise<IOpenLDBSVWSStationBoard>;

@@ -186,7 +186,7 @@ export interface IParams_GetFastestDeparturesWithDetails {
 }
 export interface IParams_GetHistoricDepartureBoard {
     crs: string;
-    historicDatetime: Date;
+    historicDateTime: Date;
     numRows?: number;
     depBoardDate?: EDateModifier;
     depBoardtime?: string;
