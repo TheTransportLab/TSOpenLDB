@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/TheTransportLab/TSOpenLDB"
   },
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A typescript implementation of the National Rail LDBSV web service API's",
   "types": "./src/interfaces/index.d.ts",
   "main": "./build/index.js",

@@ -12,8 +12,14 @@ Library documentation also found in the **/docs** folder
 
 ### Install
 
+To install version 2.0 (the version that these docs relate to):
 ```
-yarn add @thetransportlab/tsopenldb
+yarn add @thetransportlab/tsopenldb@next
+```
+
+To install the current stable/prod version:
+```
+yarn add @thetransportlab/tsopenldb@latest
 ```
 
 ### New in version 2
