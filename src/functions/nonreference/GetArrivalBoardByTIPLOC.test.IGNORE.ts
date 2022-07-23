@@ -11,7 +11,7 @@ let result;
 describe("GetArrivalBoardByTIPLOC", () => {
   before(async () => {
     result = await GetArrivalBoardByTIPLOC({
-      // @ts-ignore - Why the fuck is this broken? It IS fucking defined in the fucking interface, dipshit
+      // @ts-ignore
       apiKey: process.env.OPENLDBSV_API_KEY!,
       args: {
         tipLoc: "LEEDS",

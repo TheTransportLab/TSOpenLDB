@@ -13,13 +13,12 @@ const serviceRid = "202207217636931";
 describe("GetServiceDetailsByRID", () => {
   before(async () => {
     result = await GetServiceDetailsByRID({
-      // @ts-ignore - Why the fuck is this broken? It IS fucking defined in the fucking interface, dipshit
+      // @ts-ignore
       apiKey: process.env.OPENLDBSV_API_KEY!,
       args: {
         rid: serviceRid,
       },
     });
-    // console.log(result?.locations?.location[0]);
   });
   // it("Should be an array", async () => {
   //   // expect(result).to.be.an("array");

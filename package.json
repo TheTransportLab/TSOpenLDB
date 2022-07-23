@@ -14,6 +14,8 @@
     "build": "ttsc && cp ./OpenLDBSVWS.wsdl ./build/ && cp ./OpenLDBSVWS.ref.wsdl ./build/",
     "dev": "ts-node src/index.ts",
     "doc": "rimraf docs/ && typedoc --out docs src/index.ts",
+    "generateinterfaces": "yarn ts-node ./src/devtools/generateInterfaces.ts",
+    "viewendpoints": "yarn ts-node ./src/devtools/viewEndpoints.ts",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register '**/*.test.ts' --timeout 10000"
   },
   "author": "Scott Pritchard",
