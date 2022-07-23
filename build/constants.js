@@ -1,27 +1,255 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var ESOAPNamespaces;
-(function (ESOAPNamespaces) {
-    ESOAPNamespaces["NAMESPACE_LDB"] = "NAMESPACE_LDB";
-    ESOAPNamespaces["NAMESPACE_SOAP"] = "NAMESPACE_SOAP";
-    ESOAPNamespaces["NAMESPACE_TYPE"] = "NAMESPACE_TYPE";
-})(ESOAPNamespaces = exports.ESOAPNamespaces || (exports.ESOAPNamespaces = {}));
-exports.NAMESPACE_LDB = "NAMESPACE_LDB";
-exports.XMLOpening = `
-<${ESOAPNamespaces.NAMESPACE_SOAP}:Envelope
-  xmlns:${ESOAPNamespaces.NAMESPACE_SOAP}="http://schemas.xmlsoap.org/soap/envelope/"
-  xmlns:${ESOAPNamespaces.NAMESPACE_TYPE}="http://thalesgroup.com/RTTI/2013-11-28/Token/types"
-  xmlns:${ESOAPNamespaces.NAMESPACE_LDB}="http://thalesgroup.com/RTTI/2017-10-01/ldbsv/"
->
-  <${ESOAPNamespaces.NAMESPACE_SOAP}:Header>
-    <${ESOAPNamespaces.NAMESPACE_TYPE}:AccessToken>
-      <${ESOAPNamespaces.NAMESPACE_TYPE}:TokenValue>$$_TOKEN_$$</${ESOAPNamespaces.NAMESPACE_TYPE}:TokenValue>
-    </${ESOAPNamespaces.NAMESPACE_TYPE}:AccessToken>
-  </${ESOAPNamespaces.NAMESPACE_SOAP}:Header>
-  <${ESOAPNamespaces.NAMESPACE_SOAP}:Body>
-`;
-exports.XMLClosing = `
-  </${ESOAPNamespaces.NAMESPACE_SOAP}:Body>
-</${ESOAPNamespaces.NAMESPACE_SOAP}:Envelope>
-`;
-//# sourceMappingURL=constants.js.map
+exports.nonReferenceEndpoints = exports.referenceEndpoints = void 0;
+exports.referenceEndpoints = [
+    {
+        name: "GetReasonCodeAsync",
+        args: {
+            reasonCode: 501,
+        },
+    },
+    {
+        name: "GetReasonCodeListAsync",
+        args: {},
+    },
+    {
+        name: "GetSourceInstanceNamesAsync",
+        args: {},
+    },
+    {
+        name: "GetTOCListAsync",
+        args: {
+            currentVersion: "",
+        },
+    },
+    {
+        name: "GetStationListAsync",
+        args: {
+            currentVersion: "",
+        },
+    },
+];
+exports.nonReferenceEndpoints = [
+    {
+        name: "GetArrivalDepartureBoardByCRSAsync",
+        args: {
+            numRows: 2,
+            crs: "LDS",
+            time: "00:01:00",
+            timeWindow: 120,
+            filtercrs: "",
+            filterType: "to",
+            filterTOC: "",
+            services: "PBS",
+            getNonPassengerServices: true,
+        },
+    },
+    {
+        name: "GetArrivalDepartureBoardByTIPLOCAsync",
+        args: {
+            numRows: 2,
+            tiploc: "LEEDS",
+            time: "00:01:00",
+            timeWindow: 120,
+            filterTiploc: "",
+            filterType: "to",
+            filterTOC: "",
+            services: "PBS",
+            getNonPassengerServices: true,
+        },
+    },
+    {
+        name: "GetArrivalBoardByCRSAsync",
+        args: {
+            numRows: 2,
+            crs: "LDS",
+            time: "00:01:00",
+            timeWindow: 120,
+            filtercrs: "",
+            filterType: "to",
+            filterTOC: "",
+            services: "PBS",
+            getNonPassengerServices: true,
+        },
+    },
+    {
+        name: "GetDepartureBoardByCRSAsync",
+        args: {
+            numRows: 2,
+            crs: "LDS",
+            time: "00:01:00",
+            timeWindow: 120,
+            filtercrs: "",
+            filterType: "to",
+            filterTOC: "",
+            services: "PBS",
+            getNonPassengerServices: true,
+        },
+    },
+    {
+        name: "GetArrivalBoardByTIPLOCAsync",
+        // active: false,
+        args: {
+            numRows: 2,
+            tiploc: "LEEDS",
+            time: "00:01:00",
+            timeWindow: 120,
+            filterTiploc: "",
+            filterType: "to",
+            filterTOC: "",
+            services: "PBS",
+            getNonPassengerServices: true,
+        },
+    },
+    {
+        name: "GetDepartureBoardByTIPLOCAsync",
+        // active: false,
+        args: {
+            numRows: 2,
+            tiploc: "LEEDS",
+            time: "00:01:00",
+            timeWindow: 120,
+            filterTiploc: "",
+            filterType: "to",
+            filterTOC: "",
+            services: "PBS",
+            getNonPassengerServices: true,
+        },
+    },
+    {
+        name: "GetServiceDetailsByRIDAsync",
+        // active: false,
+        args: {
+            rid: "202207218013572",
+        },
+    },
+    {
+        name: "QueryServicesAsync",
+        // active: true,
+        args: {
+            serviceID: "1P03",
+            sdd: new Date().toISOString().toString().slice(0, -14),
+            filterTime: "08:00:00+01:00",
+            filtercrs: "",
+            tocFilter: "",
+        },
+    },
+    {
+        name: "GetDisruptionListAsync",
+        args: {
+            CRSList: [{ crs: "LDS" }],
+        },
+    },
+    {
+        name: "GetHistoricDepartureBoardAsync",
+        active: false,
+        args: {},
+    },
+    {
+        name: "GetHistoricServiceDetailsAsync",
+        active: false,
+        args: {},
+    },
+    {
+        name: "GetHistoricTimeLineAsync",
+        active: false,
+        args: {},
+    },
+    {
+        name: "QueryHistoricServicesAsync",
+        active: false,
+        args: {},
+    },
+    {
+        name: "GetArrDepBoardWithDetailsAsync",
+        args: {
+            numRows: 2,
+            crs: "LDS",
+            filterCrs: "",
+            filterType: "to",
+            timeOffset: 0,
+            timeWindow: 120,
+            time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
+        },
+    },
+    {
+        name: "GetArrBoardWithDetailsAsync",
+        args: {
+            numRows: 2,
+            crs: "LDS",
+            filtercrs: "",
+            filterType: "to",
+            timeOffset: 0,
+            timeWindow: 120,
+            time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
+        },
+    },
+    {
+        name: "GetDepBoardWithDetailsAsync",
+        args: {
+            numRows: 2,
+            crs: "LDS",
+            filtercrs: "",
+            filterType: "to",
+            timeOffset: 0,
+            timeWindow: 120,
+            time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
+        },
+    },
+    {
+        name: "GetNextDeparturesAsync",
+        args: {
+            crs: "LDS",
+            filterList: [
+                {
+                    crs: "YRK",
+                },
+            ],
+            time: new Date().toISOString().toString().slice(0, -5),
+            timeOffset: 0,
+            timeWindow: 120,
+        },
+    },
+    {
+        name: "GetFastestDeparturesAsync",
+        args: {
+            crs: "LDS",
+            filterList: [
+                {
+                    crs: "YRK",
+                },
+            ],
+            time: new Date().toISOString().toString().slice(0, -5),
+            timeOffset: 0,
+            timeWindow: 120,
+        },
+    },
+    {
+        name: "GetNextDeparturesWithDetailsAsync",
+        args: {
+            crs: "LDS",
+            filterList: [
+                {
+                    crs: "YRK",
+                },
+            ],
+            time: new Date().toISOString().toString().slice(0, -5),
+            timeOffset: 0,
+            timeWindow: 120,
+        },
+    },
+    {
+        name: "GetFastestDeparturesWithDetailsAsync",
+        args: {
+            crs: "LDS",
+            filterList: [
+                {
+                    crs: "YRK",
+                },
+            ],
+            time: new Date().toISOString().toString().slice(0, -5),
+            timeOffset: 0,
+            timeWindow: 120,
+        },
+    },
+];

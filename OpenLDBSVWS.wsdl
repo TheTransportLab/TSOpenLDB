@@ -1,0 +1,8 @@
+<definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:sv="http://thalesgroup.com/RTTI/2017-10-01/ldbsv/" targetNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldbsv/">
+	<import namespace="http://thalesgroup.com/RTTI/2017-10-01/ldbsv/" location="https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/rtti_2017-10-01_ldbsv.wsdl" />
+	<service name="ldbsv">
+		<port name="LDBSVServiceSoap12" binding="sv:LDBSVServiceSoap12">
+			<address location="https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/ldbsv12.asmx" />
+		</port>
+	</service>
+</definitions>

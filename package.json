@@ -4,37 +4,44 @@
     "type": "git",
     "url": "https://github.com/TheTransportLab/TSOpenLDB"
   },
-  "version": "1.1.65",
+  "version": "2.0.0",
   "description": "A typescript implementation of the National Rail LDBSV web service API's",
-  "types": "./build/index.d.ts",
+  "types": "./src/interfaces/index.d.ts",
   "main": "./build/index.js",
   "scripts": {
-    "clean": "rimraf build/",
+    "clean": "rimraf build/ && rimraf interfaces/ && mkdir interfaces/",
     "prebuild": "npm run clean",
-    "build": "ttsc",
+    "build": "ttsc && cp ./OpenLDBSVWS.wsdl ./build/ && cp ./OpenLDBSVWS.ref.wsdl ./build/",
     "dev": "ts-node src/index.ts",
-    "doc": "rimraf docs/ && typedoc"
+    "doc": "rimraf docs/ && typedoc --out docs src/index.ts",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register '**/*.test.ts' --timeout 10000"
   },
   "author": "Scott Pritchard",
   "license": "ISC",
   "devDependencies": {
-    "@types/moment-timezone": "^0.5.13",
+    "@types/chai": "^4.3.1",
+    "@types/jest": "^28.1.6",
+    "@types/mocha": "^9.1.1",
     "@types/node": "^13.1.7",
+    "@types/soap": "^0.21.0",
+    "chai": "^4.3.6",
+    "chai-like": "^1.1.1",
+    "chai-things": "^0.2.0",
+    "mocha": "^10.0.0",
     "rimraf": "^3.0.2",
     "ts-node": "^8.4.1",
     "ts-optchain": "^0.1.8",
     "ttypescript": "^1.5.7",
-    "typedoc": "^0.16.2",
-    "typescript": "^3.6.4",
-    "typescript-transform-paths": "^1.1.11"
+    "typedoc": "^0.23.8",
+    "typescript": "^4.7.4",
+    "typescript-interface-generator": "^0.0.6",
+    "typescript-transform-paths": "^1.1.11",
+    "wsdl-tsclient": "^1.4.0"
   },
   "dependencies": {
-    "@types/node-fetch": "^2.5.2",
-    "@types/xml2js": "^0.4.5",
-    "date-fns": "^2.11.1",
-    "geo-tz": "^5.1.0",
-    "moment-timezone": "^0.5.28",
-    "node-fetch": "^2.6.0",
-    "xml2js": "^0.4.22"
+    "@js-temporal/polyfill": "^0.4.2",
+    "dotenv": "^16.0.1",
+    "soap": "^0.45.0",
+    "utility-types": "^3.10.0"
   }
 }

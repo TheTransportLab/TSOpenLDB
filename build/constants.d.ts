@@ -1,8 +1,18 @@
-export declare enum ESOAPNamespaces {
-    NAMESPACE_LDB = "NAMESPACE_LDB",
-    NAMESPACE_SOAP = "NAMESPACE_SOAP",
-    NAMESPACE_TYPE = "NAMESPACE_TYPE"
+export interface IArgsBase {
+    apiKey: string;
 }
-export declare const NAMESPACE_LDB = "NAMESPACE_LDB";
-export declare const XMLOpening: string;
-export declare const XMLClosing: string;
+export declare type TNonReferenceEndpoints = "GetArrivalDepartureBoardByCRSAsync" | "GetArrivalBoardByCRSAsync" | "GetArrivalDepartureBoardByTIPLOCAsync" | "GetDepartureBoardByCRSAsync" | "GetArrivalBoardByTIPLOCAsync" | "GetDepartureBoardByTIPLOCAsync" | "GetServiceDetailsByRIDAsync" | "QueryServicesAsync" | "GetDisruptionListAsync" | "GetHistoricDepartureBoardAsync" | "GetHistoricServiceDetailsAsync" | "GetHistoricTimeLineAsync" | "QueryHistoricServicesAsync" | "GetArrDepBoardWithDetailsAsync" | "GetArrBoardWithDetailsAsync" | "GetDepBoardWithDetailsAsync" | "GetNextDeparturesAsync" | "GetFastestDeparturesAsync" | "GetNextDeparturesWithDetailsAsync" | "GetFastestDeparturesWithDetailsAsync";
+export declare type TReferenceEndpoints = "GetReasonCodeAsync" | "GetReasonCodeListAsync" | "GetSourceInstanceNamesAsync" | "GetTOCListAsync" | "GetStationListAsync";
+interface IEndpointStructBase<T = any> {
+    active?: boolean;
+    args: Record<string, T>;
+}
+export interface TReferenceEndpointStruct extends IEndpointStructBase {
+    name: TReferenceEndpoints;
+}
+export interface TNonReferenceEndpointStruct extends IEndpointStructBase {
+    name: TNonReferenceEndpoints;
+}
+export declare const referenceEndpoints: TReferenceEndpointStruct[];
+export declare const nonReferenceEndpoints: TNonReferenceEndpointStruct[];
+export {};

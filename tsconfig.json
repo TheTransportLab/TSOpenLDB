@@ -1,25 +1,24 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
+    "sourceMap": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "module": "commonjs",
-    "target": "es2018",
+    "target": "ES2020",
     "baseUrl": "./",
     "rootDir": "./src/",
     "outDir": "./build/",
     "declarationDir": "./build/",
+    "skipLibCheck": true,
     "declaration": true,
     "paths": {
       "@Root/*": ["./*"],
-      "@Data/*": ["data/*"],
-      "@Modules/*": ["src/modules/*"],
-      "@Constants": ["src/constants/Constants"],
+      "@Functions/*": ["src/functions/*"],
+      "@DevTools/*": ["src/devtools/*"],
+      "@Constants": ["src/constants"],
       "@Interfaces/*": ["src/interfaces/*"],
-      "@Config": ["src/config"],
-      "@Dist": ["dist"]
     },
     "plugins": [
       { "transform": "typescript-transform-paths" },
@@ -27,10 +26,12 @@
     ]
   },
   "include": [
-    "./**/*.ts"
+    "./**/*.ts",
   ],
   "exclude": [
     "node_modules",
-    "build"
+    "build",
+    "interfaces",
+    "./**/*.test.ts",
   ]
 }

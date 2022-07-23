@@ -1,489 +1,125 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _TSOpenLDBSV_apiKey, _TSOpenLDBSV_timeOffsetInMinutes;
 Object.defineProperty(exports, "__esModule", { value: true });
-const interfaces_1 = require("./interfaces");
-exports.EOperation = 
-// IOpenLDBWS,
-interfaces_1.EOperation;
-exports.EStaffOperation = interfaces_1.EStaffOperation;
-exports.ESOAPStaffAction = interfaces_1.ESOAPStaffAction;
-exports.ESOAPAction = interfaces_1.ESOAPAction;
-exports.EOperationInfoEntryType = interfaces_1.EOperationInfoEntryType;
-exports.EOperationInfoEntries = interfaces_1.EOperationInfoEntries;
-exports.ELDBWSOperationInfoKeys = interfaces_1.ELDBWSOperationInfoKeys;
-exports.EListFields = interfaces_1.EListFields;
-exports.EFilterType = interfaces_1.EFilterType;
-exports.EServices = interfaces_1.EServices;
-exports.EDateModifier = interfaces_1.EDateModifier;
-const TimezoneOffset_1 = require("./TimezoneOffset");
-const constants_1 = require("./constants");
-const node_fetch_1 = __importDefault(require("node-fetch"));
-const xml2js_1 = __importDefault(require("xml2js"));
-const moment_timezone_1 = __importDefault(require("moment-timezone"));
-const format_1 = __importDefault(require("date-fns/format"));
-const parseISO_1 = __importDefault(require("date-fns/parseISO"));
-// fetchFromDarwin
-class TSOpenLDB {
-    constructor({ apiKey, debugEnabled = false }) {
-        this._debugEnabled = false;
-        this.CallRequiredParams = (params) => {
-            const { time, timeOffset, timeWindow, getNonPassengerServices, crs, crsList, tiploc, numRows, filterCrs, filterCRSType, historicDateTime, depBoardDate, depBoardTime, serviceUID, scheduleStartDate, sdd, fullTiploc, rid, serviceID, timeFilter, routeCrsFilter, tocFilter, filterTiploc, filterType, filterTOC, services, filterList, filterTime, currentVersion, reasonCode } = params;
-            const APICalls = {
-                GetArrBoardWithDetails: {
-                    numRows,
-                    crs,
-                    filterCrs,
-                    filterType,
-                    timeOffset,
-                    timeWindow
-                },
-                GetArrDepBoardWithDetails: {
-                    numRows,
-                    crs,
-                    filterCrs,
-                    filterType,
-                    timeOffset,
-                    timeWindow
-                },
-                GetArrivalBoardByCRS: {
-                    numRows,
-                    crs,
-                    time,
-                    timeWindow,
-                    filterCrs,
-                    filterType,
-                    filterTOC,
-                    services,
-                    getNonPassengerServices
-                },
-                GetArrivalBoardByTIPLOC: {
-                    numRows,
-                    tiploc,
-                    time,
-                    filterTiploc,
-                    filterType,
-                    filterTOC,
-                    services,
-                    getNonPassengerServices
-                },
-                GetArrivalDepartureBoardByCRS: {
-                    numRows,
-                    crs,
-                    time,
-                    filterCrs,
-                    filterType,
-                    filterTOC,
-                    services,
-                    getNonPassengerServices
-                },
-                GetArrivalDepartureBoardByTIPLOC: {
-                    numRows,
-                    tiploc,
-                    time,
-                    filterTiploc,
-                    filterType,
-                    filterTOC,
-                    services,
-                    getNonPassengerServices
-                },
-                GetDepBoardWithDetails: {
-                    numRows,
-                    crs,
-                    filterCrs,
-                    filterType,
-                    timeOffset,
-                    timeWindow
-                },
-                GetDepartureBoardByCRS: {
-                    numRows,
-                    crs,
-                    time,
-                    timeWindow,
-                    filterCrs,
-                    filterType,
-                    filterTOC,
-                    services,
-                    getNonPassengerServices
-                },
-                GetDepartureBoardByTIPLOC: {
-                    numRows,
-                    tiploc,
-                    time,
-                    filterTiploc,
-                    filterType,
-                    filterTOC,
-                    services,
-                    getNonPassengerServices
-                },
-                GetDisruptionList: {
-                    crsList
-                },
-                GetFastestDepartures: {
-                    crs,
-                    filterList,
-                    time,
-                    timeWindow,
-                    filterTOC,
-                    services
-                },
-                GetFastestDeparturesWithDetails: {
-                    crs,
-                    filterList,
-                    time,
-                    timeWindow,
-                    filterTOC,
-                    services
-                },
-                GetHistoricDepartureBoard: {
-                    numRows,
-                    crs,
-                    historicDateTime,
-                    depBoardDate,
-                    depBoardTime,
-                    timeWindow,
-                    filterCrs,
-                    filterCRSType,
-                    filterTOC,
-                    services,
-                    getNonPassengerServices
-                },
-                GetHistoricServiceDetails: {
-                    serviceUID,
-                    scheduleStartDate,
-                    historicDateTime
-                },
-                GetHistoricTimeLine: {
-                    serviceUID,
-                    scheduleStartDate,
-                    historicDateTime,
-                    fullTiploc
-                },
-                GetNextDepartures: {
-                    crs,
-                    filterList,
-                    time,
-                    timeWindow,
-                    filterTOC,
-                    services
-                },
-                GetNextDeparturesWithDetails: {
-                    crs,
-                    filterList,
-                    time,
-                    timeWindow,
-                    filterTOC,
-                    services
-                },
-                GetServiceDetailsByRID: {
-                    rid
-                },
-                QueryHistoricServices: {
-                    serviceID,
-                    historicDateTime,
-                    scheduleStartDate,
-                    timeFilter,
-                    routeCrsFilter,
-                    tocFilter
-                },
-                QueryServices: {
-                    serviceID,
-                    sdd,
-                    filterTime,
-                    filterCrs,
-                    tocFilter
-                },
-                GetTocList: {
-                    currentVersion
-                },
-                GetStationList: {
-                    currentVersion
-                },
-                GetReasonCode: {
-                    reasonCode
-                },
-                GetReasonCodeList: {}
-            };
-            return APICalls;
-        };
-        this.logToConsole = (message = "No message") => {
-            console.log(`${new Date().toISOString()} ${typeof message === "object" ? JSON.stringify(message) : message}`);
-        };
-        this.fetchFromDarwin = async (operation, xml) => {
-            const headers = {
-                SOAPAction: operation,
-                "Content-Type": "text/xml"
-            };
-            const fetchRequest = await node_fetch_1.default("https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/ldbsv12.asmx", {
-                method: "POST",
-                body: xml,
-                headers
-            });
-            if (this._debugEnabled) {
-                this.logToConsole({ headers, xml, operation });
-            }
-            if (fetchRequest.status !== 200) {
-                throw new Error(`Request error (Status code ${fetchRequest.status}). Please ensure your key is correct, and that it is valid.`);
-            }
-            const responseData = await fetchRequest.text();
-            const parsedXML = await xml2js_1.default.parseStringPromise(responseData, {
-                tagNameProcessors: [xml2js_1.default.processors.stripPrefix],
-                explicitArray: false,
-                ignoreAttrs: true
-            });
-            const firstTree = { ...Object.values(parsedXML.Envelope.Body)[0] };
-            const result = { ...Object.values(firstTree)[0] };
-            //@ts-ignore
-            return result;
-        };
-        this.mapParamsToSOAPXml = (operation, params) => {
-            return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>` +
-                Object.entries(params).map(([key, value]) => (() => {
-                    switch (key) {
-                        case "crsList":
-                            return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>${value.length > 0 ? value.map(crs => `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.crsList}>${crs}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.crsList}>`).join("\n") : "\n"}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>`;
-                        case "filterCRS":
-                        case "filterCrs":
-                        case "filtercrs":
-                            return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.filterCrs}>${value}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.filterCrs}>`;
-                        case "filterList":
-                            return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>${value.length > 0 ? value.map(toc => `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.filterList}>${toc}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.filterList}>`).join("\n") : "\n"}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>`;
-                        case "filterTOC":
-                        case "filterToc":
-                        case "filtertoc":
-                            return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>${value.length > 0 ? value.map(toc => `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.filterTOC}>${toc}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${interfaces_1.EListFields.filterTOC}>`).join("\n") : "\n"}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>`;
-                        default:
-                            return `<${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>${value}</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${key}>`;
-                    }
-                })()).join("\n") +
-                `</${constants_1.ESOAPNamespaces.NAMESPACE_LDB}:${operation}Request>`;
-        };
-        this.getArrBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
-            const _time = TimezoneOffset_1.getTimeWithOffset(timeOffset).toISOString();
-            const params = { numRows, timeWindow, time: _time, timeOffset, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrBoardWithDetails, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrBoardWithDetails, XML)
-            };
-        };
-        this.getArrDepBoardWithDetails = async ({ filterType = interfaces_1.EFilterType.to, timeOffset = 0, timeWindow = 120, ..._params }) => {
-            const params = { filterType, timeOffset, timeWindow, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrDepBoardWithDetails, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrDepBoardWithDetails, XML)
-            };
-        };
-        this.getArrivalBoardByCRS = async ({ time = new Date(), services = interfaces_1.EServices.TRAIN, numRows = 120, timeWindow = 120, getNonPassengerServices = false, ..._params }) => {
-            const params = { time: time.toISOString(), services, numRows, timeWindow, getNonPassengerServices, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalBoardByCrs, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalBoardByCrs, XML)
-            };
-        };
-        this.getArrivalBoardByTIPLOC = async ({ time = new Date(), numRows = 120, services = interfaces_1.EServices.TRAIN, getNonPassengerServices = false, ..._params }) => {
-            const params = { time: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalBoardByTiploc, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalBoardByTiploc, XML)
-            };
-        };
-        this.getArrivalDepartureBoardByCRS = async ({ time = new Date(), numRows = 120, services = interfaces_1.EServices.TRAIN, getNonPassengerServices = false, ..._params }) => {
-            const params = { timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalDepartureBoardByCrs, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML)
-            };
-        };
-        this.getArrivalDepartureBoardByTIPLOC = async ({ time = new Date(), numRows = 120, services = interfaces_1.EServices.TRAIN, getNonPassengerServices = false, ..._params }) => {
-            const params = { timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalDepartureBoardByTiploc, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetArrivalDepartureBoardByCrs, XML)
-            };
-        };
-        this.getDepBoardWithDetails = async ({ numRows = 120, timeWindow = 120, timeOffset = 0, time = new Date().toISOString(), ..._params }) => {
-            const _time = TimezoneOffset_1.getTimeWithOffset(timeOffset).toISOString();
-            const params = { numRows, timeWindow, time: _time, timeOffset, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepBoardWithDetails, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepBoardWithDetails, XML)
-            };
-        };
-        this.getDepartureBoardByCRS = async ({ timeWindow = 120, time = new Date(), getNonPassengerServices = false, services = interfaces_1.EServices.TRAIN, numRows = 120, filterType = interfaces_1.EFilterType.to, ..._params }) => {
-            const params = { time: time.toISOString(), timeWindow, getNonPassengerServices, services, numRows, filterType, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepartureBoardByCrs, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepartureBoardByCrs, XML)
-            };
-        };
-        this.getDepartureBoardByTIPLOC = async ({ time = new Date(), getNonPassengerServices = false, services = interfaces_1.EServices.TRAIN, numRows = 120, filterType = interfaces_1.EFilterType.to, ..._params }) => {
-            const params = { timetime: time.toISOString(), getNonPassengerServices, services, numRows, filterType, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepartureBoardByTiploc, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDepartureBoardByTiploc, XML)
-            };
-        };
-        this.getDisruptionList = async ({ ..._params }) => {
-            const params = { ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDisruptionList, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetDisruptionList, XML);
-        };
-        this.getFastestDepartures = async ({ services = interfaces_1.EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params }) => {
-            const params = { services, timeWindow, time: time.toISOString(), ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getFastestDepartures, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetFastestDepartures, XML)
-            };
-        };
-        this.getFastestDeparturesWithDetails = async ({ services = interfaces_1.EServices.TRAIN, timeWindow = 120, time = new Date(), ..._params }) => {
-            const params = { services, timeWindow, time: time.toISOString(), ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getFastestDeparturesWithDetails, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetFastestDeparturesWithDetails, XML)
-            };
-        };
-        /**
-         *
-         * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
-         *
-         */
-        this.getHistoricDepartureBoard = async ({ numRows = 120, timeWindow = 120, ..._params }) => {
-            const params = { ..._params, historicDateTime: format_1.default(parseISO_1.default(_params.historicDateTime.toISOString()), "yyyy-LL-dd'T'HH:mm:ss"), numRows, timeWindow };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getHistoricDepartureBoard, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetHistoricDepartureBoard, XML)
-            };
-        };
-        /**
-         *
-         * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
-         *
-         */
-        this.getHistoricServiceDetails = async ({ ..._params }) => {
-            const params = { ..._params, historicDateTime: format_1.default(parseISO_1.default(_params.historicDateTime), "yyyy-LL-dd'T'HH:mm:ss") };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getHistoricServiceDetails, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetHistoricServiceDetails, XML);
-        };
-        /**
-         *
-         * @note This function is not supported by Darwin - See https://groups.google.com/g/openraildata-talk/c/_gfoJ79WGbw/m/YKGvv9FVAwAJ
-         *
-         */
-        this.getHistoricTimeLine = async ({ ..._params }) => {
-            const params = { ..._params, historicDateTime: format_1.default(parseISO_1.default(_params.historicDatetime), "yyyy-LL-dd'T'HH:mm:ss") };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getHistoricTimeLine, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetHistoricTimeLine, XML);
-        };
-        this.getNextDepartures = async ({ time = new Date(), timeWindow = 120, services = interfaces_1.EServices.TRAIN, ..._params }) => {
-            const params = { time: time.toISOString(), timeWindow, services, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getNextDepartures, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetNextDepartures, XML)
-            };
-        };
-        this.getNextDeparturesWithDetails = async ({ time = new Date(), timeWindow = 120, services = interfaces_1.EServices.TRAIN, ..._params }) => {
-            const params = { time: time.toISOString(), timeWindow, services, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getNextDeparturesWithDetails, params)}${constants_1.XMLClosing}`;
-            return {
-                trainServices: { service: [] },
-                busServices: { service: [] },
-                ferryServices: { service: [] },
-                platformsAreHidden: false,
-                servicesAreUnavailable: false,
-                ...await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetNextDeparturesWithDetails, XML)
-            };
-        };
-        this.getServiceDetailsByRid = async ({ ..._params }) => {
-            const params = { ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getServiceDetailsByRid, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.GetServiceDetailsByRid, XML);
-        };
-        this.queryHistoricServices = async ({ timeFilter = new Date(), ..._params }) => {
-            const params = { timeFilter: timeFilter.toISOString(), ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.queryHistoricServices, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.QueryHistoricServices, XML);
-        };
-        this.queryServices = async ({ sdd = new Date(), ..._params }) => {
-            // if (!momentTZ(sdd).isValid){
-            //   return false;
-            // }
-            const ParsedSDD = moment_timezone_1.default(sdd).format("YYYY-MM-DD");
-            const params = { sdd: ParsedSDD, ..._params };
-            const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.queryServices, params)}${constants_1.XMLClosing}`;
-            return await this.fetchFromDarwin(interfaces_1.ESOAPStaffAction.QueryServices, XML);
-        };
-        if (!apiKey || typeof apiKey !== "string") {
-            throw new Error("You must provide an API key from the National Rail OpenLDB Staff Webservice. Register: http://openldbsv.nationalrail.co.uk/");
+exports.GetStationList = exports.GetTOCList = exports.GetSourceInstanceNames = exports.GetReasonCodeList = exports.GetReasonCode = exports.QueryServices = exports.GetServiceDetailsByRID = exports.GetDisruptionList = exports.GetDepartureBoardByTIPLOC = exports.GetArrivalBoardByTIPLOC = exports.GetArrivalBoardByCRS = exports.GetDepartureBoardByCRS = exports.GetArrivalDepartureBoardByTIPLOC = exports.GetArrivalDepartureBoardByCRS = exports.getLondonTimeViaTemporal = exports.TSOpenLDBSV = void 0;
+// Non-reference functions
+const GetArrivalDepartureBoardByCRS_1 = require("./functions/nonreference/GetArrivalDepartureBoardByCRS");
+Object.defineProperty(exports, "GetArrivalDepartureBoardByCRS", { enumerable: true, get: function () { return GetArrivalDepartureBoardByCRS_1.fn; } });
+const GetArrivalDepartureBoardByTIPLOC_1 = require("./functions/nonreference/GetArrivalDepartureBoardByTIPLOC");
+Object.defineProperty(exports, "GetArrivalDepartureBoardByTIPLOC", { enumerable: true, get: function () { return GetArrivalDepartureBoardByTIPLOC_1.fn; } });
+const GetDepartureBoardByCRS_1 = require("./functions/nonreference/GetDepartureBoardByCRS");
+Object.defineProperty(exports, "GetDepartureBoardByCRS", { enumerable: true, get: function () { return GetDepartureBoardByCRS_1.fn; } });
+const GetArrivalBoardByCRS_1 = require("./functions/nonreference/GetArrivalBoardByCRS");
+Object.defineProperty(exports, "GetArrivalBoardByCRS", { enumerable: true, get: function () { return GetArrivalBoardByCRS_1.fn; } });
+const GetArrivalBoardByTIPLOC_1 = require("./functions/nonreference/GetArrivalBoardByTIPLOC");
+Object.defineProperty(exports, "GetArrivalBoardByTIPLOC", { enumerable: true, get: function () { return GetArrivalBoardByTIPLOC_1.fn; } });
+const GetDepartureBoardByTIPLOC_1 = require("./functions/nonreference/GetDepartureBoardByTIPLOC");
+Object.defineProperty(exports, "GetDepartureBoardByTIPLOC", { enumerable: true, get: function () { return GetDepartureBoardByTIPLOC_1.fn; } });
+const GetDisruptionList_1 = require("./functions/nonreference/GetDisruptionList");
+Object.defineProperty(exports, "GetDisruptionList", { enumerable: true, get: function () { return GetDisruptionList_1.fn; } });
+const GetServiceDetailsByRID_1 = require("./functions/nonreference/GetServiceDetailsByRID");
+Object.defineProperty(exports, "GetServiceDetailsByRID", { enumerable: true, get: function () { return GetServiceDetailsByRID_1.fn; } });
+const QueryServices_1 = require("./functions/nonreference/QueryServices");
+Object.defineProperty(exports, "QueryServices", { enumerable: true, get: function () { return QueryServices_1.fn; } });
+// Reference functions
+const GetReasonCode_1 = require("./functions/reference/GetReasonCode");
+Object.defineProperty(exports, "GetReasonCode", { enumerable: true, get: function () { return GetReasonCode_1.fn; } });
+const GetReasonCodeList_1 = require("./functions/reference/GetReasonCodeList");
+Object.defineProperty(exports, "GetReasonCodeList", { enumerable: true, get: function () { return GetReasonCodeList_1.fn; } });
+const GetSourceInstanceNames_1 = require("./functions/reference/GetSourceInstanceNames");
+Object.defineProperty(exports, "GetSourceInstanceNames", { enumerable: true, get: function () { return GetSourceInstanceNames_1.fn; } });
+const GetTOCList_1 = require("./functions/reference/GetTOCList");
+Object.defineProperty(exports, "GetTOCList", { enumerable: true, get: function () { return GetTOCList_1.fn; } });
+const GetStationList_1 = require("./functions/reference/GetStationList");
+Object.defineProperty(exports, "GetStationList", { enumerable: true, get: function () { return GetStationList_1.fn; } });
+const TimezoneOffset_1 = require("./functions/misc/TimezoneOffset");
+Object.defineProperty(exports, "getLondonTimeViaTemporal", { enumerable: true, get: function () { return TimezoneOffset_1.getLondonTimeViaTemporal; } });
+class TSOpenLDBSV {
+    constructor({ apiKey, timeOffsetInMinutes = 0 }) {
+        _TSOpenLDBSV_apiKey.set(this, void 0);
+        _TSOpenLDBSV_timeOffsetInMinutes.set(this, 0);
+        this.GetArrivalDepartureBoardByCRS = async (args) => await (0, GetArrivalDepartureBoardByCRS_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetArrivalDepartureBoardByTIPLOC = async (args) => await (0, GetArrivalDepartureBoardByTIPLOC_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetDepartureBoardByCRS = async (args) => await (0, GetDepartureBoardByCRS_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetArrivalBoardByCRS = async (args) => await (0, GetArrivalBoardByCRS_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetReasonCode = async (args) => await (0, GetReasonCode_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetReasonCodeList = async (args) => await (0, GetReasonCodeList_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetSourceInstanceNames = async (args) => await (0, GetSourceInstanceNames_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetTOCList = async (args) => await (0, GetTOCList_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetStationList = async (args) => await (0, GetStationList_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetArrivalBoardByTIPLOC = async (args) => await (0, GetArrivalBoardByTIPLOC_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetDepartureBoardByTIPLOC = async (args) => await (0, GetDepartureBoardByTIPLOC_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetDisruptionList = async (args) => await (0, GetDisruptionList_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetServiceDetailsByRID = async (args) => await (0, GetServiceDetailsByRID_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.QueryServices = async (args) => await (0, QueryServices_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args: {
+                ...args,
+                filterTime: "",
+            },
+        });
+        __classPrivateFieldSet(this, _TSOpenLDBSV_apiKey, apiKey, "f");
+        __classPrivateFieldSet(this, _TSOpenLDBSV_timeOffsetInMinutes, timeOffsetInMinutes, "f");
+    }
+    set timeOffsetInMinutes(timeOffsetInMinutes) {
+        if (!timeOffsetInMinutes) {
+            return;
         }
-        this._apiKey = apiKey;
-        this._debugEnabled = debugEnabled;
+        __classPrivateFieldSet(this, _TSOpenLDBSV_timeOffsetInMinutes, timeOffsetInMinutes, "f");
+    }
+    get timeOffsetInMinutes() {
+        return __classPrivateFieldGet(this, _TSOpenLDBSV_timeOffsetInMinutes, "f");
     }
 }
-exports.default = TSOpenLDB;
-//# sourceMappingURL=index.js.map
+exports.TSOpenLDBSV = TSOpenLDBSV;
+_TSOpenLDBSV_apiKey = new WeakMap(), _TSOpenLDBSV_timeOffsetInMinutes = new WeakMap();

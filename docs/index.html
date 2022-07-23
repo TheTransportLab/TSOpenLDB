@@ -1,399 +1,134 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@thetransportlab/tsopenldb - v1.1.65</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">@thetransportlab/tsopenldb - v1.1.65</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1> @thetransportlab/tsopenldb - v1.1.65</h1>
-		</div>
-	</div>
-</header>
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@thetransportlab/tsopenldb</title><meta name="description" content="Documentation for @thetransportlab/tsopenldb"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@thetransportlab/tsopenldb</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
 <div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#tsopenldb" id="tsopenldb" style="color: inherit; text-decoration: none;">
-					<h1>TSOpenLDB</h1>
-				</a>
-				<p>A typescript library for interacting with the UK National Rail OpenLDBSV (staff) web service</p>
-				<p><strong>API Registration:</strong> <a href="http://openldbsv.nationalrail.co.uk/">http://openldbsv.nationalrail.co.uk/</a></p>
-				<p><strong>API Documentation:</strong> <a href="https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/">https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/</a></p>
-				<p><strong>Library documentation:</strong> <a href="https://thetransportlab.github.io/TSOpenLDB/">https://thetransportlab.github.io/TSOpenLDB/</a></p>
-				<p>Also found in the <strong>/docs</strong> folder</p>
-				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
-					<h3>Install</h3>
-				</a>
-				<pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> @thetransportlab/tsopenldb</span></code></pre>
-				<a href="#basic-usage-example" id="basic-usage-example" style="color: inherit; text-decoration: none;">
-					<h5>Basic Usage Example</h5>
-				</a>
-				<pre><code><span class="hljs-keyword">const</span> apiKey = <span class="hljs-string">"ADD_YOUR_API_KEY"</span>;
-<span class="hljs-keyword">import</span> OpenLDB, { ITSOpenLDB } <span class="hljs-keyword">from</span> <span class="hljs-string">"tsopenldb"</span>;
-<span class="hljs-keyword">const</span> LDB: ITSOpenLDB = <span class="hljs-keyword">new</span> OpenLDB({apiKey});
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<h2>@thetransportlab/tsopenldb</h2></div>
+<div class="tsd-panel tsd-typography">
+<a href="#tsopenldb" id="tsopenldb" style="color: inherit; text-decoration: none;">
+  <h1>TSOpenLDB</h1>
+</a>
+<p>A typescript library for interacting with the UK National Rail OpenLDBSV (staff) web service</p>
+<p><strong>API Registration:</strong> <a href="http://openldbsv.nationalrail.co.uk/">http://openldbsv.nationalrail.co.uk/</a></p>
+<p><strong>API Documentation:</strong> <a href="https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/">https://lite.realtime.nationalrail.co.uk/OpenLDBSVWS/</a></p>
+<p><strong>Library documentation:</strong> <a href="https://thetransportlab.github.io/TSOpenLDB/">https://thetransportlab.github.io/TSOpenLDB/</a></p>
+<p>Library documentation also found in the <strong>/docs</strong> folder</p>
 
-<span class="hljs-comment">// You can use async-await or .then()</span>
-<span class="hljs-comment">// You should add error handling in any case, as it will throw if it can't contact the API or the API returns an error (e.g. status code !== 200)</span>
-<span class="hljs-keyword">const</span> requestConfig = {
-    <span class="hljs-attr">crs</span>: <span class="hljs-string">"LDS"</span>,
-    <span class="hljs-attr">numRows</span>: <span class="hljs-number">150</span>,
-    <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()
-};
-LDB.getDepartureBoardByCRS(requestConfig)
-    .then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(data));</code></pre>
-				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
-					<h5>Why?</h5>
-				</a>
-				<p>There already exist several libraries which implement support for the calls (though many of them only support the non-staff endpoint) but none of them provide information on the responses. Essentially, they offer a way of creating a SOAP response and parsing the XML to JSON. To date, my library is the only one that serves this purpose and also supports typescript.</p>
-				<p>Sure, I could have created a <code>.d.ts</code> file for an existing library, but why not try and do better?</p>
-				<a href="#developer-notes" id="developer-notes" style="color: inherit; text-decoration: none;">
-					<h5>Developer Notes</h5>
-				</a>
-				<p>This library is a work in progress, but mostly completed. The interfaces are still in the process of being typed and so some properties which the API returns may throw an error with typescript. As I&#39;m building an API around this library, I&#39;ll publish new versions as I discover missing properties in my own testing or find properties which have incorrect types or child interfaces.</p>
-				<p>I&#39;ve done my best to make sure all the calls work as intended, but feel free to open an issue if you have any problems.</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/edarwinstations.html" class="tsd-kind-icon">EDarwin<wbr>Stations</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/edatemodifier.html" class="tsd-kind-icon">EDate<wbr>Modifier</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/efiltertype.html" class="tsd-kind-icon">EFilter<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eldbwsoperationinfokeys.html" class="tsd-kind-icon">ELDBWSOperation<wbr>Info<wbr>Keys</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/elistfields.html" class="tsd-kind-icon">EList<wbr>Fields</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eopenldbsvwsactualforecast.html" class="tsd-kind-icon">EOpenLDBSVWSActual<wbr>Forecast</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eopenldbsvwscoachclass.html" class="tsd-kind-icon">EOpenLDBSVWSCoach<wbr>Class</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eopenldbsvwstoiletstatus.html" class="tsd-kind-icon">EOpenLDBSVWSToilet<wbr>Status</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eopenldbsvwstoiletvalue.html" class="tsd-kind-icon">EOpenLDBSVWSToilet<wbr>Value</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eoperation.html" class="tsd-kind-icon">EOperation</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eoperationinfoentries.html" class="tsd-kind-icon">EOperation<wbr>Info<wbr>Entries</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eoperationinfoentrytype.html" class="tsd-kind-icon">EOperation<wbr>Info<wbr>Entry<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/esoapaction.html" class="tsd-kind-icon">ESOAPAction</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/esoapnamespaces.html" class="tsd-kind-icon">ESOAPNamespaces</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/esoapstaffaction.html" class="tsd-kind-icon">ESOAPStaff<wbr>Action</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eservices.html" class="tsd-kind-icon">EServices</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/estaffoperation.html" class="tsd-kind-icon">EStaff<wbr>Operation</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/tsopenldb.html" class="tsd-kind-icon">TSOpenLDB</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/idarwinservicesbyheadcodefnreturn.html" class="tsd-kind-icon">IDarwin<wbr>Services<wbr>ByHeadcode<wbr>FnReturn</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/idarwinservicesbyheadcodeservices.html" class="tsd-kind-icon">IDarwin<wbr>Services<wbr>ByHeadcode<wbr>Services</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ifetchfromdarwinresult.html" class="tsd-kind-icon">IFetch<wbr>From<wbr>Darwin<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ildbwssoap.html" class="tsd-kind-icon">ILDBWSSoap</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ildbwssoapoptions.html" class="tsd-kind-icon">ILDBWSSoap<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwscoachdata.html" class="tsd-kind-icon">IOpenLDBSVWSCoach<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwscoachloading.html" class="tsd-kind-icon">IOpenLDBSVWSCoach<wbr>Loading</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwsformation.html" class="tsd-kind-icon">IOpenLDBSVWSFormation</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwsservicedetails.html" class="tsd-kind-icon">IOpenLDBSVWSService<wbr>Details</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwsserviceitem.html" class="tsd-kind-icon">IOpenLDBSVWSService<wbr>Item</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwsserviceitemorigin.html" class="tsd-kind-icon">IOpenLDBSVWSService<wbr>Item<wbr>Origin</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwsservicelocation.html" class="tsd-kind-icon">IOpenLDBSVWSService<wbr>Location</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwsstationboard.html" class="tsd-kind-icon">IOpenLDBSVWSStation<wbr>Board</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbsvwstoiletavailability.html" class="tsd-kind-icon">IOpenLDBSVWSToilet<wbr>Availability</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iopenldbws.html" class="tsd-kind-icon">IOpenLDBWS</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ioperationinfo.html" class="tsd-kind-icon">IOperation<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ioperationinfoentry.html" class="tsd-kind-icon">IOperation<wbr>Info<wbr>Entry</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ioperationparams.html" class="tsd-kind-icon">IOperation<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getarrboardwithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arr<wbr>Board<wbr>With<wbr>Details</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getarrdepboardwithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arr<wbr>Dep<wbr>Board<wbr>With<wbr>Details</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getarrivalboardbycrs.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arrival<wbr>Board<wbr>ByCRS</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getarrivalboardbytiploc.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arrival<wbr>Board<wbr>ByTIPLOC</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getarrivaldepartureboardbycrs.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arrival<wbr>Departure<wbr>Board<wbr>ByCRS</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getarrivaldepartureboardbytiploc.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Arrival<wbr>Departure<wbr>Board<wbr>ByTIPLOC</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getdepboardwithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Dep<wbr>Board<wbr>With<wbr>Details</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getdepartureboardbycrs.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Departure<wbr>Board<wbr>ByCRS</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getdepartureboardbytiploc.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Departure<wbr>Board<wbr>ByTIPLOC</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getdisruptionlist.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Disruption<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getfastestdepartures.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Fastest<wbr>Departures</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getfastestdepartureswithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Fastest<wbr>Departures<wbr>With<wbr>Details</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_gethistoricdepartureboard.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Historic<wbr>Departure<wbr>Board</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_gethistoricservicedetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Historic<wbr>Service<wbr>Details</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_gethistorictimeline.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Historic<wbr>Time<wbr>Line</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getnextdepartures.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Next<wbr>Departures</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getnextdepartureswithdetails.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Next<wbr>Departures<wbr>With<wbr>Details</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getreasoncode.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Reason<wbr>Code</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getreasoncodelist.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Reason<wbr>Code<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getservicedetailsbyrid.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Service<wbr>Details<wbr>ByRID</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_getstationlist.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Station<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_gettoclist.html" class="tsd-kind-icon">IParams_<wbr><wbr>Get<wbr>Toc<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_queryhistoricservices.html" class="tsd-kind-icon">IParams_<wbr><wbr>Query<wbr>Historic<wbr>Services</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iparams_queryservices.html" class="tsd-kind-icon">IParams_<wbr><wbr>Query<wbr>Services</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/itsopenldb.html" class="tsd-kind-icon">ITSOpenLDB</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/itsopenldbconstructorparams.html" class="tsd-kind-icon">ITSOpenLDBConstructor<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#estaffbodykeys" class="tsd-kind-icon">EStaff<wbr>Body<wbr>Keys</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#tstaffoperation" class="tsd-kind-icon">TStaff<wbr>Operation</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#namespace_ldb" class="tsd-kind-icon">NAMESPACE_<wbr>LDB</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#xmlclosing" class="tsd-kind-icon">XMLClosing</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#xmlopening" class="tsd-kind-icon">XMLOpening</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#getlondontime" class="tsd-kind-icon">get<wbr>London<wbr>Time</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#gettimewithoffset" class="tsd-kind-icon">get<wbr>Time<wbr>With<wbr>Offset</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#londontzbycoords" class="tsd-kind-icon">londonTZBy<wbr>Coords</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+  <h3>Install</h3>
+</a>
+<pre><code><span class="hl-0">yarn</span><span class="hl-1"> </span><span class="hl-0">add</span><span class="hl-1"> @</span><span class="hl-0">thetransportlab</span><span class="hl-1">/</span><span class="hl-0">tsopenldb</span>
+</code></pre>
+
+<a href="#new-in-version-2" id="new-in-version-2" style="color: inherit; text-decoration: none;">
+  <h3>New in version 2</h3>
+</a>
+<ul>
+<li>Test suite</li>
+<li>Complete interfaces for arguments and responses</li>
+<li>Functional and class approaches</li>
+<li>Significantly reduced number of libraries</li>
+</ul>
+
+<a href="#basic-usage-example" id="basic-usage-example" style="color: inherit; text-decoration: none;">
+  <h3>Basic Usage Example</h3>
+</a>
+<p>The library provides class and functional approaches for usage. The class approach allows you to specify your API key only once, while the functional approach requires you to provide your API key with each call.</p>
+<p><strong>Important:</strong> We provide a function to get the current valid timestamp - <code>getLondonTimeViaTemporal()</code>. This accepts 1 optional parameter to specify the number of minutes to offset by. In the class-based approach, you can set this during <code>new</code> (see example below), or by calling <code>timeOffsetInMinutes(&lt;offset in minutes as number&gt;)</code> on an instance of the class.</p>
+<p>This example will retrieve the arrival and departure board for Leeds (station CRS is <code>LDS</code>) for 10 minutes in the past.</p>
+<p><strong>Class approach</strong></p>
+<pre><code class="language-ts"><span class="hl-1">    </span><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">apiKey</span><span class="hl-1"> = </span><span class="hl-4">&quot;ADD_YOUR_API_KEY&quot;</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-5">import</span><span class="hl-1"> </span><span class="hl-0">TSOpenLDB</span><span class="hl-1"> </span><span class="hl-5">from</span><span class="hl-1"> </span><span class="hl-4">&quot;@thetransportlab/tsopenldb&quot;</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-2">const</span><span class="hl-1"> { </span><span class="hl-3">TSOpenLDBSV</span><span class="hl-1"> } = </span><span class="hl-0">TSOpenLDB</span><br/><br/><span class="hl-1">    </span><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-6">RunFn</span><span class="hl-1"> = </span><span class="hl-2">async</span><span class="hl-1"> () </span><span class="hl-2">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">ldb</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-6">TSOpenLDBSV</span><span class="hl-1">({ </span><span class="hl-0">apiKey</span><span class="hl-1">, </span><span class="hl-0">timeOffsetInMinutes:</span><span class="hl-1"> -</span><span class="hl-7">10</span><span class="hl-1"> });</span><br/><span class="hl-1">        </span><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">data</span><span class="hl-1"> = </span><span class="hl-5">await</span><span class="hl-1"> </span><span class="hl-0">ldb</span><span class="hl-1">.</span><span class="hl-6">GetArrivalDepartureBoardByCRS</span><span class="hl-1">({</span><br/><span class="hl-1">            </span><span class="hl-0">crs:</span><span class="hl-1"> </span><span class="hl-4">&quot;LDS&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">        });</span><br/><span class="hl-1">        </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">({ </span><span class="hl-0">data</span><span class="hl-1"> });</span><br/><br/><span class="hl-1">        </span><span class="hl-8">// You could now call ldb.timeOffsetInMinutes(30) and make a new call to get services 30 minutes in the future from now</span><br/><span class="hl-1">    };</span><br/><br/><span class="hl-1">    </span><span class="hl-6">RunFn</span><span class="hl-1">();</span>
+</code></pre>
+<p><strong>Functional approach</strong></p>
+<pre><code class="language-ts"><span class="hl-1">    </span><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">apiKey</span><span class="hl-1"> = </span><span class="hl-4">&quot;ADD_YOUR_API_KEY&quot;</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-5">import</span><span class="hl-1"> </span><span class="hl-0">TSOpenLDB</span><span class="hl-1"> </span><span class="hl-5">from</span><span class="hl-1"> </span><span class="hl-4">&quot;@thetransportlab/tsopenldb&quot;</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-2">const</span><span class="hl-1"> { </span><span class="hl-3">GetArrivalDepartureBoardByCRS</span><span class="hl-1">, </span><span class="hl-3">getLondonTimeViaTemporal</span><span class="hl-1"> } = </span><span class="hl-0">TSOpenLDB</span><span class="hl-1">;</span><br/><br/><span class="hl-1">    </span><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-6">RunFn</span><span class="hl-1"> = </span><span class="hl-2">async</span><span class="hl-1"> () </span><span class="hl-2">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">data</span><span class="hl-1"> = </span><span class="hl-5">await</span><span class="hl-1"> </span><span class="hl-6">GetArrivalDepartureBoardByCRS</span><span class="hl-1">({</span><br/><span class="hl-1">            </span><span class="hl-0">apiKey</span><span class="hl-1">,</span><br/><span class="hl-1">            </span><span class="hl-0">time:</span><span class="hl-1"> </span><span class="hl-6">getLondonTimeViaTemporal</span><span class="hl-1">(-</span><span class="hl-7">10</span><span class="hl-1">),</span><br/><span class="hl-1">            </span><span class="hl-0">args:</span><span class="hl-1"> {</span><br/><span class="hl-1">                </span><span class="hl-0">crs:</span><span class="hl-1"> </span><span class="hl-4">&quot;LDS&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">            },</span><br/><span class="hl-1">        });</span><br/><span class="hl-1">        </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">({ </span><span class="hl-0">data</span><span class="hl-1"> });</span><br/><span class="hl-1">    };</span><br/><br/><span class="hl-1">    </span><span class="hl-6">RunFn</span><span class="hl-1">();</span>
+</code></pre>
+
+<a href="#notes" id="notes" style="color: inherit; text-decoration: none;">
+  <h3>Notes</h3>
+</a>
+<p>Version 2 of this library is a complete rewrite from the ground up and is <strong>NOT</strong> compatible with previous versions. All functions which were working (based upon available documentation) at time of development have interfaces generated for responses and required arguments.</p>
+<p>All functions which take arguments apply sensible default values where appropriate. This is because the API will often return an error if fields are missing. You can override the defaults inside the <code>args</code> object of a call.</p>
+<p>Version 2 of this library makes use of the <code>@js-temporal/polyfill</code> in order to generate valid timestamps used by several calls. Although the temporal feature is still in stage 3 proposal, I felt it worthwhile to bring in the functionality in order to better improve the reliability of timestamps. This also allowed me to remove a number of different libraries that were being used to achieve this functionality in version 1.</p>
+
+<a href="#why" id="why" style="color: inherit; text-decoration: none;">
+  <h3>Why?</h3>
+</a>
+<p>Over the years, there have been a few libraries which implement support for the OpenLDB service, but not many of them correctly supported the staff service (OpenLDBSV).</p>
+<p>This library provides a nice wrapper around the API calls and is designed to provide a super-flexible approach and ease of implementation. It doesn&#39;t modify the results that the API returns, so reading the documentation linked at the top of this readme is advised.</p>
+</div></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current selected"><a href="modules.html">@thetransportlab/tsopenldb</a>
+<ul></ul></li></ul></div></details></nav>
+<nav class="tsd-navigation secondary menu-sticky">
+<ul>
+<li class="tsd-kind-class"><a href="classes/TSOpenLDBSV.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-128-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-128-text"></path></svg>TSOpenLDBSV</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetArrivalBoardByCRSAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg>Get<wbr/>Arrival<wbr/>Board<wbr/>ByCRSAsync</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetArrivalBoardByCRSAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Arrival<wbr/>Board<wbr/>ByCRSAsync<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetArrivalBoardByTIPLOCAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Arrival<wbr/>Board<wbr/>ByTIPLOCAsync</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetArrivalBoardByTIPLOCAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Arrival<wbr/>Board<wbr/>ByTIPLOCAsync<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetArrivalDepartureBoardByCRSAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Arrival<wbr/>Departure<wbr/>Board<wbr/>ByCRSAsync</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetArrivalDepartureBoardByCRSAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Arrival<wbr/>Departure<wbr/>Board<wbr/>ByCRSAsync<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetArrivalDepartureBoardByTIPLOCAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Arrival<wbr/>Departure<wbr/>Board<wbr/>ByTIPLOCAsync</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetArrivalDepartureBoardByTIPLOCAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Arrival<wbr/>Departure<wbr/>Board<wbr/>ByTIPLOCAsync<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetDepartureBoardByCRSAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Departure<wbr/>Board<wbr/>ByCRSAsync</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetDepartureBoardByCRSAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Departure<wbr/>Board<wbr/>ByCRSAsync<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetDepartureBoardByTIPLOCAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Departure<wbr/>Board<wbr/>ByTIPLOCAsync</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetDepartureBoardByTIPLOCAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Departure<wbr/>Board<wbr/>ByTIPLOCAsync<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetDisruptionListAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Disruption<wbr/>List<wbr/>Async</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetDisruptionListAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Disruption<wbr/>List<wbr/>Async<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetReasonCodeAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Reason<wbr/>Code<wbr/>Async</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetReasonCodeAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Reason<wbr/>Code<wbr/>Async<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetReasonCodeListAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Reason<wbr/>Code<wbr/>List<wbr/>Async</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetReasonCodeListAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Reason<wbr/>Code<wbr/>List<wbr/>Async<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetServiceDetailsByRIDAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Service<wbr/>Details<wbr/>ByRIDAsync</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetServiceDetailsByRIDAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Service<wbr/>Details<wbr/>ByRIDAsync<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetSourceInstanceNamesAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Source<wbr/>Instance<wbr/>Names<wbr/>Async</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetSourceInstanceNamesAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Source<wbr/>Instance<wbr/>Names<wbr/>Async<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetStationListAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Station<wbr/>List<wbr/>Async</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetStationListAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Get<wbr/>Station<wbr/>List<wbr/>Async<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetTOCListAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>GetTOCList<wbr/>Async</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/GetTOCListAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>GetTOCList<wbr/>Async<wbr/>Args</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/QueryServicesAsync.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Query<wbr/>Services<wbr/>Async</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/QueryServicesAsyncArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Query<wbr/>Services<wbr/>Async<wbr/>Args</a></li>
+<li class="tsd-kind-function"><a href="functions/GetArrivalBoardByCRS.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg>Get<wbr/>Arrival<wbr/>Board<wbr/>ByCRS</a></li>
+<li class="tsd-kind-function"><a href="functions/GetArrivalBoardByTIPLOC.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Arrival<wbr/>Board<wbr/>ByTIPLOC</a></li>
+<li class="tsd-kind-function"><a href="functions/GetArrivalDepartureBoardByCRS.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Arrival<wbr/>Departure<wbr/>Board<wbr/>ByCRS</a></li>
+<li class="tsd-kind-function"><a href="functions/GetArrivalDepartureBoardByTIPLOC.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Arrival<wbr/>Departure<wbr/>Board<wbr/>ByTIPLOC</a></li>
+<li class="tsd-kind-function"><a href="functions/GetDepartureBoardByCRS.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Departure<wbr/>Board<wbr/>ByCRS</a></li>
+<li class="tsd-kind-function"><a href="functions/GetDepartureBoardByTIPLOC.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Departure<wbr/>Board<wbr/>ByTIPLOC</a></li>
+<li class="tsd-kind-function"><a href="functions/GetDisruptionList.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Disruption<wbr/>List</a></li>
+<li class="tsd-kind-function"><a href="functions/GetReasonCode.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Reason<wbr/>Code</a></li>
+<li class="tsd-kind-function"><a href="functions/GetReasonCodeList.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Reason<wbr/>Code<wbr/>List</a></li>
+<li class="tsd-kind-function"><a href="functions/GetServiceDetailsByRID.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Service<wbr/>Details<wbr/>ByRID</a></li>
+<li class="tsd-kind-function"><a href="functions/GetSourceInstanceNames.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Source<wbr/>Instance<wbr/>Names</a></li>
+<li class="tsd-kind-function"><a href="functions/GetStationList.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Get<wbr/>Station<wbr/>List</a></li>
+<li class="tsd-kind-function"><a href="functions/GetTOCList.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>GetTOCList</a></li>
+<li class="tsd-kind-function"><a href="functions/QueryServices.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Query<wbr/>Services</a></li>
+<li class="tsd-kind-function"><a href="functions/getLondonTimeViaTemporal.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>get<wbr/>London<wbr/>Time<wbr/>Via<wbr/>Temporal</a></li></ul></nav></div></div>
 <div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
-</body>
-</html>
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="assets/main.js"></script></body></html>
