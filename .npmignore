@@ -1,0 +1,7 @@
+src/devtools/nonreferenceEndpoints.json
+src/devtools/referenceEndpoints.json
+node_modules
+.env
+docs
+yarn-error.log
+typedoc.json
