@@ -1,2 +1,4 @@
-export interface GetReasonCodeListAsyncArgs {
+import { TFilterType } from '@Constants';
+
+ export interface GetReasonCodeListAsyncArgs {
 }

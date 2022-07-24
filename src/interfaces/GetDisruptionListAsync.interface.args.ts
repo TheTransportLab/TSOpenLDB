@@ -1,4 +1,6 @@
-export interface GetDisruptionListAsyncArgs {
+import { TFilterType } from '@Constants';
+
+ export interface GetDisruptionListAsyncArgs {
   CRSList: Array<CRSList>;
 }
 

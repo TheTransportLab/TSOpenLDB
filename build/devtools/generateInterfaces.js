@@ -41,15 +41,15 @@ const referenceFolder = path_1.default.resolve(__dirname, "..", "functions", "re
 const generateNonReferenceInterfaces = async () => {
     const soapClient = await soap.createClientAsync(wsdlPath);
     soapClient.addSoapHeader({ AccessToken: { TokenValue: apiKey } }, "", "tok");
-    // console.log({ soapClient });
     for await (const { args, name, active } of constants_1.nonReferenceEndpoints) {
         if (active === false) {
             return;
         }
         try {
             const result = await soapClient[name](args);
-            const argsInterfaceCode = (0, typescript_interface_generator_1.createInterfacesFromObject)([name, "Args"].join(""), args);
-            fs_1.default.writeFileSync(path_1.default.resolve(interfacesFolderBase, [name, "interface", "args", "ts"].join(".")), ["export", argsInterfaceCode].join(" "));
+            const argsInterfaceCode = (0, typescript_interface_generator_1.createInterfacesFromObject)([name, "Args"].join(""), args).replaceAll("filterType: string;", "filterType: TFilterType;");
+            const prefix = ["import { TFilterType } from '@Constants';", ""].join("\r\n\r\n");
+            fs_1.default.writeFileSync(path_1.default.resolve(interfacesFolderBase, [name, "interface", "args", "ts"].join(".")), [prefix, "export", argsInterfaceCode].join(" "));
             const interfaceCode = (0, typescript_interface_generator_1.createInterfacesFromObject)(name, Object.values(result?.[0])?.[0]);
             fs_1.default.writeFileSync(path_1.default.resolve(interfacesFolderBase, [name, "interface", "ts"].join(".")), ["export", interfaceCode].join(" "));
         }
@@ -109,8 +109,9 @@ const generateReferenceInterfaces = async () => {
     for await (const { args, name, active } of constants_1.referenceEndpoints) {
         try {
             const result = await soapClient[name](args);
-            const argsInterfaceCode = (0, typescript_interface_generator_1.createInterfacesFromObject)([name, "Args"].join(""), args);
-            fs_1.default.writeFileSync(path_1.default.resolve(interfacesFolderBase, [name, "interface", "args", "ts"].join(".")), ["export", argsInterfaceCode].join(" "));
+            const argsInterfaceCode = (0, typescript_interface_generator_1.createInterfacesFromObject)([name, "Args"].join(""), args).replaceAll("filterType: string;", "filterType: TFilterType;");
+            const prefix = ["import { TFilterType } from '@Constants';", ""].join("\r\n\r\n");
+            fs_1.default.writeFileSync(path_1.default.resolve(interfacesFolderBase, [name, "interface", "args", "ts"].join(".")), [prefix, "export", argsInterfaceCode].join(" "));
             const interfaceCode = (0, typescript_interface_generator_1.createInterfacesFromObject)(name, Object.values(result?.[0])?.[0]);
             fs_1.default.writeFileSync(path_1.default.resolve(interfacesFolderBase, [name, "interface", "ts"].join(".")), ["export", interfaceCode].join(" "));
         }

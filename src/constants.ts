@@ -2,6 +2,8 @@ export interface IArgsBase {
   apiKey: string;
 }
 
+export type TFilterType = "to" | "from";
+
 export type TNonReferenceEndpoints =
   | "GetArrivalDepartureBoardByCRSAsync"
   | "GetArrivalBoardByCRSAsync"
@@ -82,7 +84,7 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       time: "00:01:00",
       timeWindow: 120,
       filtercrs: "",
-      filterType: "to",
+      filterType: "to" as TFilterType,
       filterTOC: "",
       services: "PBS",
       getNonPassengerServices: true,
@@ -96,7 +98,7 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       time: "00:01:00",
       timeWindow: 120,
       filterTiploc: "",
-      filterType: "to",
+      filterType: "to" as TFilterType,
       filterTOC: "",
       services: "PBS",
       getNonPassengerServices: true,
@@ -110,7 +112,7 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       time: "00:01:00",
       timeWindow: 120,
       filtercrs: "",
-      filterType: "to",
+      filterType: "to" as TFilterType,
       filterTOC: "",
       services: "PBS",
       getNonPassengerServices: true,
@@ -124,7 +126,7 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       time: "00:01:00",
       timeWindow: 120,
       filtercrs: "",
-      filterType: "to",
+      filterType: "to" as TFilterType,
       filterTOC: "",
       services: "PBS",
       getNonPassengerServices: true,
@@ -139,7 +141,7 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       time: "00:01:00",
       timeWindow: 120,
       filterTiploc: "",
-      filterType: "to",
+      filterType: "to" as TFilterType,
       filterTOC: "",
       services: "PBS",
       getNonPassengerServices: true,
@@ -154,7 +156,7 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       time: "00:01:00",
       timeWindow: 120,
       filterTiploc: "",
-      filterType: "to",
+      filterType: "to" as TFilterType,
       filterTOC: "",
       services: "PBS",
       getNonPassengerServices: true,
@@ -179,38 +181,13 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
     },
   },
   {
-    name: "GetDisruptionListAsync",
-    args: {
-      CRSList: [{ crs: "LDS" }],
-    },
-  },
-  {
-    name: "GetHistoricDepartureBoardAsync",
-    active: false,
-    args: {},
-  },
-  {
-    name: "GetHistoricServiceDetailsAsync",
-    active: false,
-    args: {},
-  },
-  {
-    name: "GetHistoricTimeLineAsync",
-    active: false,
-    args: {},
-  },
-  {
-    name: "QueryHistoricServicesAsync",
-    active: false,
-    args: {},
-  },
-  {
     name: "GetArrDepBoardWithDetailsAsync",
     args: {
       numRows: 2,
       crs: "LDS",
-      filterCrs: "",
-      filterType: "to",
+      filtercrs: "",
+      filterType: "to" as TFilterType,
+      filterTOC: [],
       timeOffset: 0,
       timeWindow: 120,
       time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
@@ -222,7 +199,8 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       numRows: 2,
       crs: "LDS",
       filtercrs: "",
-      filterType: "to",
+      filterType: "to" as TFilterType,
+      filterTOC: [],
       timeOffset: 0,
       timeWindow: 120,
       time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
@@ -234,7 +212,8 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       numRows: 2,
       crs: "LDS",
       filtercrs: "",
-      filterType: "to",
+      filterType: "to" as TFilterType,
+      filterTOC: [],
       timeOffset: 0,
       timeWindow: 120,
       time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
@@ -252,6 +231,8 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
       timeOffset: 0,
       timeWindow: 120,
+      filterTOC: "",
+      services: "P",
     },
   },
   {
@@ -280,6 +261,7 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
       timeOffset: 0,
       timeWindow: 120,
+      filterTOC: "",
     },
   },
   {
@@ -295,5 +277,31 @@ export const nonReferenceEndpoints: TNonReferenceEndpointStruct[] = [
       timeOffset: 0,
       timeWindow: 120,
     },
+  },
+  {
+    name: "GetDisruptionListAsync",
+    args: {
+      CRSList: [{ crs: "LDS" }],
+    },
+  },
+  {
+    name: "GetHistoricDepartureBoardAsync",
+    active: false,
+    args: {},
+  },
+  {
+    name: "GetHistoricServiceDetailsAsync",
+    active: false,
+    args: {},
+  },
+  {
+    name: "GetHistoricTimeLineAsync",
+    active: false,
+    args: {},
+  },
+  {
+    name: "QueryHistoricServicesAsync",
+    active: false,
+    args: {},
   },
 ];

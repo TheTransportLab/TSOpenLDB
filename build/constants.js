@@ -135,38 +135,13 @@ exports.nonReferenceEndpoints = [
         },
     },
     {
-        name: "GetDisruptionListAsync",
-        args: {
-            CRSList: [{ crs: "LDS" }],
-        },
-    },
-    {
-        name: "GetHistoricDepartureBoardAsync",
-        active: false,
-        args: {},
-    },
-    {
-        name: "GetHistoricServiceDetailsAsync",
-        active: false,
-        args: {},
-    },
-    {
-        name: "GetHistoricTimeLineAsync",
-        active: false,
-        args: {},
-    },
-    {
-        name: "QueryHistoricServicesAsync",
-        active: false,
-        args: {},
-    },
-    {
         name: "GetArrDepBoardWithDetailsAsync",
         args: {
             numRows: 2,
             crs: "LDS",
-            filterCrs: "",
+            filtercrs: "",
             filterType: "to",
+            filterTOC: [],
             timeOffset: 0,
             timeWindow: 120,
             time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
@@ -179,6 +154,7 @@ exports.nonReferenceEndpoints = [
             crs: "LDS",
             filtercrs: "",
             filterType: "to",
+            filterTOC: [],
             timeOffset: 0,
             timeWindow: 120,
             time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
@@ -191,6 +167,7 @@ exports.nonReferenceEndpoints = [
             crs: "LDS",
             filtercrs: "",
             filterType: "to",
+            filterTOC: [],
             timeOffset: 0,
             timeWindow: 120,
             time: new Date().toISOString().toString().slice(0, -5), //"2016-10-18T22:00:00",
@@ -208,6 +185,8 @@ exports.nonReferenceEndpoints = [
             time: new Date().toISOString().toString().slice(0, -5),
             timeOffset: 0,
             timeWindow: 120,
+            filterTOC: "",
+            services: "P",
         },
     },
     {
@@ -236,6 +215,7 @@ exports.nonReferenceEndpoints = [
             time: new Date().toISOString().toString().slice(0, -5),
             timeOffset: 0,
             timeWindow: 120,
+            filterTOC: "",
         },
     },
     {
@@ -251,5 +231,31 @@ exports.nonReferenceEndpoints = [
             timeOffset: 0,
             timeWindow: 120,
         },
+    },
+    {
+        name: "GetDisruptionListAsync",
+        args: {
+            CRSList: [{ crs: "LDS" }],
+        },
+    },
+    {
+        name: "GetHistoricDepartureBoardAsync",
+        active: false,
+        args: {},
+    },
+    {
+        name: "GetHistoricServiceDetailsAsync",
+        active: false,
+        args: {},
+    },
+    {
+        name: "GetHistoricTimeLineAsync",
+        active: false,
+        args: {},
+    },
+    {
+        name: "QueryHistoricServicesAsync",
+        active: false,
+        args: {},
     },
 ];

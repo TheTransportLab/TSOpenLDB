@@ -1,6 +1,7 @@
 export interface IArgsBase {
     apiKey: string;
 }
+export declare type TFilterType = "to" | "from";
 export declare type TNonReferenceEndpoints = "GetArrivalDepartureBoardByCRSAsync" | "GetArrivalBoardByCRSAsync" | "GetArrivalDepartureBoardByTIPLOCAsync" | "GetDepartureBoardByCRSAsync" | "GetArrivalBoardByTIPLOCAsync" | "GetDepartureBoardByTIPLOCAsync" | "GetServiceDetailsByRIDAsync" | "QueryServicesAsync" | "GetDisruptionListAsync" | "GetHistoricDepartureBoardAsync" | "GetHistoricServiceDetailsAsync" | "GetHistoricTimeLineAsync" | "QueryHistoricServicesAsync" | "GetArrDepBoardWithDetailsAsync" | "GetArrBoardWithDetailsAsync" | "GetDepBoardWithDetailsAsync" | "GetNextDeparturesAsync" | "GetFastestDeparturesAsync" | "GetNextDeparturesWithDetailsAsync" | "GetFastestDeparturesWithDetailsAsync";
 export declare type TReferenceEndpoints = "GetReasonCodeAsync" | "GetReasonCodeListAsync" | "GetSourceInstanceNamesAsync" | "GetTOCListAsync" | "GetStationListAsync";
 interface IEndpointStructBase<T = any> {

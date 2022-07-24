@@ -4,7 +4,6 @@ export interface GetArrivalDepartureBoardByCRSAsync {
   crs: string;
   stationManager: string;
   stationManagerCode: string;
-  nrccMessages: NrccMessages;
   isTruncated: boolean;
   trainServices: TrainServices;
 }
@@ -12,21 +11,11 @@ export interface GetArrivalDepartureBoardByCRSAsync {
 interface GeneratedAt {
 }
 
-interface NrccMessages {
-  message: Array<Message1>;
-}
-
-interface Message1 {
-  category: string;
-  severity: string;
-  xhtmlMessage: string;
-}
-
 interface TrainServices {
-  service: Array<Service3>;
+  service: Array<Service1 | Service6>;
 }
 
-interface Service3 {
+interface Service1 {
   rid: string;
   uid: string;
   trainid: string;
@@ -36,34 +25,61 @@ interface Service3 {
   isPassengerService: boolean;
   isOperationalCall: boolean;
   std: string;
-  atd: string;
   departureType: string;
-  departureSource: string;
-  platform: string;
   platformIsHidden: boolean;
-  origin: Service3Origin;
-  destination: Service3Destination;
+  origin: Service1Origin;
+  destination: Service1Destination;
   category: string;
   activities: string;
 }
 
-interface Service3Origin {
-  location: Array<Location3>;
+interface Service1Origin {
+  location: Array<Location1>;
 }
 
-interface Location3 {
+interface Location1 {
   locationName: string;
   crs: string;
   tiploc: string;
   isOperationalEndPoint: boolean;
 }
 
-interface Service3Destination {
-  location: Array<Location5>;
+interface Service1Destination {
+  location: Array<Location3>;
 }
 
-interface Location5 {
+interface Location3 {
   locationName: string;
   tiploc: string;
   isOperationalEndPoint: boolean;
+}
+
+interface Service6 {
+  rid: string;
+  uid: string;
+  trainid: string;
+  rsid: string;
+  sdd: GeneratedAt;
+  operator: string;
+  operatorCode: string;
+  sta: string;
+  ata: string;
+  arrivalType: string;
+  platform: string;
+  platformIsHidden: boolean;
+  serviceIsSupressed: boolean;
+  origin: Service6Origin;
+  destination: Service6Origin;
+  category: string;
+  activities: string;
+}
+
+interface Service6Origin {
+  location: Array<Location6>;
+}
+
+interface Location6 {
+  locationName: string;
+  crs: string;
+  tiploc: string;
 }

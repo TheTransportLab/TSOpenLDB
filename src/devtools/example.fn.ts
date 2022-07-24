@@ -1,15 +1,19 @@
 require("dotenv").config();
-import { GetArrivalDepartureBoardByCRS } from "../index";
+import {
+  GetArrivalDepartureBoardByCRS,
+  getLondonTimeViaTemporal,
+} from "../index";
 const apiKey = process.env.OPENLDBSV_API_KEY;
 
-const test = async () => {
+const RunFn = async () => {
   const data = await GetArrivalDepartureBoardByCRS({
     apiKey,
     args: {
       crs: "LDS",
+      time: getLondonTimeViaTemporal(-10),
     },
   });
   console.log({ data });
 };
 
-test();
+RunFn();

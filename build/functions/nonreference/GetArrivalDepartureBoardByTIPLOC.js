@@ -37,7 +37,7 @@ const fn = async ({ apiKey, args }) => {
         filterTOC: "",
         filterType: "to",
         getNonPassengerServices: true,
-        numRows: 120,
+        numRows: 150,
         services: "PBS",
         timeWindow: 120,
         time: (0, TimezoneOffset_1.getLondonTimeViaTemporal)(0) ?? args.time,

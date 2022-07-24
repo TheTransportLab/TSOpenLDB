@@ -3,13 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv").config();
 const index_1 = require("../index");
 const apiKey = process.env.OPENLDBSV_API_KEY;
-const test = async () => {
+const RunFn = async () => {
     const data = await (0, index_1.GetArrivalDepartureBoardByCRS)({
         apiKey,
         args: {
             crs: "LDS",
+            time: (0, index_1.getLondonTimeViaTemporal)(-10),
         },
     });
     console.log({ data });
 };
-test();
+RunFn();

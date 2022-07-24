@@ -32,7 +32,6 @@ const soap = __importStar(require("soap"));
 const fnName = "GetReasonCodeAsync";
 const fn = async ({ args, apiKey }) => {
     const wsdlPath = path_1.default.resolve(__dirname, "..", "..", "..", "OpenLDBSVWS.wsdl");
-    console.log({ wsdlPath });
     const soapClient = await soap.createClientAsync(wsdlPath);
     soapClient.addSoapHeader({ AccessToken: { TokenValue: apiKey } }, "", "tok");
     const result = await soapClient[fnName](args);

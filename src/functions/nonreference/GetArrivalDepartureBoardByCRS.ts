@@ -20,7 +20,7 @@ export const fn = async ({ apiKey, args }: IArgs) => {
     filterTOC: "",
     filterType: "to",
     getNonPassengerServices: true,
-    numRows: 120,
+    numRows: 150,
     services: "PBS",
     timeWindow: 120,
     time: getLondonTimeViaTemporal(0) ?? args.time,

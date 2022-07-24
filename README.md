@@ -40,17 +40,14 @@ This example will retrieve the arrival and departure board for Leeds (station CR
 **Class approach**
 ```ts
     const apiKey = "ADD_YOUR_API_KEY";
-    import TSOpenLDB from "@thetransportlab/tsopenldb";
-    const { TSOpenLDBSV } = TSOpenLDB
+    import { TSOpenLDBSV } from "@thetransportlab/tsopenldb";
 
     const RunFn = async () => {
-        const ldb = new TSOpenLDBSV({ apiKey, timeOffsetInMinutes: -10 });
-        const data = await ldb.GetArrivalDepartureBoardByCRS({
+        const LDB = new TSOpenLDBSV({ apiKey });
+        const data = await LDB.GetArrivalDepartureBoardByCRS({
             crs: "LDS",
         });
         console.log({ data });
-
-        // You could now call ldb.timeOffsetInMinutes(30) and make a new call to get services 30 minutes in the future from now
     };
 
     RunFn();
@@ -59,13 +56,11 @@ This example will retrieve the arrival and departure board for Leeds (station CR
 **Functional approach**
 ```ts
     const apiKey = "ADD_YOUR_API_KEY";
-    import TSOpenLDB from "@thetransportlab/tsopenldb";
-    const { GetArrivalDepartureBoardByCRS, getLondonTimeViaTemporal } = TSOpenLDB;
+    import { GetArrivalDepartureBoardByCRS } from "@thetransportlab/tsopenldb";
 
     const RunFn = async () => {
         const data = await GetArrivalDepartureBoardByCRS({
             apiKey,
-            time: getLondonTimeViaTemporal(-10),
             args: {
                 crs: "LDS",
             },

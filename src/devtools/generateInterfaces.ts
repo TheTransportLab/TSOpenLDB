@@ -24,8 +24,6 @@ const referenceFolder = path.resolve(__dirname, "..", "functions", "reference");
 const generateNonReferenceInterfaces = async () => {
   const soapClient = await soap.createClientAsync(wsdlPath);
   soapClient.addSoapHeader({ AccessToken: { TokenValue: apiKey } }, "", "tok");
-  // console.log({ soapClient });
-
   for await (const { args, name, active } of nonReferenceEndpoints) {
     if (active === false) {
       return;
@@ -36,6 +34,10 @@ const generateNonReferenceInterfaces = async () => {
       const argsInterfaceCode = createInterfacesFromObject(
         [name, "Args"].join(""),
         args
+      ).replaceAll("filterType: string;", "filterType: TFilterType;");
+
+      const prefix = ["import { TFilterType } from '@Constants';", ""].join(
+        "\r\n\r\n"
       );
 
       fs.writeFileSync(
@@ -43,13 +45,14 @@ const generateNonReferenceInterfaces = async () => {
           interfacesFolderBase,
           [name, "interface", "args", "ts"].join(".")
         ),
-        ["export", argsInterfaceCode].join(" ")
+        [prefix, "export", argsInterfaceCode].join(" ")
       );
 
-      const interfaceCode = createInterfacesFromObject(
+      const interfaceCode: string = createInterfacesFromObject(
         name,
         Object.values(result?.[0])?.[0]
       );
+
       fs.writeFileSync(
         path.resolve(interfacesFolderBase, [name, "interface", "ts"].join(".")),
         ["export", interfaceCode].join(" ")
@@ -119,6 +122,10 @@ const generateReferenceInterfaces = async () => {
       const argsInterfaceCode = createInterfacesFromObject(
         [name, "Args"].join(""),
         args
+      ).replaceAll("filterType: string;", "filterType: TFilterType;");
+
+      const prefix = ["import { TFilterType } from '@Constants';", ""].join(
+        "\r\n\r\n"
       );
 
       fs.writeFileSync(
@@ -126,13 +133,14 @@ const generateReferenceInterfaces = async () => {
           interfacesFolderBase,
           [name, "interface", "args", "ts"].join(".")
         ),
-        ["export", argsInterfaceCode].join(" ")
+        [prefix, "export", argsInterfaceCode].join(" ")
       );
 
       const interfaceCode = createInterfacesFromObject(
         name,
         Object.values(result?.[0])?.[0]
       );
+
       fs.writeFileSync(
         path.resolve(interfacesFolderBase, [name, "interface", "ts"].join(".")),
         ["export", interfaceCode].join(" ")

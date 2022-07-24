@@ -4,9 +4,9 @@
     "type": "git",
     "url": "https://github.com/TheTransportLab/TSOpenLDB"
   },
-  "version": "2.0.1",
+  "version": "2.0.3",
   "description": "A typescript implementation of the National Rail LDBSV web service API's",
-  "types": "./src/interfaces/index.d.ts",
+  "types": "./build/index.d.ts",
   "main": "./build/index.js",
   "scripts": {
     "clean": "rimraf build/ && rimraf interfaces/ && mkdir interfaces/",
@@ -24,7 +24,7 @@
     "@types/chai": "^4.3.1",
     "@types/jest": "^28.1.6",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^13.1.7",
+    "@types/node": "^18.0.6",
     "@types/soap": "^0.21.0",
     "chai": "^4.3.6",
     "chai-like": "^1.1.1",

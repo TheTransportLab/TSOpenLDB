@@ -7,6 +7,7 @@ import {
 } from "@Interfaces/index";
 import { Optional } from "utility-types";
 import { getLondonTimeViaTemporal } from "../misc/TimezoneOffset";
+import { TFilterType } from "@Constants";
 const fnName = "GetArrivalBoardByCRSAsync";
 
 export interface IArgs extends IArgsBase {
@@ -19,7 +20,7 @@ export const fn = async ({ apiKey, args }: IArgs) => {
     filterTOC: "",
     filterType: "to",
     getNonPassengerServices: true,
-    numRows: 120,
+    numRows: 150,
     services: "PBS",
     time: getLondonTimeViaTemporal(0),
     timeWindow: 120,

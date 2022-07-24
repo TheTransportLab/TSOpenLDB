@@ -4,18 +4,8 @@ export interface GetDisruptionListAsync {
 interface Item {
     generatedAt: ItemGeneratedAt;
     crs: string;
-    disruptions: ItemDisruptions;
+    disruptions: null;
 }
 interface ItemGeneratedAt {
-}
-interface ItemDisruptions {
-    message: Array<Message1>;
-}
-interface Message1 {
-    id: number;
-    category: string;
-    severity: string;
-    xhtmlMessage: string;
-    description: string;
 }
 export {};

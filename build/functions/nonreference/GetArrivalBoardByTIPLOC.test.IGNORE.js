@@ -33,7 +33,7 @@ let result;
 describe("GetArrivalBoardByTIPLOC", () => {
     (0, mocha_1.before)(async () => {
         result = await (0, GetArrivalBoardByTIPLOC_1.fn)({
-            // @ts-ignore - Why the fuck is this broken? It IS fucking defined in the fucking interface, dipshit
+            // @ts-ignore
             apiKey: process.env.OPENLDBSV_API_KEY,
             args: {
                 tipLoc: "LEEDS",

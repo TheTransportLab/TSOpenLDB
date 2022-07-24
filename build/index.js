@@ -12,7 +12,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 };
 var _TSOpenLDBSV_apiKey, _TSOpenLDBSV_timeOffsetInMinutes;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetStationList = exports.GetTOCList = exports.GetSourceInstanceNames = exports.GetReasonCodeList = exports.GetReasonCode = exports.QueryServices = exports.GetServiceDetailsByRID = exports.GetDisruptionList = exports.GetDepartureBoardByTIPLOC = exports.GetArrivalBoardByTIPLOC = exports.GetArrivalBoardByCRS = exports.GetDepartureBoardByCRS = exports.GetArrivalDepartureBoardByTIPLOC = exports.GetArrivalDepartureBoardByCRS = exports.getLondonTimeViaTemporal = exports.TSOpenLDBSV = void 0;
+exports.GetFastestDeparturesWithDetails = exports.GetNextDeparturesWithDetails = exports.GetFastestDepartures = exports.GetNextDepartures = exports.GetDepBoardWithDetails = exports.GetArrDepBoardWithDetails = exports.GetArrBoardWithDetails = exports.GetStationList = exports.GetTOCList = exports.GetSourceInstanceNames = exports.GetReasonCodeList = exports.GetReasonCode = exports.QueryServices = exports.GetServiceDetailsByRID = exports.GetDisruptionList = exports.GetDepartureBoardByTIPLOC = exports.GetArrivalBoardByTIPLOC = exports.GetArrivalBoardByCRS = exports.GetDepartureBoardByCRS = exports.GetArrivalDepartureBoardByTIPLOC = exports.GetArrivalDepartureBoardByCRS = exports.getLondonTimeViaTemporal = exports.TSOpenLDBSV = void 0;
 // Non-reference functions
 const GetArrivalDepartureBoardByCRS_1 = require("./functions/nonreference/GetArrivalDepartureBoardByCRS");
 Object.defineProperty(exports, "GetArrivalDepartureBoardByCRS", { enumerable: true, get: function () { return GetArrivalDepartureBoardByCRS_1.fn; } });
@@ -32,6 +32,20 @@ const GetServiceDetailsByRID_1 = require("./functions/nonreference/GetServiceDet
 Object.defineProperty(exports, "GetServiceDetailsByRID", { enumerable: true, get: function () { return GetServiceDetailsByRID_1.fn; } });
 const QueryServices_1 = require("./functions/nonreference/QueryServices");
 Object.defineProperty(exports, "QueryServices", { enumerable: true, get: function () { return QueryServices_1.fn; } });
+const GetArrBoardWithDetails_1 = require("./functions/nonreference/GetArrBoardWithDetails");
+Object.defineProperty(exports, "GetArrBoardWithDetails", { enumerable: true, get: function () { return GetArrBoardWithDetails_1.fn; } });
+const GetArrDepBoardWithDetails_1 = require("./functions/nonreference/GetArrDepBoardWithDetails");
+Object.defineProperty(exports, "GetArrDepBoardWithDetails", { enumerable: true, get: function () { return GetArrDepBoardWithDetails_1.fn; } });
+const GetDepBoardWithDetails_1 = require("./functions/nonreference/GetDepBoardWithDetails");
+Object.defineProperty(exports, "GetDepBoardWithDetails", { enumerable: true, get: function () { return GetDepBoardWithDetails_1.fn; } });
+const GetNextDepartures_1 = require("./functions/nonreference/GetNextDepartures");
+Object.defineProperty(exports, "GetNextDepartures", { enumerable: true, get: function () { return GetNextDepartures_1.fn; } });
+const GetFastestDepartures_1 = require("./functions/nonreference/GetFastestDepartures");
+Object.defineProperty(exports, "GetFastestDepartures", { enumerable: true, get: function () { return GetFastestDepartures_1.fn; } });
+const GetNextDeparturesWithDetails_1 = require("./functions/nonreference/GetNextDeparturesWithDetails");
+Object.defineProperty(exports, "GetNextDeparturesWithDetails", { enumerable: true, get: function () { return GetNextDeparturesWithDetails_1.fn; } });
+const GetFastestDeparturesWithDetails_1 = require("./functions/nonreference/GetFastestDeparturesWithDetails");
+Object.defineProperty(exports, "GetFastestDeparturesWithDetails", { enumerable: true, get: function () { return GetFastestDeparturesWithDetails_1.fn; } });
 // Reference functions
 const GetReasonCode_1 = require("./functions/reference/GetReasonCode");
 Object.defineProperty(exports, "GetReasonCode", { enumerable: true, get: function () { return GetReasonCode_1.fn; } });
@@ -108,6 +122,34 @@ class TSOpenLDBSV {
                 filterTime: "",
             },
         });
+        this.GetArrBoardWithDetails = async (args) => await (0, GetArrBoardWithDetails_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetArrDepBoardWithDetails = async (args) => await (0, GetArrDepBoardWithDetails_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetDepBoardWithDetails = async (args) => await (0, GetDepBoardWithDetails_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetNextDepartures = async (args) => await (0, GetNextDepartures_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetFastestDepartures = async (args) => await (0, GetFastestDepartures_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetNextDeparturesWithDetails = async (args) => await (0, GetNextDeparturesWithDetails_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
+        this.GetFastestDeparturesWithDetails = async (args) => await (0, GetFastestDeparturesWithDetails_1.fn)({
+            apiKey: __classPrivateFieldGet(this, _TSOpenLDBSV_apiKey, "f"),
+            args,
+        });
         __classPrivateFieldSet(this, _TSOpenLDBSV_apiKey, apiKey, "f");
         __classPrivateFieldSet(this, _TSOpenLDBSV_timeOffsetInMinutes, timeOffsetInMinutes, "f");
     }
@@ -123,3 +165,4 @@ class TSOpenLDBSV {
 }
 exports.TSOpenLDBSV = TSOpenLDBSV;
 _TSOpenLDBSV_apiKey = new WeakMap(), _TSOpenLDBSV_timeOffsetInMinutes = new WeakMap();
+// export default _exports;

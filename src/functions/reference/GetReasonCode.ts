@@ -17,7 +17,6 @@ export const fn = async ({ args, apiKey }: IArgs & { apiKey: string }) => {
     "..",
     "OpenLDBSVWS.wsdl"
   );
-  console.log({ wsdlPath });
   const soapClient = await soap.createClientAsync(wsdlPath);
   soapClient.addSoapHeader({ AccessToken: { TokenValue: apiKey } }, "", "tok");
   const result = await soapClient[fnName](args);

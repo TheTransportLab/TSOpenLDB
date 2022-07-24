@@ -6,28 +6,18 @@ export interface GetArrivalBoardByTIPLOCAsync {
   filtercrs: null;
   stationManager: string;
   stationManagerCode: string;
-  nrccMessages: NrccMessages;
+  isTruncated: boolean;
   trainServices: TrainServices;
 }
 
 interface GeneratedAt {
 }
 
-interface NrccMessages {
-  message: Array<Message1>;
-}
-
-interface Message1 {
-  category: string;
-  severity: string;
-  xhtmlMessage: string;
-}
-
 interface TrainServices {
-  service: Array<Service3>;
+  service: Array<Service1 | Service4>;
 }
 
-interface Service3 {
+interface Service1 {
   rid: string;
   uid: string;
   trainid: string;
@@ -35,33 +25,53 @@ interface Service3 {
   sdd: GeneratedAt;
   operator: string;
   operatorCode: string;
-  isCancelled: boolean;
   sta: string;
-  std: string;
+  ata: string;
+  arrivalType: string;
   platform: string;
   platformIsHidden: boolean;
-  origin: Service3Origin;
-  destination: Service3Origin;
-  cancelReason: Service3CancelReason;
+  serviceIsSupressed: boolean;
+  origin: Service1Origin;
+  destination: Service1Origin;
   category: string;
   activities: string;
 }
 
-interface Service3Origin {
-  location: Array<Location3>;
+interface Service1Origin {
+  location: Array<Location1>;
 }
 
-interface Location3 {
+interface Location1 {
   locationName: string;
   crs: string;
   tiploc: string;
 }
 
-interface Service3CancelReason {
-  attributes: CancelReasonAttributes;
+interface Service4 {
+  rid: string;
+  uid: string;
+  trainid: string;
+  sdd: GeneratedAt;
+  operator: string;
+  operatorCode: string;
+  sta: string;
+  ata: string;
+  arrivalType: string;
+  platform: string;
+  platformIsHidden: boolean;
+  serviceIsSupressed: boolean;
+  origin: Service1Origin;
+  destination: Service1Origin;
+  delayReason: Service4DelayReason;
+  category: string;
+  activities: string;
+}
+
+interface Service4DelayReason {
+  attributes: DelayReasonAttributes;
   $value: string;
 }
 
-interface CancelReasonAttributes {
+interface DelayReasonAttributes {
   tiploc: string;
 }
