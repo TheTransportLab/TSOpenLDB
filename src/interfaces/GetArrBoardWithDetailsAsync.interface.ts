@@ -4,6 +4,7 @@ export interface GetArrBoardWithDetailsAsync {
   crs: string;
   stationManager: string;
   stationManagerCode: string;
+  isTruncated: boolean;
   trainServices: TrainServices;
 }
 
@@ -11,26 +12,30 @@ interface GeneratedAt {
 }
 
 interface TrainServices {
-  service: Array<Service1>;
+  service: Array<Service1 | Service12>;
 }
 
 interface Service1 {
   rid: string;
   uid: string;
   trainid: string;
+  rsid: string;
   sdd: GeneratedAt;
   operator: string;
   operatorCode: string;
   sta: string;
   ata: string;
   arrivalType: string;
+  std: string;
+  atd: string;
+  departureType: string;
+  departureSource: string;
   platform: string;
   origin: Service1Origin;
   destination: Service1Origin;
-  cancelReason: Service1CancelReason;
-  delayReason: Service1CancelReason;
   category: string;
   activities: string;
+  length: string;
   previousLocations: Service1PreviousLocations;
 }
 
@@ -44,53 +49,45 @@ interface Location1 {
   tiploc: string;
 }
 
-interface Service1CancelReason {
-  attributes: CancelReasonAttributes;
-  $value: string;
-}
-
-interface CancelReasonAttributes {
-  tiploc: string;
-}
-
 interface Service1PreviousLocations {
-  location: Array<Location5 | Location8 | Location9 | Location10 | Location11 | Location12 | Location13 | Location14 | Location15>;
+  location: Array<Location3 | Location4 | Location5 | Location6 | Location7 | Location8 | Location9>;
+}
+
+interface Location3 {
+  locationName: string;
+  tiploc: string;
+  crs: string;
+  platform: string;
+  std: string;
+  atd: string;
+  departureType: string;
+  departureSource: string;
+  lateness: string;
+}
+
+interface Location4 {
+  locationName: string;
+  tiploc: string;
+  isPass: boolean;
+  platformIsHidden: boolean;
+  std: string;
+  departureType: string;
 }
 
 interface Location5 {
   locationName: string;
   tiploc: string;
   crs: string;
-  platform: string;
+  isPass: boolean;
   platformIsHidden: boolean;
-  serviceIsSuppressed: boolean;
   std: string;
   atd: string;
   departureType: string;
   departureSource: string;
-  departureSourceInstance: string;
-  associations: Location5Associations;
+  lateness: string;
 }
 
-interface Location5Associations {
-  association: Array<Association5>;
-}
-
-interface Association5 {
-  category: string;
-  rid: string;
-  uid: string;
-  trainid: string;
-  sdd: GeneratedAt;
-  origin: string;
-  originCRS: string;
-  originTiploc: string;
-  destination: string;
-  destCRS: string;
-  destTiploc: string;
-}
-
-interface Location8 {
+interface Location6 {
   locationName: string;
   tiploc: string;
   isPass: boolean;
@@ -102,57 +99,7 @@ interface Location8 {
   lateness: string;
 }
 
-interface Location9 {
-  locationName: string;
-  tiploc: string;
-  isPass: boolean;
-  platformIsHidden: boolean;
-  std: string;
-  atd: string;
-  departureType: string;
-  departureSource: string;
-  departureSourceInstance: string;
-}
-
-interface Location10 {
-  locationName: string;
-  tiploc: string;
-  crs: string;
-  isPass: boolean;
-  platformIsHidden: boolean;
-  std: string;
-  atd: string;
-  departureType: string;
-  departureSource: string;
-  lateness: string;
-}
-
-interface Location11 {
-  locationName: string;
-  tiploc: string;
-  crs: string;
-  isPass: boolean;
-  platformIsHidden: boolean;
-  std: string;
-  departureType: string;
-}
-
-interface Location12 {
-  locationName: string;
-  tiploc: string;
-  crs: string;
-  isPass: boolean;
-  isCancelled: boolean;
-  platformIsHidden: boolean;
-  std: string;
-  atd: string;
-  departureType: string;
-  departureSource: string;
-  departureSourceInstance: string;
-  lateness: string;
-}
-
-interface Location13 {
+interface Location7 {
   locationName: string;
   tiploc: string;
   crs: string;
@@ -168,7 +115,7 @@ interface Location13 {
   lateness: string;
 }
 
-interface Location14 {
+interface Location8 {
   locationName: string;
   tiploc: string;
   isPass: boolean;
@@ -181,11 +128,85 @@ interface Location14 {
   lateness: string;
 }
 
+interface Location9 {
+  locationName: string;
+  tiploc: string;
+  crs: string;
+  isPass: boolean;
+  platformIsHidden: boolean;
+  std: string;
+  atd: string;
+  departureType: string;
+  departureSource: string;
+  departureSourceInstance: string;
+  lateness: string;
+}
+
+interface Service12 {
+  rid: string;
+  uid: string;
+  trainid: string;
+  rsid: string;
+  sdd: GeneratedAt;
+  operator: string;
+  operatorCode: string;
+  isCancelled: boolean;
+  sta: string;
+  std: string;
+  platform: string;
+  platformIsHidden: boolean;
+  origin: Service1Origin;
+  destination: Service1Origin;
+  cancelReason: Service12CancelReason;
+  category: string;
+  activities: string;
+  previousLocations: Service12PreviousLocations;
+}
+
+interface Service12CancelReason {
+  attributes: CancelReasonAttributes;
+  $value: string;
+}
+
+interface CancelReasonAttributes {
+  tiploc: string;
+}
+
+interface Service12PreviousLocations {
+  location: Array<Location14 | Location15 | Location16>;
+}
+
+interface Location14 {
+  locationName: string;
+  tiploc: string;
+  crs: string;
+  isCancelled: boolean;
+  platform: string;
+  platformIsHidden: boolean;
+  std: string;
+  etd: string;
+  departureSource: string;
+}
+
 interface Location15 {
   locationName: string;
   tiploc: string;
   isPass: boolean;
+  isCancelled: boolean;
   platformIsHidden: boolean;
   std: string;
-  departureType: string;
+  etd: string;
+  departureSource: string;
+}
+
+interface Location16 {
+  locationName: string;
+  tiploc: string;
+  crs: string;
+  isPass: boolean;
+  isCancelled: boolean;
+  platformIsHidden: boolean;
+  std: string;
+  etd: string;
+  departureSource: string;
 }

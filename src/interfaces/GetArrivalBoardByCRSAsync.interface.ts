@@ -4,7 +4,6 @@ export interface GetArrivalBoardByCRSAsync {
   crs: string;
   stationManager: string;
   stationManagerCode: string;
-  isTruncated: boolean;
   trainServices: TrainServices;
 }
 
@@ -12,7 +11,7 @@ interface GeneratedAt {
 }
 
 interface TrainServices {
-  service: Array<Service1 | Service4>;
+  service: Array<Service1>;
 }
 
 interface Service1 {
@@ -26,13 +25,16 @@ interface Service1 {
   sta: string;
   ata: string;
   arrivalType: string;
+  std: string;
+  atd: string;
+  departureType: string;
+  departureSource: string;
   platform: string;
-  platformIsHidden: boolean;
-  serviceIsSupressed: boolean;
   origin: Service1Origin;
   destination: Service1Origin;
   category: string;
   activities: string;
+  length: string;
 }
 
 interface Service1Origin {
@@ -42,34 +44,5 @@ interface Service1Origin {
 interface Location1 {
   locationName: string;
   crs: string;
-  tiploc: string;
-}
-
-interface Service4 {
-  rid: string;
-  uid: string;
-  trainid: string;
-  sdd: GeneratedAt;
-  operator: string;
-  operatorCode: string;
-  sta: string;
-  ata: string;
-  arrivalType: string;
-  platform: string;
-  platformIsHidden: boolean;
-  serviceIsSupressed: boolean;
-  origin: Service1Origin;
-  destination: Service1Origin;
-  delayReason: Service4DelayReason;
-  category: string;
-  activities: string;
-}
-
-interface Service4DelayReason {
-  attributes: DelayReasonAttributes;
-  $value: string;
-}
-
-interface DelayReasonAttributes {
   tiploc: string;
 }
