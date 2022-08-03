@@ -518,8 +518,8 @@ export interface IOpenLDBSVWSServiceItem {
   uid: string;
   trainid: string;
   rsid: string;
-  origin: IOpenLDBSVWSServiceItemOrigin; // | IOpenLDBSVWSServiceItemOrigin[]
-  destination: IOpenLDBSVWSServiceItemOrigin; // | IOpenLDBSVWSServiceItemOrigin[]
+  origin: IOpenLDBSVWSServiceItemOrigin | IOpenLDBSVWSServiceItemOrigin[]; // | IOpenLDBSVWSServiceItemOrigin[]
+  destination: IOpenLDBSVWSServiceItemOrigin | IOpenLDBSVWSServiceItemOrigin[]; // | IOpenLDBSVWSServiceItemOrigin[]
   // currentOrigins
   // currentDestinations
 

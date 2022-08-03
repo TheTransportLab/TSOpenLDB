@@ -444,8 +444,8 @@ export interface IOpenLDBSVWSServiceItem {
     uid: string;
     trainid: string;
     rsid: string;
-    origin: IOpenLDBSVWSServiceItemOrigin;
-    destination: IOpenLDBSVWSServiceItemOrigin;
+    origin: IOpenLDBSVWSServiceItemOrigin | IOpenLDBSVWSServiceItemOrigin[];
+    destination: IOpenLDBSVWSServiceItemOrigin | IOpenLDBSVWSServiceItemOrigin[];
     sdd?: Date;
     operator: string;
     operatorCode: string;
