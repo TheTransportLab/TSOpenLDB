@@ -224,6 +224,16 @@ class TSOpenLDB {
                 this.logToConsole({ headers, xml, operation });
             }
             if (fetchRequest.status !== 200) {
+                // if (this._debugEnabled) {
+                //   const bodyText = await (fetchRequest as Response).text();
+                //   this.logToConsole({
+                //     status: (fetchRequest as Response).status,
+                //     statusText: (fetchRequest as Response).statusText,
+                //     headers: (fetchRequest as Response).headers,
+                //     text: bodyText
+                //     // body: (fetchRequest as Response).body
+                //   });
+                // }
                 throw new Error(`Request error (Status code ${fetchRequest.status}). Please ensure your key is correct, and that it is valid.`);
             }
             const responseData = await fetchRequest.text();
@@ -309,7 +319,7 @@ class TSOpenLDB {
             };
         };
         this.getArrivalDepartureBoardByCRS = async ({ time = new Date(), numRows = 120, services = interfaces_1.EServices.TRAIN, getNonPassengerServices = false, ..._params }) => {
-            const params = { timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
+            const params = { time: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalDepartureBoardByCrs, params)}${constants_1.XMLClosing}`;
             return {
                 trainServices: { service: [] },
@@ -321,7 +331,7 @@ class TSOpenLDB {
             };
         };
         this.getArrivalDepartureBoardByTIPLOC = async ({ time = new Date(), numRows = 120, services = interfaces_1.EServices.TRAIN, getNonPassengerServices = false, ..._params }) => {
-            const params = { timetime: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
+            const params = { time: time.toISOString(), services, numRows, getNonPassengerServices, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getArrivalDepartureBoardByTiploc, params)}${constants_1.XMLClosing}`;
             return {
                 trainServices: { service: [] },
@@ -358,7 +368,7 @@ class TSOpenLDB {
             };
         };
         this.getDepartureBoardByTIPLOC = async ({ time = new Date(), getNonPassengerServices = false, services = interfaces_1.EServices.TRAIN, numRows = 120, filterType = interfaces_1.EFilterType.to, ..._params }) => {
-            const params = { timetime: time.toISOString(), getNonPassengerServices, services, numRows, filterType, ..._params };
+            const params = { time: time.toISOString(), getNonPassengerServices, services, numRows, filterType, ..._params };
             const XML = `${constants_1.XMLOpening.replace("$$_TOKEN_$$", this._apiKey)}${this.mapParamsToSOAPXml(interfaces_1.EStaffOperation.getDepartureBoardByTiploc, params)}${constants_1.XMLClosing}`;
             return {
                 trainServices: { service: [] },
