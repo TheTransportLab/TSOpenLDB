@@ -203,7 +203,9 @@ export default class TSOpenLDB implements ITSOpenLDB {
         filterCrs,
         filterType,
         timeOffset,
-        timeWindow
+        timeWindow,
+        time,
+        filterTOC
       },
       GetDepartureBoardByCRS:{
         numRows,
