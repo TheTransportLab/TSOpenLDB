@@ -143,6 +143,7 @@ export interface IParams_GetDepBoardWithDetails {
     filterCrs?: string | string[];
     filterType?: EFilterType;
     timeWindow?: number;
+    filterTOC?: string[];
 }
 export interface IParams_GetDepartureBoardByCRS {
     crs: string;

@@ -94,7 +94,9 @@ class TSOpenLDB {
                     filterCrs,
                     filterType,
                     timeOffset,
-                    timeWindow
+                    timeWindow,
+                    time,
+                    filterTOC
                 },
                 GetDepartureBoardByCRS: {
                     numRows,
